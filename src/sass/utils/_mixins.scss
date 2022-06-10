@@ -1,0 +1,38 @@
+// @media mixin
+
+$sizes: ("mobile":320px, "tablet":768px, "descktop":1024px);
+
+@function getPreviousSize($currentSize) {
+  $keys: map-keys($sizes);
+  $index: index($keys, $currentSize)-1;
+  $value: map-values($sizes);
+  @return nth($value, $index);
+}
+
+@mixin media($minmax, $media) {
+  @each $size, $resolution in $sizes {
+    @if $media == $size {
+      @if ($minmax != "within") {
+        @if($minmax == "max") {
+          @media screen and (#{$minmax}-width: ($resolution - 1)) {
+            @content;
+          }
+        } @else {
+          @media screen and (#{$minmax}-width: $resolution) {
+            @content;
+          }
+        }
+      } @else {
+        @if (index(map-keys($sizes), $media) > 1) {
+          @media screen and (min-width: (getPreviousSize($media)+1)) and (max-width: $resolution) {
+            @content;
+          }
+        } @else {
+          @media only screen and (max-width: $resolution) {
+            @content;
+          }
+        }
+      }
+    }
+  }
+}

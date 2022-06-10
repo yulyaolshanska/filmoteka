@@ -1,1 +1,23 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 500;
+}
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include media('min', 'tablet') {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include media('min', 'descktop') {
+    width: 1024px;
+  }
+}
