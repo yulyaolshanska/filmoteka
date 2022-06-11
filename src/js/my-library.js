@@ -1,11 +1,13 @@
 let watchedFilms = [];
+let queue = [];
 
-function AddToWatched() {
-    const filmToAdd = {name: "BBBB", id: "112",};
+function addToWatched() {
+    const filmToAdd = {name: "Фантастические твари", id: "113",};
     watchedFilms.push(filmToAdd);
     localStorage.setItem("watched-films", JSON.stringify(filmToAdd));
     // onRenderFilmCard(watchedFilms);
-    console.log("ggggg")
+    console.log("Просмотреные фильмы");
+    console.log(watchedFilms);
    
 }
 
@@ -21,4 +23,15 @@ function getWatched() {
    
 }
 
-AddToWatched()
+function addToQueue() {
+    const filmToAdd = {name: "Доктор Стрэндж", id: "112",};
+    queue.push(filmToAdd);
+    localStorage.setItem("queue-films", JSON.stringify(filmToAdd));
+    // onRenderFilmCard(queue);
+    console.log("Фильмы в очереди")
+       console.log(queue);
+
+}
+
+addToWatched();
+addToQueue();
