@@ -1,0 +1,24 @@
+.button_close{
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    // background-color:  transparent;
+    // border: none;
+}
+
+.close_img{
+    width: 30px;
+    height: 30px;    
+}
+
+.backdrop{
+    background-color: aquamarine;
+}
+
+.is-hidden{
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
