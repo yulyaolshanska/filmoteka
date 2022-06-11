@@ -1,3 +1,3 @@
 import './js/card-modal';
-import './js/card-teamplate';
+import './js/card-template';
 import './js/poster';
