@@ -2,7 +2,7 @@ refs = {
     ul: document.querySelector(`ul`),
 }
 
-//console.log(refs.ul);
+
 
 function filmsCollection() {
     return fetch('https://api.themoviedb.org/3/trending/all/day?api_key=3c9b3437ebab156a512248e157c99300')

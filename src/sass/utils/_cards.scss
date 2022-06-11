@@ -7,7 +7,6 @@
     margin-right: 32px;
  }
         
-      
  @include media('min', 'descktop') {
       width: calc((100% - 32px) / 3);
       margin-right: 16px;
@@ -15,23 +14,45 @@
     }
 }
  
-    .film-link:nth-child(3n + 3) {  
-        margin-right: 0px;
-    }     
+.film-link:nth-child(2n + 2) { 
+    @include media('within', 'descktop') {       
+          margin-right: 0px;
+      }
+    }
 
+    .film-link:nth-child(3n + 3) {  
+  @include media('min', 'descktop') {
+    margin-right: 0px;
+    }     
+  }   
+        
 
 .films-collection {
-    display: flex;
-    flex-wrap: wrap;
     list-style-type: none;
+    
+@include media('min', 'tablet') {    
+    display: flex;
+    flex-wrap: wrap;    
     justify-content: center;
+    }
+    
     
 }
 
 .film-img {
     width: 100%;
     display: block;
+    height: 398px;
+    max-width: 280px;
+@include media('within', 'descktop') {       
+    height: 455px;
+    max-width: 336px;
+    }
+    
+@include media('min', 'descktop') {
     height: 449px;
+    max-width: 309px;
+ }    
 }
 
 .film-name {
