@@ -1,5 +1,5 @@
 refs = {
-    ul: document.querySelector(`ul`),
+    ul: document.querySelector('.films-collection'),
 }
 
 
