@@ -1,4 +1,3 @@
-
 import NewsApiService from './api-service';
 import getRefs from './getRefs';
 
@@ -96,3 +95,4 @@ onTrend();
 //     console.log(event.currentTarget);
 // };
 // refs.ul.addEventListener('click', handleListClick);
+
