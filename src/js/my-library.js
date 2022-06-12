@@ -44,6 +44,18 @@ function addToQueue() {
 
 }
 
+function getQueue() {
+    try {
+         if (localStorage.getItem("queue-films")) {
+             queue = JSON.parse(localStorage.getItem("queue-films"));
+    }
+    } catch (error) {
+        console.log(error);
+        queue = [];
+    }
+   
+}
+
 addToWatched();
 addToQueue();
 handleWatched()
