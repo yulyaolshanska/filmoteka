@@ -1,1 +1,29 @@
-<div class="container"></div>
+<header class="header">
+   <div class="container container__header ">
+     <div class="header__block">
+       <a href="#" class="logo">
+         <svg class="logo__svg">
+           <use href="images/symbol-defs.svg#icon-film"></use>
+         </svg>
+         <span class="logo__text">Filmoteka</span>
+       
+       </a>
+       <nav class="site-nav">
+         <ul class="site-nav__list">
+           <li class="site-nav__item"><a href="./" class="site-nav__link site-nav__link--current">Home</a></li>
+           <li class="site-nav__item"><a href="#" class="site-nav__link">my library</a></li>
+         </ul>
+       </nav>
+   
+     </div>
+   
+     <form class="form">
+       <input type="input" class="form__field" placeholder="Поиск фильмов" name="name" id='name' required />
+       <button class="form__btm" type="submit">
+         <svg class="form__svg">
+           <use href="images/symbol-defs.svg#icon-search"></use>
+         </svg>
+       </button>
+     </form>
+   </div>
+   </header>
