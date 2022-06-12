@@ -4,14 +4,24 @@ let watchedFilms = [];
 let queue = [];
 const refs = getRefs()
 
+refs.myLibraryLink.addEventListener("click", onMyLibrary)
 refs.watchedBtn.addEventListener("click", handleWatched);
 refs.queueBtn.addEventListener("click", handleQueue);
 
+function onMyLibrary() {
+    console.log("Клик по кнопке MyLibrary");
+    refs.myLibraryLink.classList.add('site-nav__link--current');
+    refs.homeLink.classList.remove('site-nav__link--current');
+    //  onRenderFilmCard(watchedFilms);
 
+
+}
 function handleWatched() {
     getWatched();
     console.log("Клик на кнопку Watched")
-    console.log("Фильмы с Local Storage для рендера", watchedFilms)
+    console.log("Фильмы с Local Storage для рендера", watchedFilms);
+refs.watchedBtn.classList.remove('header__btm--white')
+    refs.queueBtn.classList.add('header__btm--white');
 //   onRenderFilmCard(watchedFilms);
       
 
@@ -20,7 +30,10 @@ function handleWatched() {
 function handleQueue() {
     getQueue();
     console.log("Клик на кнопку Queue")
-    console.log("Фильмы с Local Storage для рендера", queue )
+    console.log("Фильмы с Local Storage для рендера", queue);
+    refs.watchedBtn.classList.add('header__btm--white')
+    refs.queueBtn.classList.remove('header__btm--white');
+
 //   onRenderFilmCard(queue);
       
 
@@ -71,5 +84,5 @@ function getQueue() {
 
 addToWatched();
 addToQueue();
-handleWatched();
-handleQueue()
+// handleWatched();
+// handleQueue()
