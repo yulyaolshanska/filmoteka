@@ -16,9 +16,7 @@ ul {
    margin: 0;
 }
 
-.container {
-   margin-left: auto;
-   margin-right: auto;
+.container__header {
    max-width: 480px;
  
    @include media('min', 'tablet') {
@@ -50,7 +48,7 @@ ul {
    }
  }
 
-.header__container {
+.header__block {
    display: flex;
    justify-content: space-between;
 
