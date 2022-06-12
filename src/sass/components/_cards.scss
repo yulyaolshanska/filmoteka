@@ -1,7 +1,33 @@
+.container_main {
+
+    padding-top: 20px;
+    padding-bottom: 40px;    
+
+    @include media('min', 'tablet') {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    }   
+}
+//для desktop меняется padding-top на странице library
+.container_main .liblary{
+
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @include media('min', 'tablet') {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    }
+    @include media('min', 'descktop') {
+    padding-top: 32px;
+    padding-bottom: 60px;   
+    }
+}
+
 .film-link {    
     text-decoration: none;
     margin-bottom: 20px;
-
+       
 @include media('min', 'tablet') {
     width: calc((100% - 32px) / 2);
     margin-right: 32px;
@@ -30,13 +56,13 @@
 .films-collection {
     list-style-type: none;
     
-@include media('min', 'tablet') {    
-    display: flex;
+    
+@include media('min', 'tablet') { 
+    display: flex;   
+    flex-direction: row; 
     flex-wrap: wrap;    
-    justify-content: center;
-    }
     
-    
+    }  
 }
 
 .film-img {
@@ -44,7 +70,10 @@
     display: block;
     height: 398px;
     max-width: 280px;
-@include media('within', 'descktop') {       
+    margin-right: auto;
+    margin-left: auto;
+
+@include media('min', 'tablet') {       
     height: 455px;
     max-width: 336px;
     }
@@ -65,3 +94,6 @@
 }
 
 
+.film-description {
+text-align: center;
+}
