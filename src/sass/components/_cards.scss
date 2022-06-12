@@ -1,0 +1,67 @@
+.film-link {    
+    text-decoration: none;
+    margin-bottom: 20px;
+
+@include media('min', 'tablet') {
+    width: calc((100% - 32px) / 2);
+    margin-right: 32px;
+ }
+        
+ @include media('min', 'descktop') {
+      width: calc((100% - 32px) / 3);
+      margin-right: 16px;
+      margin-bottom: 32px;
+    }
+}
+ 
+.film-link:nth-child(2n + 2) { 
+    @include media('within', 'descktop') {       
+          margin-right: 0px;
+      }
+    }
+
+    .film-link:nth-child(3n + 3) {  
+  @include media('min', 'descktop') {
+    margin-right: 0px;
+    }     
+  }   
+        
+
+.films-collection {
+    list-style-type: none;
+    
+@include media('min', 'tablet') {    
+    display: flex;
+    flex-wrap: wrap;    
+    justify-content: center;
+    }
+    
+    
+}
+
+.film-img {
+    width: 100%;
+    display: block;
+    height: 398px;
+    max-width: 280px;
+@include media('within', 'descktop') {       
+    height: 455px;
+    max-width: 336px;
+    }
+    
+@include media('min', 'descktop') {
+    height: 449px;
+    max-width: 309px;
+ }    
+}
+
+.film-name {
+    text-transform: uppercase;
+}
+
+.film-genre,
+.film-year_of_issue {
+    color: $primary-text-color;
+}
+
+

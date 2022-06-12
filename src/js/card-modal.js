@@ -1,3 +1,4 @@
+
 const KEY = `476dab1d501621899284a1a134c160d7`;
 const movie_id = 705861;
 let posterUrl = ``;
@@ -80,5 +81,4 @@ function onModalClose() {
 
 // refs.watchedBtn.addEventListener('click', addToWatched);
 // refs.queueBtn.addEventListener('click', addToQueue);
-
 
