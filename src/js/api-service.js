@@ -9,7 +9,6 @@ const KEY = `476dab1d501621899284a1a134c160d7`;
 // API key:  3c9b3437ebab156a512248e157c99300
 
 export default class NewsApiService {
-
     constructor() {
         this.searchQuery = 'land';
         this.page = 1;
