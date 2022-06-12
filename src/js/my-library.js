@@ -1,8 +1,19 @@
+import {onRenderFilmCard, filmsCollection} from "./card-template"
+import getRefs from "./getRefs"
 let watchedFilms = [];
 let queue = [];
+const refs = getRefs()
 
+function handleWatched() {
+    getWatched();
+    console.log("Клик на кнопку Watched")
+    console.log("Фильмы с Local Storage для рендера", watchedFilms)
+//   onRenderFilmCard(watchedFilms);
+      
+
+}
 function addToWatched() {
-    const filmToAdd = {name: "Фантастические твари", id: "113",};
+    const filmToAdd = {name: "Фантастические твари", id: "113",};//заменить на данные с модалки
     watchedFilms.push(filmToAdd);
     localStorage.setItem("watched-films", JSON.stringify(filmToAdd));
     // onRenderFilmCard(watchedFilms);
@@ -35,3 +46,4 @@ function addToQueue() {
 
 addToWatched();
 addToQueue();
+handleWatched()
