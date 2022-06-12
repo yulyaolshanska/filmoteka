@@ -4,11 +4,24 @@ let watchedFilms = [];
 let queue = [];
 const refs = getRefs()
 
+refs.watchedBtn.addEventListener("click", handleWatched);
+refs.queueBtn.addEventListener("click", handleQueue);
+
+
 function handleWatched() {
     getWatched();
     console.log("Клик на кнопку Watched")
     console.log("Фильмы с Local Storage для рендера", watchedFilms)
 //   onRenderFilmCard(watchedFilms);
+      
+
+}
+
+function handleQueue() {
+    getQueue();
+    console.log("Клик на кнопку Queue")
+    console.log("Фильмы с Local Storage для рендера", queue )
+//   onRenderFilmCard(queue);
       
 
 }
@@ -35,7 +48,7 @@ function getWatched() {
 }
 
 function addToQueue() {
-    const filmToAdd = {name: "Доктор Стрэндж", id: "112",};
+    const filmToAdd = {name: "Доктор Стрэндж", id: "112",};//заменить на данные с модалки
     queue.push(filmToAdd);
     localStorage.setItem("queue-films", JSON.stringify(filmToAdd));
     // onRenderFilmCard(queue);
@@ -58,4 +71,5 @@ function getQueue() {
 
 addToWatched();
 addToQueue();
-handleWatched()
+handleWatched();
+handleQueue()
