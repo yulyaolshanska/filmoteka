@@ -24,7 +24,7 @@ $sizes: ("mobile":320px, "tablet":768px, "descktop":1024px);
         }
       } @else {
         @if (index(map-keys($sizes), $media) > 1) {
-          @media screen and (min-width: (getPreviousSize($media)+1)) and (max-width: $resolution) {
+          @media screen and (min-width: getPreviousSize($media)) and (max-width: $resolution) {
             @content;
           }
         } @else {

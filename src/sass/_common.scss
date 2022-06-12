@@ -15,13 +15,13 @@ body {
   margin-right: auto;
 
   @include media('min', 'tablet') {
-    width: 768px;
+    max-width: 768px;
     padding-left: 32px;
     padding-right: 32px;
   }
 
   @include media('min', 'descktop') {
-    width: 1024px;
+    max-width: 1024px;
   }
 }
 
