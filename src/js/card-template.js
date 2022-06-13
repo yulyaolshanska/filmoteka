@@ -14,7 +14,7 @@ function onRenderFilmCard(film) {
     const markup = film.results.map(({poster_path, title, genre_ids, release_date, id}) => 
         `
         <li class="film-card" id=${id}>
-        <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"'/>
+        <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}"/>
         <div class="film-description">
         <p class="film-name">${title}</p>
         <span class="film-genre">${genre_ids} |</span>

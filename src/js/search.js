@@ -21,7 +21,7 @@ async function onSubmit(e) {
   newsApiService.resetPage();
   newsApiService.query = value;
   const data = await newsApiService.fetchSerchQuery();
-  console.log(data);
+  console.log(data.data.resu);
 }
 
 async function onSerchQuery() {
