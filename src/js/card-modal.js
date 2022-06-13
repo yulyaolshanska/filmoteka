@@ -1,19 +1,20 @@
 
 const KEY = `476dab1d501621899284a1a134c160d7`;
-const movie_id = 705861;
+
 let posterUrl = ``;
 const refs = {
-    btnOpen: document.querySelector('[data-open]'),
-    btnClose: document.querySelector('[data-button_close]'),
+   btnClose: document.querySelector('[data-button_close]'),
     backdrop: document.querySelector('.backdrop'),
     modal: document.querySelector('.modal'), 
     cardEl: document.querySelector('.card'),
     watchedBtn: document.querySelector('[data-watched]'),
-    queueBtn: document.querySelector('[data-queue]'),    
+    queueBtn: document.querySelector('[data-queue]'),  
+    ulEl: document.querySelector('.films-collection'),
 }
 
-function fetchApi(id) {
-    return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`)
+// let obj = {};
+function fetchApi(movieId) {
+    return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}`)
     .then (response => {
         if (!response.ok) {
             throw new Error(response.status);
@@ -22,25 +23,37 @@ function fetchApi(id) {
         return response.json()})
 }
 
-refs.btnOpen.addEventListener('click', onModalOpen);
+refs.ulEl.addEventListener('click', onModalOpen);
 
 
 function onModalOpen (event) {
-    console.log(event.target); 
+    let movieId = null;
+    let link = event.target.closest('.film-link');
+    if (!link){
+        return;
+    }
+    movieId = link.getAttribute('id');
+   
     refs.backdrop.classList.remove("is-hidden");
-    fetchRenderCard(movie_id);
+    fetchRenderCard(movieId);
     refs.btnClose.addEventListener('click', onModalClose);
 
     document.addEventListener('keydown', function (e) {
         if(e.keyCode === 27) {
-            refs.backdrop.classList.add("is-hidden");
+            onModalClose();
         };
       }); 
+
+    refs.backdrop.addEventListener('click', (e) => 
+     {if (!e.target.closest('.modal')) {
+        onModalClose();
+     }})
+    
 };
 
-async function fetchRenderCard(movie_id) {
+async function fetchRenderCard(movieId) {
    try {
-    const fetcData = await fetchApi(movie_id);
+    const fetcData = await fetchApi(movieId);
     renderCard(fetcData)
    }
 
@@ -58,10 +71,11 @@ function getPosterUrl(poster_path) {
 
 function renderCard({popularity, genres, poster_path, vote_average, vote_count, title, overview}) {
     getPosterUrl(poster_path);
-
+    // obj.title = title;
     const card = `
       
     <img src="${posterUrl}" alt="descr">
+    <div class="Thumb"
     <h1>${title}</h1>
     <ul>
         <li>Vote/Votes<span>${vote_average}/${vote_count} </span></li>
@@ -70,14 +84,20 @@ function renderCard({popularity, genres, poster_path, vote_average, vote_count, 
         <li>Genre<span>${genres.map((genre)=> {return genre.name}).join(', ')}</span></li>    
     </ul>
     <h2>ABOUT</h2>
-    <P>${overview}</P>`;
+    <P>${overview}</P>
+    </div>`;
+    
         // ДОбавить проверку на колличество жанров
     refs.cardEl.insertAdjacentHTML("beforeend", card);
+    // console.log(obj)
 };
 
 function onModalClose() {
-    refs.backdrop.classList.toggle("is-hidden");    
-}
+    refs.backdrop.classList.add("is-hidden");   
+    refs.cardEl.innerHTML ='';
+};
+
+
 
 // refs.watchedBtn.addEventListener('click', addToWatched);
 // refs.queueBtn.addEventListener('click', addToQueue);
