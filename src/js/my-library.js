@@ -14,14 +14,10 @@ function onMyLibrary() {
     refs.homeLink.classList.remove('site-nav__link--current');
     refs.form.classList.add('form--is-hidden');
     refs.buttonsBlock.classList.remove('header__block-btn--is-hidden');
-    // refs.header.classList.add('header--library');
-    console.log("myLibraryLink");
-
-
+    refs.header.classList.add("header--library");
     //  onRenderFilmCard(watchedFilms);
-
-
 }
+
 function handleWatched() {
     getWatched();
     console.log("Клик на кнопку Watched")

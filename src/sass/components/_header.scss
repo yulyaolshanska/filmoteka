@@ -22,8 +22,8 @@ $gray: #9b9b9b;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/home/desk.png);
    width: 1024px;
    }
- }
- .header__library{
+
+   &--library{
    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/my-library/mob-2.png);
    @include media('min', 'tablet') {
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/my-library/tabl-2.png);
@@ -34,6 +34,8 @@ $gray: #9b9b9b;
 
    }
  }
+ }
+ 
 
  .logo{
    
