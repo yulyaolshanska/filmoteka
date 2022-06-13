@@ -35,7 +35,7 @@ async function onSerchQuery() {
 
 // onSerchQuery();
 // ==============================================================
-async function onTrend() {
+export default async function onTrend() {
     
     try {
         // newsApiService.searchQuery = refs.input.value;
