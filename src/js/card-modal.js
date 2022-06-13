@@ -1,6 +1,6 @@
 
 const KEY = `476dab1d501621899284a1a134c160d7`;
-
+export let fetcData = {};
 let posterUrl = ``;
 const refs = {
    btnClose: document.querySelector('[data-button_close]'),
@@ -53,7 +53,7 @@ function onModalOpen (event) {
 
 async function fetchRenderCard(movieId) {
    try {
-    const fetcData = await fetchApi(movieId);
+       fetcData = await fetchApi(movieId);
     renderCard(fetcData)
    }
 

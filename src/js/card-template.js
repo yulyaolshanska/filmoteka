@@ -1,6 +1,5 @@
-refs = {
-    ul: document.querySelector('.films-collection'),
-}
+import getRefs from "./getRefs"
+refs = getRefs()
 
 
 
@@ -10,9 +9,9 @@ function filmsCollection() {
 }
 
 
-function onRenderFilmCard(film) {
-     console.dir(film.results);  
-    const markup = film.results.map(({poster_path, original_title, vote_average, first_air_date, id}) => 
+function onRenderFilmCard(films) {
+     console.log("Масив для рендера",films);  
+    const markup = films.map(({poster_path, original_title, vote_average, first_air_date, id}) => 
         `
         <a class="film-link">
         <li class="film-card">
@@ -28,7 +27,6 @@ function onRenderFilmCard(film) {
     ).join("");
     
     refs.ul.insertAdjacentHTML("beforeend", markup);
-    
 }
 
 
