@@ -4,6 +4,8 @@ const KEY = `476dab1d501621899284a1a134c160d7`;
 refs = {
     ul: document.querySelector('.films-collection'),
 }
+import getRefs from "./getRefs"
+refs = getRefs()
 
 
 
@@ -14,7 +16,7 @@ function filmsCollection() {
 
 
 function onRenderFilmCard(film) {
-     console.dir(film.results);  
+    console.dir("Масив для рендера",film);  
     const markup = film.results.map(({poster_path, title, genre_ids, release_date, id}) => 
         `
         <a class="film-link" id=${id}>
@@ -31,7 +33,6 @@ function onRenderFilmCard(film) {
     ).join("");
     
     refs.ul.insertAdjacentHTML("beforeend", markup);
-    
 }
 
 
