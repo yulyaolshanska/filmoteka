@@ -4,13 +4,25 @@ const newsApiService = new NewsApiService();
 
 const refs = {
   form: document.querySelector('.form'),
-  formInput: refs.form.querySelector('.form__field'),
-  formButton: refs.form.querySelector('.form__button'),
+  formInput: document.querySelector('.form__field'),
+  formButton: document.querySelector('.form__btn'),
 }
 
-console.log(refs.form);
-console.log(refs.formInput);
-console.log(refs.formButton);
+// console.log(refs.form);
+// console.log(refs.formInput);
+// console.log(refs.formButton);
+refs.form.addEventListener('submit', onSubmit);
+
+async function onSubmit(e) {
+  e.preventDefault();
+  // console.log('onsubmit');
+  const { elements: { searchQuery: { value } } } = e.target;
+  console.log(value);
+  newsApiService.resetPage();
+  newsApiService.query = value;
+  const data = await newsApiService.fetchSerchQuery();
+  console.log(data);
+}
 
 async function onSerchQuery() {
     
@@ -38,4 +50,4 @@ async function onSerchQuery() {
       }          
 }
 
-onSerchQuery();
+
