@@ -12,11 +12,11 @@ function filmsCollection() {
 
 function onRenderFilmCard(film) {
      console.dir(film.results);  
-    const markup = film.results.map(({poster_path, original_title, vote_average, first_air_date}) => 
+    const markup = film.results.map(({poster_path, original_title, vote_average, first_air_date, id}) => 
         `
         <a class="film-link">
         <li class="film-card">
-        <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" />
+        <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
         <div class="film-description">
         <p class="film-name">${original_title}</p>
         <span class="film-genre">${vote_average} |</span>
@@ -35,3 +35,4 @@ function onRenderFilmCard(film) {
 filmsCollection().then(onRenderFilmCard).catch(error => console.log(error));
 
 export { onRenderFilmCard, filmsCollection }
+
