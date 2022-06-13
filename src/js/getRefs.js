@@ -1,5 +1,5 @@
 export default function getRefs() {
-    return {
+  return {
     form: document.querySelector('#search-form'),
     input: document.querySelector('#search-form input'),
     btnSubmit: document.querySelector('#search-form button'),
@@ -10,13 +10,14 @@ export default function getRefs() {
     buttonsBlock: document.querySelector('.header__block-btn'),
     ul: document.querySelector('.films-collection'),
     header: document.querySelector('.header'),
-    
+    logo: document.querySelector('#logo'),
+
     btnClose: document.querySelector('[data-button_close]'),
     backdrop: document.querySelector('.backdrop'),
-    modal: document.querySelector('.modal'), 
+    modal: document.querySelector('.modal'),
     cardEl: document.querySelector('.card'),
     addToWatchedBtn: document.querySelector('[data-watched]'),
-    addToQueueBtn: document.querySelector('[data-queue]'),  
+    addToQueueBtn: document.querySelector('[data-queue]'),
     ulEl: document.querySelector('.films-collection'),
-}
+  };
 }
