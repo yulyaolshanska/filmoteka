@@ -10,6 +10,7 @@ const refs = getRefs()
 refs.myLibraryLink.addEventListener("click", onMyLibrary)
 
 refs.addToWatchedBtn.addEventListener("click", addToWatched)
+refs.addToQueueBtn.addEventListener("click", addToQueue)
 
 
 
@@ -53,8 +54,9 @@ function handleQueue() {
     console.log("Фильмы с Local Storage для рендера", queue);
    refs.watchedBtn.classList.remove('header__btn--active')
     refs.queueBtn.classList.add('header__btn--active');
+        refs.ul.innerHTML = "";
 
-//   onRenderFilmCard(queue);
+  onRenderFilmCard(queue);
       
 
 }
@@ -83,12 +85,10 @@ function getWatched() {
 }
 
 function addToQueue() {
-    const filmToAdd = {name: "Доктор Стрэндж", id: "112",};//заменить на данные с модалки
+    filmToAdd = fetcData;
+    console.log(queue);
     queue.push(filmToAdd);
-    localStorage.setItem("queue-films", JSON.stringify(filmToAdd));
-    // onRenderFilmCard(queue);
-    console.log("Фильмы в очереди")
-       console.log(queue);
+    localStorage.setItem("queue-films", JSON.stringify(queue));
 
 }
 
@@ -105,6 +105,7 @@ function getQueue() {
 }
 
 getWatched()
+getQueue()
 // addToQueue();
 // handleWatched();
 // handleQueue()
