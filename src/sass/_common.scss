@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-  
+  max-width: 480px;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
@@ -27,4 +27,6 @@ body {
 
 ul,li {
   list-style: none;
+  margin: 0;
+    padding: 0;
 }
