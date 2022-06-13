@@ -14,7 +14,8 @@ function onMyLibrary() {
     refs.homeLink.classList.remove('site-nav__link--current');
     refs.form.classList.add('form--is-hidden');
     refs.buttonsBlock.classList.remove('header__block-btn--is-hidden');
-    refs.header.className = "header__library";
+    // refs.header.classList.add('header--library');
+    console.log("myLibraryLink");
 
 
     //  onRenderFilmCard(watchedFilms);
