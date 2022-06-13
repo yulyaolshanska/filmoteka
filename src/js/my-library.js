@@ -8,19 +8,22 @@ const refs = getRefs()
 // console.log(fetcData)
 
 refs.myLibraryLink.addEventListener("click", onMyLibrary)
-refs.watchedBtn.addEventListener("click", handleWatched);
-refs.queueBtn.addEventListener("click", handleQueue);
+
 refs.addToWatchedBtn.addEventListener("click", addToWatched)
 
 
 
 function onMyLibrary() {
     console.log("Клик по кнопке MyLibrary");
+   
     refs.myLibraryLink.classList.add('site-nav__link--current');
     refs.homeLink.classList.remove('site-nav__link--current');
     refs.form.classList.add('form--is-hidden');
     refs.buttonsBlock.classList.remove('header__block-btn--is-hidden');
     refs.header.classList.add("header--library");
+
+     refs.watchedBtn.addEventListener("click", handleWatched);
+refs.queueBtn.addEventListener("click", handleQueue);
     if (watchedFilms) {
              refs.ul.innerHTML = "";
   onRenderFilmCard(watchedFilms);
@@ -34,8 +37,8 @@ function handleWatched() {
     
     console.log("Клик на кнопку Watched")
     console.log("Фильмы с Local Storage для рендера", JSON.parse(localStorage.getItem("watched-films")));
-refs.watchedBtn.classList.remove('header__btn--white')
-    refs.queueBtn.classList.add('header__btn--white');
+refs.watchedBtn.classList.add('header__btn--active')
+    refs.queueBtn.classList.remove('header__btn--active');
     // console.log(watchedFilms);
     // getWatched();
     refs.ul.innerHTML = "";
@@ -48,8 +51,8 @@ function handleQueue() {
     getQueue();
     console.log("Клик на кнопку Queue")
     console.log("Фильмы с Local Storage для рендера", queue);
-    refs.watchedBtn.classList.add('header__btn--white')
-    refs.queueBtn.classList.remove('header__btn--white');
+   refs.watchedBtn.classList.remove('header__btn--active')
+    refs.queueBtn.classList.add('header__btn--active');
 
 //   onRenderFilmCard(queue);
       
