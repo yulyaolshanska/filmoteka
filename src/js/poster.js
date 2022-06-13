@@ -50,6 +50,7 @@ async function onTrend() {
     // onFetchError()
     console.dir(error);
   }
+
 }
 
 // окремо отримуємо запит  масив жанри {name,id}  genres: [{id: 28, name: "Action"}, ...]
