@@ -33,3 +33,6 @@ function onRenderFilmCard(film) {
 
 
 filmsCollection().then(onRenderFilmCard).catch(error => console.log(error));
+
+export { onRenderFilmCard, filmsCollection }
+
