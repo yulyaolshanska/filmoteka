@@ -28,7 +28,7 @@ refs.ulEl.addEventListener('click', onModalOpen);
 
 function onModalOpen (event) {
     let movieId = null;
-    let link = event.target.closest('.film-link');
+    let link = event.target.closest('.film-card');
     if (!link){
         return;
     }
