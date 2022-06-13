@@ -12,16 +12,18 @@ function onMyLibrary() {
     console.log("Клик по кнопке MyLibrary");
     refs.myLibraryLink.classList.add('site-nav__link--current');
     refs.homeLink.classList.remove('site-nav__link--current');
+    refs.form.classList.add('form--is-hidden');
+    refs.buttonsBlock.classList.remove('header__block-btn--is-hidden');
+    refs.header.classList.add("header--library");
     //  onRenderFilmCard(watchedFilms);
-
-
 }
+
 function handleWatched() {
     getWatched();
     console.log("Клик на кнопку Watched")
     console.log("Фильмы с Local Storage для рендера", watchedFilms);
-refs.watchedBtn.classList.remove('header__btm--white')
-    refs.queueBtn.classList.add('header__btm--white');
+refs.watchedBtn.classList.remove('header__btn--white')
+    refs.queueBtn.classList.add('header__btn--white');
 //   onRenderFilmCard(watchedFilms);
       
 
@@ -31,8 +33,8 @@ function handleQueue() {
     getQueue();
     console.log("Клик на кнопку Queue")
     console.log("Фильмы с Local Storage для рендера", queue);
-    refs.watchedBtn.classList.add('header__btm--white')
-    refs.queueBtn.classList.remove('header__btm--white');
+    refs.watchedBtn.classList.add('header__btn--white')
+    refs.queueBtn.classList.remove('header__btn--white');
 
 //   onRenderFilmCard(queue);
       

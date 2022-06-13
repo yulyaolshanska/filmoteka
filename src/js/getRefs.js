@@ -7,7 +7,8 @@ export default function getRefs() {
         queueBtn: document.querySelector('#header-btm-queue'),
         homeLink: document.querySelector('#home'),
 myLibraryLink: document.querySelector('#my-library'),
-
-    ul: document.querySelector('.films-collection')
+        buttonsBlock: document.querySelector('.header__block-btn'),
+        ul: document.querySelector('.films-collection'),
+    header: document.querySelector('.header'),
 }
 }
