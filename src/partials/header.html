@@ -24,13 +24,12 @@
       </nav>
     </div>
 
-    <form class="form">
+    <form class="form" id="search-form">
       <input
         type="text"
         class="form__field"
         placeholder="Поиск фильмов"
         name="name"
-        id="name"
         required
       />
       <button class="form__btm" type="submit">
@@ -40,16 +39,16 @@
       </button>
     </form>
 
-    <div class="header__block-btm header__block-btm">
+    <div class="header__block-btn header__block-btn--is-hidden">
       <button
         id="header-btm-watched"
-        class="button header__btm header__btm--margin"
+        class="button header__btn header__btn--margin"
       >
         Watched
       </button>
       <button
         id="header-btm-queue"
-        class="button header__btm header__btm--white"
+        class="button header__btn header__btn--white"
       >
         queue
       </button>
