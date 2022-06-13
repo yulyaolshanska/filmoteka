@@ -2,6 +2,16 @@ import NewsApiService from './api-service';
 
 const newsApiService = new NewsApiService();
 
+const refs = {
+  form: document.querySelector('.form'),
+  formInput: refs.form.querySelector('.form__field'),
+  formButton: refs.form.querySelector('.form__button'),
+}
+
+console.log(refs.form);
+console.log(refs.formInput);
+console.log(refs.formButton);
+
 async function onSerchQuery() {
     
     try {
