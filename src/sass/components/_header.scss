@@ -22,8 +22,8 @@ $gray: #9b9b9b;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/home/desk.png);
    width: 1024px;
    }
- }
- .header__library{
+
+   &--library{
    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/my-library/mob-2.png);
    @include media('min', 'tablet') {
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/my-library/tabl-2.png);
@@ -34,6 +34,8 @@ $gray: #9b9b9b;
 
    }
  }
+ }
+ 
 
  .logo{
    
@@ -94,7 +96,7 @@ $gray: #9b9b9b;
    position: relative;
    &:hover,
    &:focus{
-      color: #f28c44;
+      color: $hover-header-ancor;
    }
 }
 
@@ -164,7 +166,7 @@ $gray: #9b9b9b;
     }
  }
 
- .form__btm{
+ .form__btn{
    position: absolute;
    right: 0px;
    width: 16px;
@@ -186,7 +188,7 @@ $gray: #9b9b9b;
  }
 
  
- .header__block-btm{
+ .header__block-btn{
     margin-top: 62px;
     
     display: flex;
