@@ -1,15 +1,65 @@
-.film-link {    
+.container_main {
+    max-width: 480px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+          
+
+    @include media('min', 'tablet') {
+      max-width: 768px;
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  
+    @include media('min', 'descktop') {
+      max-width: 1024px;
+     }   
+}
+//для desktop меняется padding-top на странице library
+.container_main .liblary{
+
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @include media('min', 'tablet') {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    }
+    @include media('min', 'descktop') {
+    padding-top: 32px;
+    padding-bottom: 60px;   
+    }
+}
+
+.films-collection {
+    list-style-type: none;
+    
+    
+@include media('min', 'tablet') { 
+    display: flex;   
+    flex-direction: row; 
+    flex-wrap: wrap;
+       
+    }  
+}
+
+.film-card {    
     text-decoration: none;
     margin-bottom: 20px;
-
+    display: block;
+    max-width: 280px;
+    margin-right: auto;
+    margin-left: auto;
+      
+       
 @include media('min', 'tablet') {
     width: calc((100% - 32px) / 2);
     margin-right: 32px;
+    margin-left: 0px;
  }
         
  @include media('min', 'descktop') {
       width: calc((100% - 32px) / 3);
-      margin-right: 16px;
+      margin-right: 16px;     
       margin-bottom: 32px;
     }
 }
@@ -26,25 +76,24 @@
     }     
   }   
         
-
-.films-collection {
-    list-style-type: none;
-    
-@include media('min', 'tablet') {    
-    display: flex;
-    flex-wrap: wrap;    
-    justify-content: center;
-    }
-    
-    
+.film-link:nth-last-child(-n + 2) {
+    @include media('min', 'descktop') {
+        
+        margin-bottom: 0px;
+        margin-left: 0px;            
+        
+    }    
 }
+
 
 .film-img {
     width: 100%;
     display: block;
     height: 398px;
     max-width: 280px;
-@include media('within', 'descktop') {       
+    
+
+@include media('min', 'tablet') {       
     height: 455px;
     max-width: 336px;
     }
@@ -57,11 +106,20 @@
 
 .film-name {
     text-transform: uppercase;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .film-genre,
 .film-year_of_issue {
-    color: $primary-text-color;
+color: $primary-text-color;
 }
 
+.film-description {
+margin-top: 10px;
+
+@include media('min', 'tablet') {       
+    margin-top: 8px;
+    }
+}
 
