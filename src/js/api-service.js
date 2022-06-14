@@ -35,8 +35,8 @@ export default class NewsApiService {
         this.page = 1;
     }
 
-   async fetchSerchQuery() {
-        const url = `${BASE_URL}/search/movie?api_key=${KEY}&query=${this.searchQuery}`
+  async fetchSerchQuery(searchQuery) {
+        const url = `${BASE_URL}/search/movie?api_key=${KEY}&query=${searchQuery}`
 
         const data = await axios.get(url);
              

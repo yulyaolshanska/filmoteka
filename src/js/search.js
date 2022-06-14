@@ -1,75 +1,54 @@
 import NewsApiService from './api-service';
 import getRefs from './getRefs';
+import listOfCards from '../templates/poster.hbs';
 
-const newsApiService = new NewsApiService();
-
-const refs = {
-  form: document.querySelector('.form'),
-  formInput: document.querySelector('.form__field'),
-  formButton: document.querySelector('.form__btn'),
-}
-
-const filmsContainer = getRefs().ulEl;
-console.log(filmsContainer);
-
-// console.log(refs.form);
-// console.log(refs.formInput);
-// console.log(refs.formButton);
-refs.form.addEventListener('submit', onSubmit);
-
-async function onSubmit(e) {
-  e.preventDefault();
-  // console.log('onsubmit');
-  const { elements: { searchQuery: { value } } } = e.target;
-  console.log(value);
-  newsApiService.resetPage();
-  newsApiService.query = value;
-
-  const data = await newsApiService.fetchSerchQuery();
+export default class SearchAPI extends NewsApiService {
+  constructor() {
+    super();
+    this.form = document.querySelector('.form');
+    this.form.addEventListener('submit', this.onSubmit.bind(this));
+  }
   
-  const getData = data.data.results;
-
-  const resultData = getData.map(item => {
-    return {
-      'id': item.id,
-      'poster_path': item.poster_path,
-      'original_title': item.original_title,
-      'title': item.title,
-      'genre_ids': item.genre_ids,
-      'release_date': new Date(item.release_date).getFullYear(),
-    }
-  });
-
-  console.log(getData);
-  console.log(resultData);
-
-  return resultData;
-}
-
-async function onSerchQuery() {
+  async onSubmit(e) {
+    e.preventDefault();
     
-    try {
-        // newsApiService.searchQuery = refs.input.value;
-      newsApiService.resetPage();
-      
-      newsApiService.query = 'hustle';
+    const { elements: { searchQuery: { value } } } = e.target;
+    const filmsContainer = getRefs().ulEl;
 
-      console.log(newsApiService.query);
-   
-      const data = await newsApiService.fetchSerchQuery();
-      console.dir(data.data.results[0].release_date); 
-      const response = data.data.results;
-        const releaseYear = new Date(response[0].release_date).getFullYear();
-       
-        console.dir(releaseYear);
-        console.log('Пошук за ключовим словом:', response);
-      // getRenderQuery(response,releaseYear); 
-   
-          
-      } catch (error) {
-        // onFetchError()  
-        console.dir(error)
-      }          
+    super.resetPage();
+    
+    const data = await super.fetchSerchQuery(value);
+    console.log(data);
+
+    if (!data.data.results.length) {
+      filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
+      return;
+    }
+
+    const resultData = data.data.results.map(item => {
+      return {
+        'id': item.id,
+        'poster_path': item.poster_path,
+        'original_title': item.original_title,
+        'title': item.title,
+        'genre_ids': item.genre_ids,
+        'release_date': new Date(item.release_date).getFullYear(),
+      }
+    });
+        
+    filmsContainer.innerHTML = listOfCards(resultData);
+    this.form.reset();
+  }
 }
+  
+// new SearchAPI();
 
+// class Pagination extends SearchAPI {
+//   constructor() {
+//     super();
+//     super.output();
+//     super.outputAPI();
+//   }
+// }
 
+// new Pagination();
