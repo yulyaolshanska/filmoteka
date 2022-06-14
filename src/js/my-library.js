@@ -1,4 +1,5 @@
-import {onRenderFilmCard, filmsCollection} from "./card-template"
+// import {onRenderFilmCard, filmsCollection} from "./card-template";
+import listOfCards from '../templates/poster.hbs';
 import getRefs from "./getRefs"
 import {fetcData} from "./card-modal"
 let watchedFilms = [];
@@ -16,7 +17,7 @@ refs.addToQueueBtn.addEventListener("click", addToQueue)
 
 function onMyLibrary() {
     console.log("Клик по кнопке MyLibrary");
-   
+     console.log(fetcData)
     refs.myLibraryLink.classList.add('site-nav__link--current');
     refs.homeLink.classList.remove('site-nav__link--current');
     refs.form.classList.add('form--is-hidden');
@@ -26,11 +27,12 @@ function onMyLibrary() {
      refs.watchedBtn.addEventListener("click", handleWatched);
 refs.queueBtn.addEventListener("click", handleQueue);
     if (watchedFilms) {
-             refs.ul.innerHTML = "";
-  onRenderFilmCard(watchedFilms);
+        refs.ul.innerHTML = "";
+        
+  renderFilmCard(watchedFilms);
 
     }
-    // console.log(fetcData)
+  
 
 }
 
@@ -43,7 +45,7 @@ refs.watchedBtn.classList.add('header__btn--active')
     // console.log(watchedFilms);
     // getWatched();
     refs.ul.innerHTML = "";
-  onRenderFilmCard(watchedFilms);
+  renderFilmCard(watchedFilms);
       
 
 }
@@ -54,9 +56,12 @@ function handleQueue() {
     console.log("Фильмы с Local Storage для рендера", queue);
    refs.watchedBtn.classList.remove('header__btn--active')
     refs.queueBtn.classList.add('header__btn--active');
-        refs.ul.innerHTML = "";
-
-  onRenderFilmCard(queue);
+    refs.ul.innerHTML = "";
+    console.log("Масив очереди", queue)
+    if (queue) {
+     renderFilmCard(queue);
+}
+ 
       
 
 }
@@ -111,22 +116,46 @@ getQueue()
 // handleQueue()
 
 
-// function onRenderFilmCard(films) {
-//      console.log("Масив для рендера",films);  
-//     const markup = films.map(({poster_path, original_title, vote_average, first_air_date, id}) => 
-//         `
-//         <a class="film-link">
-//         <li class="film-card">
-//         <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
-//         <div class="film-description">
-//         <p class="film-name">${original_title}</p>
-//         <span class="film-genre">${vote_average} |</span>
-//         <span class="film-year_of_issue">${first_air_date}</span>
-//         </div>
-//         </li>
-//         </a>        
-//         `
-//     ).join("");
+function renderFilmCard(films) {
+     console.log("Масив для рендера",films);  
+    const markup = films.map(({poster_path, original_title, vote_average, id,genres,release_date}) => 
+        `
+        
+        <li class="film-card">
+        <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
+        <div class="film-description">
+        <p class="film-name">${original_title}</p>
+        <span class="film-genre">${renderGenres(genres)} |</span>
+        <span class="film-year_of_issue">${release_date.slice(0,4)}</span>
+                <span class="film-vote_average">${vote_average}</span>
+
+        </div>
+        </li>
+             
+        `
+    ).join("");
     
-//     refs.ul.insertAdjacentHTML("beforeend", markup);
-// }
+    refs.ul.insertAdjacentHTML("afterbegin", markup);
+}
+
+function renderGenres(genres) {
+                    // console.log(genres)
+                    // console.log(genres.length)
+
+    if (genres.length <= 2) {
+                console.log("Жанры")
+
+        const genre = genres.map(genre => genre.name);
+        // console.log("Жанры", genre)
+        return genre;
+    } else {
+        const genre = genres.map(genre => genre.name);
+        genre.length = 2;
+        genre[2] = "Other"
+        // console.log(genre)
+        return genre;
+
+
+
+    }
+}
