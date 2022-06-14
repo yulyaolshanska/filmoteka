@@ -135,7 +135,7 @@ function renderFilmCard(films) {
         `
     ).join("");
     
-    refs.ul.insertAdjacentHTML("beforeend", markup);
+    refs.ul.insertAdjacentHTML("afterbegin", markup);
 }
 
 function renderGenres(genres) {
@@ -151,7 +151,7 @@ function renderGenres(genres) {
     } else {
         const genre = genres.map(genre => genre.name);
         genre.length = 2;
-        genre[3] = "Other"
+        genre[2] = "Other"
         // console.log(genre)
         return genre;
 
