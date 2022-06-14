@@ -121,7 +121,7 @@ function renderFilmCard(films) {
     const markup = films.map(({poster_path, original_title, vote_average, id,genres,release_date}) => 
         `
         
-        <li class="film-card">
+        <li class="film-card" id=${id}>
         <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
         <div class="film-description">
         <p class="film-name">${original_title}</p>
