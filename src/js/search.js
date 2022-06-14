@@ -1,4 +1,5 @@
 import NewsApiService from './api-service';
+import getRefs from './getRefs';
 
 const newsApiService = new NewsApiService();
 
@@ -7,6 +8,9 @@ const refs = {
   formInput: document.querySelector('.form__field'),
   formButton: document.querySelector('.form__btn'),
 }
+
+const filmsContainer = getRefs().ulEl;
+console.log(filmsContainer);
 
 // console.log(refs.form);
 // console.log(refs.formInput);
@@ -20,8 +24,26 @@ async function onSubmit(e) {
   console.log(value);
   newsApiService.resetPage();
   newsApiService.query = value;
+
   const data = await newsApiService.fetchSerchQuery();
-  console.log(data.data.resu);
+  
+  const getData = data.data.results;
+
+  const resultData = getData.map(item => {
+    return {
+      'id': item.id,
+      'poster_path': item.poster_path,
+      'original_title': item.original_title,
+      'title': item.title,
+      'genre_ids': item.genre_ids,
+      'release_date': new Date(item.release_date).getFullYear(),
+    }
+  });
+
+  console.log(getData);
+  console.log(resultData);
+
+  return resultData;
 }
 
 async function onSerchQuery() {
