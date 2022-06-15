@@ -3,7 +3,7 @@ import getRefs from './getRefs';
 
 import listOfCards from '../templates/poster.hbs';
 
-export { onTrend };
+// export { onTrend };
 
 // =========================================================
 
@@ -34,7 +34,7 @@ async function onSerchQuery() {
 
 // onSerchQuery();
 // ==============================================================
-async function onTrend() {
+export async function onTrend() {
   try {
     // newsApiService.searchQuery = refs.input.value;
     newsApiService.resetPage();
@@ -76,7 +76,7 @@ function getRenderQuery(item, releaseYear) {
   refs.ul.insertAdjacentHTML('beforeend', listOfCards(item, releaseYear));
 }
 
-onTrend();
+// onTrend();
 
 // const handleListClick = (event) => {
 //     console.log(event.currentTarget);

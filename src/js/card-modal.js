@@ -53,7 +53,7 @@ function onModalOpen (event) {
 
 async function fetchRenderCard(movieId) {
    try {
-       fetcData = await fetchApi(movieId);
+     fetcData = await fetchApi(movieId);
     renderCard(fetcData)
    }
 
