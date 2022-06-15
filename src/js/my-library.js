@@ -10,10 +10,6 @@ const refs = getRefs()
 
 
 refs.myLibraryLink.addEventListener("click", onMyLibrary)
-refs.addToWatchedBtn.addEventListener("click", addToWatched)
-refs.addToQueueBtn.addEventListener("click", addToQueue)
-
-
 
 function onMyLibrary() {
     refs.myLibraryLink.classList.add('site-nav__link--current');
