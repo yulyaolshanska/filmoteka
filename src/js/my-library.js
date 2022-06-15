@@ -1,7 +1,8 @@
 // import {onRenderFilmCard, filmsCollection} from "./card-template";
 import listOfCards from '../templates/poster.hbs';
 import getRefs from "./getRefs"
-import {fetcData} from "./card-modal"
+import { fetcData } from "./card-modal";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 let watchedFilms = [];
 let queue = [];
 let filmToAdd = {}
@@ -24,36 +25,45 @@ function onMyLibrary() {
      refs.watchedBtn.addEventListener("click", handleWatched);
      refs.queueBtn.addEventListener("click", handleQueue);
     if (watchedFilms) {
-      refs.ul.innerHTML = "";
-      renderFilmCard(watchedFilms);
+        refs.ul.innerHTML = "";
+        refs.watchedBtn.classList.add('header__btn--active')
+        refs.queueBtn.classList.remove('header__btn--active');
+        renderFilmCard(watchedFilms);
     }
-  
-
 }
 
 function handleWatched() {
-refs.watchedBtn.classList.add('header__btn--active')
-    refs.queueBtn.classList.remove('header__btn--active');
+    refs.watchedBtn.classList.toggle('header__btn--active')
+    refs.queueBtn.classList.toggle('header__btn--active');
     refs.ul.innerHTML = "";
-  renderFilmCard(watchedFilms);
+    renderFilmCard(watchedFilms);
 }
 
 function handleQueue() {
-    getQueue();
-   refs.watchedBtn.classList.remove('header__btn--active')
-    refs.queueBtn.classList.add('header__btn--active');
+   refs.watchedBtn.classList.toggle('header__btn--active')
+    refs.queueBtn.classList.toggle('header__btn--active');
     refs.ul.innerHTML = "";
     if (queue) {
      renderFilmCard(queue);
+    }
 }
- 
-      
 
-}
 function addToWatched() {
     filmToAdd = fetcData; 
+    if (watchedFilms.find(films => filmToAdd.id === films.id)) {
+        Notify.warning('You have already added this movie to Watched',
+  {
+    timeout: 3000,
+  });
+        return
+    }
     watchedFilms.push(filmToAdd);
-    localStorage.setItem("watched-films", JSON.stringify(watchedFilms));   
+    localStorage.setItem("watched-films", JSON.stringify(watchedFilms)); 
+    // if (watchedFilms.map(films => filmToAdd.id === films.id)) {
+    //      refs.addToWatchedBtn.textContent = "Added to Watched";
+    // refs.addToWatchedBtn.classList.add("modal__btn--added-btn")
+    // }
+   
 }
 
 function getWatched() {
@@ -70,6 +80,13 @@ function getWatched() {
 
 function addToQueue() {
     filmToAdd = fetcData;
+     if (queue.find(films => filmToAdd.id === films.id)) {
+        Notify.warning('You have already added this movie to Queue',
+  {
+    timeout: 3000,
+  });
+        return
+    }
     queue.push(filmToAdd);
     localStorage.setItem("queue-films", JSON.stringify(queue));
 }
@@ -103,7 +120,6 @@ function renderFilmCard(films) {
 
         </div>
         </li>
-             
         `
     ).join("");
     
