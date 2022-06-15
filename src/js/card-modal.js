@@ -1,18 +1,12 @@
-
+import getRefs from "./getRefs"
+const refs = getRefs();
 const KEY = `476dab1d501621899284a1a134c160d7`;
 export let fetcData = {};
-let posterUrl = ``;
-const refs = {
-   btnClose: document.querySelector('[data-button_close]'),
-    backdrop: document.querySelector('.backdrop'),
-    modal: document.querySelector('.modal'), 
-    cardEl: document.querySelector('.card'),
-    watchedBtn: document.querySelector('[data-watched]'),
-    queueBtn: document.querySelector('[data-queue]'),  
-    ulEl: document.querySelector('.films-collection'),
-}
+import {addToQueue} from "./my-library";
+import {addToWatched} from "./my-library";
 
-// let obj = {};
+let posterUrl = ``;
+
 function fetchApi(movieId) {
     return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}`)
     .then (response => {
@@ -25,7 +19,6 @@ function fetchApi(movieId) {
 
 refs.ulEl.addEventListener('click', onModalOpen);
 
-
 function onModalOpen (event) {
     let movieId = null;
     let link = event.target.closest('.film-card');
@@ -35,7 +28,9 @@ function onModalOpen (event) {
     movieId = link.getAttribute('id');
    
     refs.backdrop.classList.remove("is-hidden");
-    fetchRenderCard(movieId);
+
+     fetchRenderCard(movieId);
+     
     refs.btnClose.addEventListener('click', onModalClose);
 
     document.addEventListener('keydown', function (e) {
@@ -53,12 +48,16 @@ function onModalOpen (event) {
 
 async function fetchRenderCard(movieId) {
    try {
-     fetcData = await fetchApi(movieId);
-    renderCard(fetcData)
+     fetcData = await fetchApi(movieId);     
+     renderCard(fetcData) 
+     
+    document.querySelector('.watched').addEventListener("click", addToWatched)
+    document.querySelector('.queue').addEventListener("click", addToQueue)    
    }
 
    catch (error) {console.log(error.message)}
 }
+
 function getPosterUrl(poster_path) {
     if (poster_path){
         posterUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -69,36 +68,52 @@ function getPosterUrl(poster_path) {
     return posterUrl;
 }
 
-function renderCard({popularity, genres, poster_path, vote_average, vote_count, title, overview}) {
+async function renderCard({popularity, genres, poster_path, vote_average, vote_count, title, overview}) {
     getPosterUrl(poster_path);
-    // obj.title = title;
-    const card = `
-      
-    <img src="${posterUrl}" alt="descr">
-    <div class="Thumb"
-    <h1>${title}</h1>
-    <ul>
-        <li>Vote/Votes<span>${vote_average}/${vote_count} </span></li>
-        <li>Popularity<span>${popularity} </span></li>
-        <li>Original title<span>${title} </span></li>
-        <li>Genre<span>${genres.map((genre)=> {return genre.name}).join(', ')}</span></li>    
+   
+    const card = `      
+    <img src="${posterUrl}" alt="descr" class='card_img'>
+    <div class="card-thumb">
+    <h2 class="card-title">${title}</h2>
+    <ul class="card-list">
+        <li class="card_item">
+            <span class="category">Vote/Votes</span>
+            <span class="vote vote_av">${vote_average}</span> / <span class="vote vote_cnt">${vote_count}</span>
+        </li>
+        <li class="card_item">
+            <span class="category">Popularity</span>
+            <span class="av">${popularity} </span>           
+        </li>
+        <li class="card_item">
+            <span class="category">Original title</span>
+            <span class="av av_title">${title} </span>            
+        </li>
+        <li class="card_item">
+            <span class="category">Genre</span>
+            <span class="av">${genres.map((genre)=> {return genre.name}).join(', ')}</span>           
+        </li>    
     </ul>
-    <h2>ABOUT</h2>
-    <P>${overview}</P>
-    </div>`;
+    <h3 class="card_subtitle">About</h3>
+    <p class="card_text">${overview}</p>
+    <ul class="modal_button_list">
+        <li><button type="button" class="button button modal__btn modal__btn--margin watched" data-watched>add to Watched</button></li>
+        <li> <button type="button" class='button button modal__btn queue' data-queue>add to queue</button></li>
+    </ul>
+    </div>    
+    `;
     
         // ДОбавить проверку на колличество жанров
-    refs.cardEl.insertAdjacentHTML("beforeend", card);
+    refs.cardEl.innerHTML = card;
+   
     // console.log(obj)
 };
 
 function onModalClose() {
-    refs.backdrop.classList.add("is-hidden");   
-    refs.cardEl.innerHTML ='';
+    refs.backdrop.classList.add("is-hidden");  
+    
+    document.querySelector('.watched').removeEventListener("click", addToWatched)
+    document.querySelector('.queue').removeEventListener("click", addToQueue)   
 };
 
 
-
-// refs.watchedBtn.addEventListener('click', addToWatched);
-// refs.queueBtn.addEventListener('click', addToQueue);
 
