@@ -44,7 +44,7 @@ function handleQueue() {
     }
 }
 
-function addToWatched() {
+export function addToWatched() {
     filmToAdd = fetcData; 
     if (watchedFilms.find(films => filmToAdd.id === films.id)) {
         Notify.warning('You have already added this movie to Watched',
@@ -74,7 +74,7 @@ function getWatched() {
    
 }
 
-function addToQueue() {
+export function addToQueue() {
     filmToAdd = fetcData;
      if (queue.find(films => filmToAdd.id === films.id)) {
         Notify.warning('You have already added this movie to Queue',
