@@ -6,18 +6,15 @@ let watchedFilms = [];
 let queue = [];
 let filmToAdd = {}
 const refs = getRefs()
-// console.log(fetcData)
+
 
 refs.myLibraryLink.addEventListener("click", onMyLibrary)
-
 refs.addToWatchedBtn.addEventListener("click", addToWatched)
 refs.addToQueueBtn.addEventListener("click", addToQueue)
 
 
 
 function onMyLibrary() {
-    console.log("Клик по кнопке MyLibrary");
-     console.log(fetcData)
     refs.myLibraryLink.classList.add('site-nav__link--current');
     refs.homeLink.classList.remove('site-nav__link--current');
     refs.form.classList.add('form--is-hidden');
@@ -25,39 +22,27 @@ function onMyLibrary() {
     refs.header.classList.add("header--library");
 
      refs.watchedBtn.addEventListener("click", handleWatched);
-refs.queueBtn.addEventListener("click", handleQueue);
+     refs.queueBtn.addEventListener("click", handleQueue);
     if (watchedFilms) {
-        refs.ul.innerHTML = "";
-        
-  renderFilmCard(watchedFilms);
-
+      refs.ul.innerHTML = "";
+      renderFilmCard(watchedFilms);
     }
   
 
 }
 
 function handleWatched() {
-    
-    console.log("Клик на кнопку Watched")
-    console.log("Фильмы с Local Storage для рендера", JSON.parse(localStorage.getItem("watched-films")));
 refs.watchedBtn.classList.add('header__btn--active')
     refs.queueBtn.classList.remove('header__btn--active');
-    // console.log(watchedFilms);
-    // getWatched();
     refs.ul.innerHTML = "";
   renderFilmCard(watchedFilms);
-      
-
 }
 
 function handleQueue() {
     getQueue();
-    console.log("Клик на кнопку Queue")
-    console.log("Фильмы с Local Storage для рендера", queue);
    refs.watchedBtn.classList.remove('header__btn--active')
     refs.queueBtn.classList.add('header__btn--active');
     refs.ul.innerHTML = "";
-    console.log("Масив очереди", queue)
     if (queue) {
      renderFilmCard(queue);
 }
@@ -66,15 +51,9 @@ function handleQueue() {
 
 }
 function addToWatched() {
-    filmToAdd = fetcData;//заменить на данные с модалки
-    //  console.log(filmToAdd);
-    console.log(watchedFilms);
+    filmToAdd = fetcData; 
     watchedFilms.push(filmToAdd);
-    localStorage.setItem("watched-films", JSON.stringify(watchedFilms));
-    // onRenderFilmCard(watchedFilms);
-    // console.log("Просмотреные фильмы");
-    // console.log(watchedFilms);
-   
+    localStorage.setItem("watched-films", JSON.stringify(watchedFilms));   
 }
 
 function getWatched() {
@@ -91,10 +70,8 @@ function getWatched() {
 
 function addToQueue() {
     filmToAdd = fetcData;
-    console.log(queue);
     queue.push(filmToAdd);
     localStorage.setItem("queue-films", JSON.stringify(queue));
-
 }
 
 function getQueue() {
@@ -111,16 +88,11 @@ function getQueue() {
 
 getWatched()
 getQueue()
-// addToQueue();
-// handleWatched();
-// handleQueue()
 
 
 function renderFilmCard(films) {
-     console.log("Масив для рендера",films);  
     const markup = films.map(({poster_path, original_title, vote_average, id,genres,release_date}) => 
         `
-        
         <li class="film-card" id=${id}>
         <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
         <div class="film-description">
@@ -139,23 +111,13 @@ function renderFilmCard(films) {
 }
 
 function renderGenres(genres) {
-                    // console.log(genres)
-                    // console.log(genres.length)
-
     if (genres.length <= 2) {
-                console.log("Жанры")
-
         const genre = genres.map(genre => genre.name);
-        // console.log("Жанры", genre)
         return genre;
     } else {
         const genre = genres.map(genre => genre.name);
         genre.length = 2;
         genre[2] = "Other"
-        // console.log(genre)
         return genre;
-
-
-
     }
 }
