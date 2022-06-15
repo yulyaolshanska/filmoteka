@@ -33,15 +33,15 @@ function onMyLibrary() {
 }
 
 function handleWatched() {
-    refs.watchedBtn.classList.toggle('header__btn--active')
-    refs.queueBtn.classList.toggle('header__btn--active');
+    refs.watchedBtn.classList.add('header__btn--active')
+    refs.queueBtn.classList.remove('header__btn--active');
     refs.ul.innerHTML = "";
     renderFilmCard(watchedFilms);
 }
 
 function handleQueue() {
-   refs.watchedBtn.classList.toggle('header__btn--active')
-    refs.queueBtn.classList.toggle('header__btn--active');
+   refs.queueBtn.classList.add('header__btn--active')
+    refs.watchedBtn.classList.remove('header__btn--active');
     refs.ul.innerHTML = "";
     if (queue) {
      renderFilmCard(queue);
