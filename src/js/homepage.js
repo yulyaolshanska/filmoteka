@@ -1,5 +1,6 @@
 import getRefs from './getRefs';
 import { onTrend } from './poster';
+import { onLoader, offLoader } from './loader';
 
 const refs = getRefs();
 
@@ -13,5 +14,6 @@ function onHome() {
   refs.form.classList.remove('form--is-hidden');
   refs.header.classList.remove('header--library');
   refs.ul.innerHTML = '';
+  //   onLoader();
   onTrend();
 }

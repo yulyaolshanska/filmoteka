@@ -2,6 +2,7 @@ import NewsApiService from './api-service';
 import getRefs from './getRefs';
 
 import listOfCards from '../templates/poster.hbs';
+import { onLoader, offLoader } from './loader';
 
 // export { onTrend };
 
@@ -38,6 +39,7 @@ export async function onTrend() {
   try {
     // newsApiService.searchQuery = refs.input.value;
     newsApiService.resetPage();
+    onLoader();
 
     const data = await newsApiService.fetchTrend();
 
@@ -45,12 +47,13 @@ export async function onTrend() {
     const releaseYear = new Date(response[0].release_date).getFullYear();
 
     getRenderQuery(response, releaseYear);
+    console.log(a);
     console.log('У тренді:', response);
   } catch (error) {
     // onFetchError()
     console.dir(error);
   }
-
+  offLoader();
 }
 
 // окремо отримуємо запит  масив жанри {name,id}  genres: [{id: 28, name: "Action"}, ...]
@@ -76,7 +79,7 @@ function getRenderQuery(item, releaseYear) {
   refs.ul.insertAdjacentHTML('beforeend', listOfCards(item, releaseYear));
 }
 
-// onTrend();
+onTrend();
 
 // const handleListClick = (event) => {
 //     console.log(event.currentTarget);
