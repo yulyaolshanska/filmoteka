@@ -36,10 +36,10 @@ async function onSerchQuery() {
 // onSerchQuery();
 // ==============================================================
 export async function onTrend() {
+  onLoader();
   try {
     // newsApiService.searchQuery = refs.input.value;
     newsApiService.resetPage();
-    onLoader();
 
     const data = await newsApiService.fetchTrend();
 

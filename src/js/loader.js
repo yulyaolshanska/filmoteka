@@ -1,5 +1,4 @@
 import getRefs from './getRefs';
-export { onLoader, offLoader };
 
 const refs = getRefs();
 
@@ -9,3 +8,5 @@ const onLoader = () => {
 const offLoader = () => {
   refs.loader.classList.remove('loader-block');
 };
+
+export { onLoader, offLoader };
