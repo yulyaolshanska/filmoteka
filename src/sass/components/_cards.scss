@@ -2,12 +2,16 @@
     max-width: 480px;
     padding-top: 20px;
     padding-bottom: 40px;
+   
           
 
     @include media('min', 'tablet') {
       max-width: 768px;
       padding-top: 60px;
       padding-bottom: 60px;
+      
+      
+      
     }
   
     @include media('min', 'descktop') {
@@ -46,7 +50,7 @@
     text-decoration: none;
     margin-bottom: 20px;
     display: block;
-    max-width: 280px;
+    width: 280px;
     margin-right: auto;
     margin-left: auto;
       
@@ -64,19 +68,19 @@
     }
 }
  
-.film-link:nth-child(2n + 2) { 
+.film-card:nth-child(2n + 2) { 
     @include media('within', 'descktop') {       
           margin-right: 0px;
       }
     }
 
-    .film-link:nth-child(3n + 3) {  
+.film-card:nth-child(3n + 3) {  
   @include media('min', 'descktop') {
     margin-right: 0px;
     }     
   }   
         
-.film-link:nth-last-child(-n + 2) {
+.film-card:nth-last-child(-n + 2) {
     @include media('min', 'descktop') {
         
         margin-bottom: 0px;
@@ -91,7 +95,8 @@
     display: block;
     height: 398px;
     max-width: 280px;
-    
+   
+ 
 
 @include media('min', 'tablet') {       
     height: 455px;
@@ -101,6 +106,7 @@
 @include media('min', 'descktop') {
     height: 449px;
     max-width: 309px;
+    
  }    
 }
 
@@ -124,7 +130,7 @@ margin-top: 10px;
 }
 
 .film-vote_average{
-     width: 36px;
+width: 36px;
 height: 16px;
 padding: 3px 10px;
 
