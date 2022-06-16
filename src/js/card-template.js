@@ -35,4 +35,4 @@ filmsCollection()
   .then(onRenderFilmCard)
   .catch(error => console.log(error));
 
-// export { onRenderFilmCard, filmsCollection }
+// export { onRenderFilmCard, filmsCollection };
