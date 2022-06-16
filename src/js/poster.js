@@ -32,17 +32,19 @@ export async function onSerchQuery() {
 export async function onTrend() {
   try {
     newsApiService.resetPage();
+    onLoader();
 
     const data = await newsApiService.fetchTrend();
     const movies = data.data.results;
 
     await getDataCard(movies);
-
+    offLoader();
     return movies;
   } catch (error) {
     // onFetchError()
     console.dir(error);
   }
+  offLoader();
 }
 
 onTrend();

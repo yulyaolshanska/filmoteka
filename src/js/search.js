@@ -14,6 +14,7 @@ export default class SearchAPI extends NewsApiService {
 
   async onSubmit(e) {
     e.preventDefault();
+    onLoader();
 
     const {
       elements: {
