@@ -8,6 +8,8 @@
    padding-top: 20px;
 }
 
+// --------------  1  ----------------
+
 .loader {
    width: 30px;
    height: 30px;
@@ -16,7 +18,7 @@
    border-top: 3px solid $primary-bg-color;
    border-right: 3px solid transparent;
    box-sizing: border-box;
-   animation: rotation 1s linear infinite;
+   animation: rotation 0.6s linear infinite;
  }
  .loader::after {
    content: '';  
@@ -38,4 +40,159 @@
      transform: rotate(360deg);
    }
  } 
- 
+
+//  ---------------  2  ------------------
+
+// .loader {
+//   width: 30px;
+//   height: 30px;
+//   border: 5px dotted $accent-bg-color;
+//   border-radius: 50%;
+//   display: inline-block;
+//   position: relative;
+//   box-sizing: border-box;
+//   animation: rotation 1.5s linear infinite;
+// }
+
+// @keyframes rotation {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// } 
+
+// -----------------  3  ------------------
+
+// .loader {
+//   width: 48px;
+//   height: 48px;
+//   border-radius: 50%;
+//   display: inline-block;
+//   position: relative;
+//   border: 3px solid;
+//   border-color: $primary-bg-color $primary-bg-color transparent transparent;
+//   box-sizing: border-box;
+//   animation: rotation 1s linear infinite;
+// }
+// .loader::after,
+// .loader::before {
+//   content: '';  
+//   box-sizing: border-box;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+//   margin: auto;
+//   border: 3px solid;
+//   border-color: transparent transparent $accent-bg-color $accent-bg-color;
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 50%;
+//   box-sizing: border-box;
+//   animation: rotationBack 0.5s linear infinite;
+//   transform-origin: center center;
+// }
+// .loader::before {
+//   width: 32px;
+//   height: 32px;
+//   border-color: $primary-bg-color $primary-bg-color transparent transparent;
+//   animation: rotation 1.5s linear infinite;
+// }
+    
+// @keyframes rotation {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// } 
+// @keyframes rotationBack {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(-360deg);
+//   }
+// }
+
+// ----------------  4  ----------------
+
+// .loader {
+//   width: 12px;
+//   height: 12px;
+//   border-radius: 50%;
+//   display: block;
+//   margin:15px 5px;
+//   position: relative;
+//   color: $accent-bg-color;
+//   box-sizing: border-box;
+//   animation: animloader 0.6s linear infinite;
+// }
+
+// @keyframes animloader {
+//   0% {
+//     box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+//   }
+//   25% {
+//     box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
+//   }
+//   50% {
+//     box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
+//   }
+//   75% {
+//     box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+//   }
+//   100% {
+//     box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+//   }
+// }
+
+// ---------------  5  ---------------
+
+// .loader {
+//   width: 35px;
+//   height: 35px;
+//   background: $accent-bg-color;
+//   display: block;
+//   margin: 2px auto;
+//   position: relative;
+//   box-sizing: border-box;
+//   animation: rotationBack 1s ease-in-out infinite reverse;
+// }
+// .loader::before {
+//   content: '';  
+//   box-sizing: border-box;
+//   left: 0;
+//   top: 0;
+//   transform: rotate(45deg);
+//   position: absolute;
+//   width: 35px;
+//   height: 35px;
+//   background: $accent-bg-color;
+//   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+// }
+// .loader::after {
+//   content: '';  
+//   box-sizing: border-box;
+//   width: 19px;
+//   height: 19px;
+//   border-radius: 50%;
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   background: $primary-bg-color;
+//   transform: translate(-50%, -50%);
+//   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+// }
+// @keyframes rotationBack {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(-360deg);
+//   }
+// }
