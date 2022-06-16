@@ -3,82 +3,139 @@ import getRefs from './getRefs';
 
 import listOfCards from '../templates/poster.hbs';
 
-// export { onTrend };
-
 // =========================================================
 
 const newsApiService = new NewsApiService();
 const refs = getRefs();
-// const data = newsApiService.fetchSerchQuery();
-// console.log(data);
-// refs.form.addEventListener('submit', onFormSubmit);
+
+
+let cardArr = [];
 // ===============================================================
-async function onSerchQuery() {
-  try {
-    // newsApiService.searchQuery = refs.input.value;
-    newsApiService.resetPage();
-
-    const data = await newsApiService.fetchSerchQuery();
-    console.dir(data.data.results[0].release_date);
-    const response = data.data.results;
-    const releaseYear = new Date(response[0].release_date).getFullYear();
-
-    console.dir(releaseYear);
-    console.log('Пошук за ключовим словом:', response);
-    getRenderQuery(response, releaseYear);
-  } catch (error) {
-    // onFetchError()
-    console.dir(error);
-  }
+export async function onSerchQuery() {
+    
+    try {
+        newsApiService.resetPage();
+   
+        const data = await newsApiService.fetchSerchQuery();
+      
+      const response = data.data.results;     
+    
+      getRenderQuery(response); 
+   
+      } catch (error) {
+        // onFetchError()  
+        console.dir(error)
+      }          
 }
 
-// onSerchQuery();
-// ==============================================================
+
+// використовуємо результати запиту з класу class NewsApiService файлу api-service.js
+// передаємо результат запиту далі аргументом у  await getDataCard(movies);
+// ============================================= 
 export async function onTrend() {
-  try {
-    // newsApiService.searchQuery = refs.input.value;
-    newsApiService.resetPage();
+    
+    try {
+      newsApiService.resetPage();
+   
+      const data = await newsApiService.fetchTrend();
+      const movies = data.data.results;
+      
+     await getDataCard(movies);
 
-    const data = await newsApiService.fetchTrend();
-
-    const response = data.data.results;
-    const releaseYear = new Date(response[0].release_date).getFullYear();
-
-    getRenderQuery(response, releaseYear);
-    console.log('У тренді:', response);
-  } catch (error) {
-    // onFetchError()
-    console.dir(error);
-  }
-
+      return movies;
+      } catch (error) {
+        // onFetchError()  
+        console.dir(error)
+      }          
 }
+
+onTrend();
 
 // окремо отримуємо запит  масив жанри {name,id}  genres: [{id: 28, name: "Action"}, ...]
-async function getGenresById() {
-  try {
-    newsApiService.resetPage();
-
-    const data = await newsApiService.fetchGenres();
-
-    const genres = data.data.genres;
-
-    console.log('жанри:', genres);
-  } catch (error) {
-    console.dir(error);
-  }
+export async function getGenresById() {
+    
+    try { 
+      
+      const response = await newsApiService.fetchGenres();
+      const genres =  response.data.genres;  
+      
+      return genres;  
+      } catch (error) {
+        // onFetchError()  
+        console.dir(error)
+      }          
 }
 
-getGenresById();
 
-function getRenderQuery(item, releaseYear) {
-  console.log(releaseYear);
 
-  refs.ul.insertAdjacentHTML('beforeend', listOfCards(item, releaseYear));
+ export async function getDataCard(movies) {
+  let cardData = {};
+   try {
+      
+     getGenresById().then(genres => { 
+      // використовуємо getGenresById().then() у середині якого використовуємо дані з  async function onTrend()
+      //  передаємо масив cardArr за допомогою: getRenderQuery(cardArr);
+     // =========================================== 
+    
+     cardData = movies.forEach(({ id, poster_path, original_title, title, genre_ids, release_date }) => {
+       let gName = [];
+          
+       let fullYear = new Date(release_date).getFullYear();
+         
+       genres.map((genres) => {
+             
+         (genre_ids).map((itemId) => {
+                      
+           if (itemId === genres.id) {
+         
+             gName.push(genres.name);
+             if (gName.length > 2) {
+               gName = gName.slice(0, 2);
+               gName[2] = 'Other';
+             }
+           }
+              
+         })
+       
+       })  
+       
+       cardData = {
+         'id': id,
+         'poster_path': poster_path,
+         'original_title': original_title,
+         'title': title,
+         'genre_ids': gName.join(', '),
+         'release_date': fullYear,
+       };
+
+       cardArr.push(cardData);
+     
+     })
+
+    //  console.log('жанри:', genres);
+      
+       getRenderQuery(cardArr);
+       return cardArr;
+     })
+     
+    
+      } catch (error) {
+     console.dir(error)
+  } 
+  
 }
 
-// onTrend();
+// рендеримо з шаблону дані, які отримуємо з getDataCard()
+// ====================================== 
+export function getRenderQuery(dataCard) {
 
-// const handleListClick = (event) => {
-//     console.log(event.currentTarget);
-// };
-// refs.ul.addEventListener('click', handleListClick);
+   // console.log(dataCard)
+  
+  refs.ul.insertAdjacentHTML('beforeend',listOfCards(dataCard));
+  
+}
+
+
+
+
+

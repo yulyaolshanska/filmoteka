@@ -10,12 +10,12 @@ const KEY = `476dab1d501621899284a1a134c160d7`;
 
 export default class NewsApiService {
     constructor() {
-        this.searchQuery = 'land';
+        this.searchQuery = '';
         this.page = 1;
      }
  
     async fetchTrend() {
-        const url = `${BASE_URL}/trending/movie/day?api_key=${KEY}&page=${this.page}`
+        const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}&page=${this.page}`
  
         const data = await axios.get(url);
       
@@ -36,7 +36,7 @@ export default class NewsApiService {
     }
 
   async fetchSerchQuery(searchQuery) {
-        const url = `${BASE_URL}/search/movie?api_key=${KEY}&query=${searchQuery}`
+        const url = `${BASE_URL}/search/movie?api_key=${KEY}&query=${searchQuery}&page=${this.page}`
 
         const data = await axios.get(url);
              
@@ -44,7 +44,7 @@ export default class NewsApiService {
   };
   
   async fetchMovieById() {
-        const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}&query=${this.searchQuery}`
+        const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`
 
         const data = await axios.get(url);
              
@@ -52,7 +52,7 @@ export default class NewsApiService {
   };
 
   async fetchGenres() {
-        const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}&query=${this.searchQuery}`
+        const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`
 
         const data = await axios.get(url);
              
