@@ -1,11 +1,12 @@
 import NewsApiService from './api-service';
 import getRefs from './getRefs';
-import listOfCards from '../templates/poster.hbs';
+import listOfCards from '../templates/search.hbs';
+
 
 export default class SearchAPI extends NewsApiService {
   constructor() {
     super();
-    this.form = document.querySelector('.form');
+    this.form = getRefs().form;
     this.form.addEventListener('submit', this.onSubmit.bind(this));
   }
   
@@ -20,19 +21,40 @@ export default class SearchAPI extends NewsApiService {
     const data = await super.fetchSerchQuery(value);
     console.log(data);
 
+    const { data: { genres } } = await super.fetchGenres();
+    
+    console.log(genres);
+
+
+
     if (!data.data.results.length) {
       filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
       return;
     }
 
-    const resultData = data.data.results.map(item => {
+    const resultData = data.data.results.map(({id, poster_path, original_title, title, genre_ids, release_date, vote_average}) => {
+
+      const genresList = genre_ids.map((id, i) => {
+        
+        if (i <= 1) {
+          return genres.filter(item => item.id === id)
+            .map(item => item.name)
+        }
+
+        return 'Others';
+                    
+      }).slice(0, 3).join(', ');
+          
+      // console.log(resGenres);
+
       return {
-        'id': item.id,
-        'poster_path': item.poster_path,
-        'original_title': item.original_title,
-        'title': item.title,
-        'genre_ids': item.genre_ids,
-        'release_date': new Date(item.release_date).getFullYear(),
+        'id': id,
+        'poster_path': poster_path,
+        'original_title': original_title,
+        'title': title,
+        'genre_ids': genresList ? genresList : false,
+        'release_date': release_date ? new Date(release_date).getFullYear() : false,
+        'reiting': vote_average,
       }
     });
         

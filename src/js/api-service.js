@@ -55,7 +55,6 @@ export default class NewsApiService {
         const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`
 
         const data = await axios.get(url);
-             
         return data;
   };
   
