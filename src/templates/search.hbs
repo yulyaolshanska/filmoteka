@@ -6,9 +6,13 @@
     
         <div class="film-description">
             <p class="film-name"> {{ title }}  </p>
+            {{#if genre_ids}}
             <span class="film-genre"> {{ genre_ids }} </span>
+            {{/if}}
+            {{#if release_date}}
             <span class="film-year_of_issue"> {{ release_date }}  </span>
-            <span class="film-year_of_issue"> {{ reiting }}  </span>
+            {{/if}}
+            <span class="film-vote_average"> {{ reiting }}  </span>
         </div>
     </li> 
 

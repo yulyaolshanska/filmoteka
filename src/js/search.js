@@ -6,6 +6,7 @@ import listOfCards from '../templates/search.hbs';
 export default class SearchAPI extends NewsApiService {
   constructor() {
     super();
+    this.filmsContainer = getRefs().ulEl;
     this.form = getRefs().form;
     this.form.addEventListener('submit', this.onSubmit.bind(this));
   }
@@ -14,19 +15,12 @@ export default class SearchAPI extends NewsApiService {
     e.preventDefault();
     
     const { elements: { searchQuery: { value } } } = e.target;
-    const filmsContainer = getRefs().ulEl;
-
+    
     super.resetPage();
     
     const data = await super.fetchSerchQuery(value);
-    console.log(data);
-
     const { data: { genres } } = await super.fetchGenres();
     
-    console.log(genres);
-
-
-
     if (!data.data.results.length) {
       filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
       return;
@@ -34,19 +28,8 @@ export default class SearchAPI extends NewsApiService {
 
     const resultData = data.data.results.map(({id, poster_path, original_title, title, genre_ids, release_date, vote_average}) => {
 
-      const genresList = genre_ids.map((id, i) => {
-        
-        if (i <= 1) {
-          return genres.filter(item => item.id === id)
-            .map(item => item.name)
-        }
-
-        return 'Others';
-                    
-      }).slice(0, 3).join(', ');
-          
-      // console.log(resGenres);
-
+      const genresList= this.parcingGenres(genre_ids, genres);
+    
       return {
         'id': id,
         'poster_path': poster_path,
@@ -54,14 +37,29 @@ export default class SearchAPI extends NewsApiService {
         'title': title,
         'genre_ids': genresList ? genresList : false,
         'release_date': release_date ? new Date(release_date).getFullYear() : false,
-        'reiting': vote_average,
+        'reiting': String(vote_average).padEnd(3,'.0'),
       }
     });
         
-    filmsContainer.innerHTML = listOfCards(resultData);
+    this.filmsContainer.innerHTML = listOfCards(resultData);
     this.form.reset();
   }
+
+  parcingGenres(genre_ids, genres) {
+    
+    return genre_ids.map((id, i) => {
+        
+      if (i <= 1) {
+        return genres.filter(item => item.id === id)
+          .map(item => item.name);
+      }
+
+      return 'Others';
+                    
+    }).slice(0, 3).join(', ');
+  }
 }
+
   
 // new SearchAPI();
 

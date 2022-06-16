@@ -112,7 +112,7 @@ function renderFilmCard(films) {
         <p class="film-name">${original_title}</p>
         <span class="film-genre">${renderGenres(genres)} |</span>
         <span class="film-year_of_issue">${release_date.slice(0,4)}</span>
-                <span class="film-vote_average">${vote_average}</span>
+        <span class="film-vote_average">${vote_average}</span>
 
         </div>
         </li>
