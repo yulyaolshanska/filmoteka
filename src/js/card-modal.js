@@ -9,6 +9,11 @@ const newsApiService = new NewsApiService();
 const refs = getRefs();
 const KEY = `476dab1d501621899284a1a134c160d7`;
 let posterUrl = ``;
+let posterUrl_desc1 = ``;
+let posterUrl_desc2 = ``;
+let posterUrl_tabl1 = ``;
+let posterUrl_mobile1= ``;
+let posterUrl_mobile2 = ``
 
 refs.ulEl.addEventListener('click', onModalOpen);
 
@@ -59,6 +64,13 @@ async function fetchRenderCard(movieId) {
 function getPosterUrl(poster_path) {
     if (poster_path){
         posterUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
+        posterUrl_desc1 = `https://image.tmdb.org/t/p/w342${poster_path}`;
+        posterUrl_desc2 = `https://image.tmdb.org/t/p/w500${poster_path}`;
+        posterUrl_tabl1 = `https://image.tmdb.org/t/p/w342${poster_path}`;
+        posterUrl_tabl2 = `https://image.tmdb.org/t/p/w780${poster_path}`;
+        posterUrl_mobile1= `https://image.tmdb.org/t/p/w342${poster_path}`;
+        posterUrl_mobile2= `https://image.tmdb.org/t/p/w780${poster_path}`;
+       
     } else {
         posterUrl = './images/no-image-icon-23485.png';
     }
@@ -69,8 +81,27 @@ function getPosterUrl(poster_path) {
 async function renderCard({popularity, genres, poster_path, vote_average, vote_count, title, overview}) {
     getPosterUrl(poster_path);
    
-    const card = `      
-    <img src="${posterUrl}" alt="descr" class='card_img'>
+    const card = ` <picture class="card_img">
+    <source
+      srcset="${posterUrl_desc1} ,
+             ${posterUrl_desc2} "
+      media="(min-width: 1080px)"
+    />
+    <source
+      srcset="${posterUrl_tabl1},
+            "${posterUrl_tabl2} "
+      media="(min-width: 768px)"
+    />
+    <source
+      srcset="${posterUrl_mobile1} ,
+            "${posterUrl_mobile2} "
+      media="(min-width: 320px)"
+    />
+    <img src="${posterUrl_desc2}" alt=""/>
+  </picture>
+  
+  
+   
     <div class="card-thumb">
     <h2 class="card-title">${title}</h2>
     <ul class="card-list">

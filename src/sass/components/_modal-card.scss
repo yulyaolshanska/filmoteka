@@ -33,7 +33,6 @@
     overflow: hidden;
     position: relative;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    // min-height: 940px;
     z-index: 950;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
   0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -47,13 +46,13 @@
       text-align: left;
       padding: 40px 72px 40px 36px;
       transform: translate(-50%, -50%) ;
-      max-width: 704px;     
-      width: 100%;     
+      width: 704px;     
+      max-width: 100%;     
 }
 
 @include media(min, desktop){
-    max-width: 814px;
-//     // min-height: 1128px;
+    width: 814px;
+    padding-right: 16px;
   }
 
 
@@ -90,13 +89,19 @@ cursor: pointer;
 .card_img{
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+  max-width: 100%;
+
 @include media (min, tablet){
   min-width: 264px;
   border-radius: 5px;
   overflow: hidden;
 }
+
+@include media (min, desktop){
+  min-width: 318px;
 }
+}
+
 .card-thumb{
 margin-top: 20px;
 
@@ -107,6 +112,9 @@ margin-top: 20px;
   margin-left: 68px;   
   
 }
+
+@include media (min, desktop){
+margin-left: 16px;}
 }
 
 
