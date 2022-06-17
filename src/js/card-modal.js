@@ -1,21 +1,14 @@
-import getRefs from "./getRefs"
-const refs = getRefs();
-const KEY = `476dab1d501621899284a1a134c160d7`;
-export let fetcData = {};
+import NewsApiService from './api-service'
+import getRefs from "./getRefs";
 import {addToQueue} from "./my-library";
 import {addToWatched} from "./my-library";
 
-let posterUrl = ``;
+export let fetcData = {};
 
-function fetchApi(movieId) {
-    return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}`)
-    .then (response => {
-        if (!response.ok) {
-            throw new Error(response.status);
-          }
-         
-        return response.json()})
-}
+const newsApiService = new NewsApiService();
+const refs = getRefs();
+const KEY = `476dab1d501621899284a1a134c160d7`;
+let posterUrl = ``;
 
 refs.ulEl.addEventListener('click', onModalOpen);
 
@@ -26,11 +19,14 @@ function onModalOpen (event) {
         return;
     }
     movieId = link.getAttribute('id');
-   
+    document.body.style.overflow = "hidden"; 
+    document.querySelector('main').classList.add('blur');
+    document.querySelector('header').classList.add('blur');
+    document.querySelector('footer').classList.add('blur');
     refs.backdrop.classList.remove("is-hidden");
 
      fetchRenderCard(movieId);
-     
+     refs.cardEl.innerHTML = '';
     refs.btnClose.addEventListener('click', onModalClose);
 
     document.addEventListener('keydown', function (e) {
@@ -48,11 +44,13 @@ function onModalOpen (event) {
 
 async function fetchRenderCard(movieId) {
    try {
-     fetcData = await fetchApi(movieId);     
-     renderCard(fetcData) 
+     data = await newsApiService.fetchMovieById(movieId); 
+     fetcData = data.data
+    renderCard(fetcData) 
      
     document.querySelector('.watched').addEventListener("click", addToWatched)
     document.querySelector('.queue').addEventListener("click", addToQueue)    
+    
    }
 
    catch (error) {console.log(error.message)}
@@ -102,17 +100,20 @@ async function renderCard({popularity, genres, poster_path, vote_average, vote_c
     </div>    
     `;
     
-        // ДОбавить проверку на колличество жанров
     refs.cardEl.innerHTML = card;
    
     // console.log(obj)
 };
 
 function onModalClose() {
-    refs.backdrop.classList.add("is-hidden");  
-    
     document.querySelector('.watched').removeEventListener("click", addToWatched)
-    document.querySelector('.queue').removeEventListener("click", addToQueue)   
+    document.querySelector('.queue').removeEventListener("click", addToQueue);
+    document.querySelector('main').classList.remove('blur');
+    document.querySelector('header').classList.remove('blur');
+    document.querySelector('footer').classList.remove('blur');
+    refs.backdrop.classList.add("is-hidden");  
+    document.body.style.overflow = "";       
+    
 };
 
 
