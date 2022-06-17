@@ -35,7 +35,7 @@ export async function onSerchQuery() {
 export async function onTrend() {
     
     try {
-      newsApiService.resetPage();
+      // newsApiService.resetPage();
    
       const data = await newsApiService.fetchTrend();
       const movies = data.data.results;
@@ -129,7 +129,7 @@ export async function getGenresById() {
 // ====================================== 
 export function getRenderQuery(dataCard) {
 
-   // console.log(dataCard)
+  //  console.log(dataCard)
   
   refs.ul.insertAdjacentHTML('beforeend',listOfCards(dataCard));
   
