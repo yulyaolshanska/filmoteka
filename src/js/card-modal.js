@@ -26,11 +26,11 @@ function onModalOpen (event) {
         return;
     }
     movieId = link.getAttribute('id');
-   
+    document.body.style.overflow = "hidden"; 
     refs.backdrop.classList.remove("is-hidden");
 
      fetchRenderCard(movieId);
-     
+     refs.cardEl.innerHTML = '';
     refs.btnClose.addEventListener('click', onModalClose);
 
     document.addEventListener('keydown', function (e) {
@@ -102,17 +102,18 @@ async function renderCard({popularity, genres, poster_path, vote_average, vote_c
     </div>    
     `;
     
-        // ДОбавить проверку на колличество жанров
     refs.cardEl.innerHTML = card;
    
     // console.log(obj)
 };
 
 function onModalClose() {
-    refs.backdrop.classList.add("is-hidden");  
-    
     document.querySelector('.watched').removeEventListener("click", addToWatched)
-    document.querySelector('.queue').removeEventListener("click", addToQueue)   
+    document.querySelector('.queue').removeEventListener("click", addToQueue);
+   
+    refs.backdrop.classList.add("is-hidden");  
+    document.body.style.overflow = "";       
+    
 };
 
 
