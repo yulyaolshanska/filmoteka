@@ -43,9 +43,9 @@ export default class NewsApiService {
         return data;
   };
   
-  async fetchMovieById() {
-        const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}`
-
+  async fetchMovieById(movieId) {
+        const url = `${BASE_URL}/movie/${movieId}?api_key=${KEY}`
+       
         const data = await axios.get(url);
              
         return data;
