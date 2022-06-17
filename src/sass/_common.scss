@@ -20,7 +20,7 @@ body {
     padding-right: 32px;
   }
 
-  @include media('min', 'descktop') {
+  @include media('min', 'desktop') {
     max-width: 1024px;
   }
 }

@@ -51,7 +51,7 @@
       width: 100%;     
 }
 
-@include media(min, descktop){
+@include media(min, desktop){
     max-width: 814px;
 //     // min-height: 1128px;
   }
@@ -137,7 +137,7 @@ color: $modal-secondary-text;
     width: 90px;
   }
    
-  @include media (min, descktop){
+  @include media (min, desktop){
     width: 150px;
   }
 }
@@ -202,7 +202,7 @@ justify-content: center;
 }
 
 
-@include media (min, descktop){
+@include media (min, desktop){
   justify-content: flex-start;
 }
 
