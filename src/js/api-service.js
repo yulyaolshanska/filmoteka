@@ -23,9 +23,9 @@ export default class NewsApiService {
         return data;
     };
 
-    // incrementPage() {
-    //     this.page += 1;
-    // };
+    incrementPage() {
+        this.page += 1;
+    }; //
   
    // choosePage() {
     //     this.page += 5;
