@@ -1,6 +1,6 @@
 // @media mixin
 
-$sizes: ("mobile":320px, "tablet":768px, "descktop":1024px);
+$sizes: ("mobile":320px, "tablet":768px, "desktop":1024px);
 
 @function getPreviousSize($currentSize) {
   $keys: map-keys($sizes);
