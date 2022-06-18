@@ -15,6 +15,6 @@ function onHome() {
   refs.form.classList.remove('form--is-hidden');
   refs.header.classList.remove('header--library');
   refs.ul.innerHTML = '';
-  //   onLoader();
+  // onLoader();
   onTrend();
 }
