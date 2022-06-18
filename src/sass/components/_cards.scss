@@ -14,7 +14,7 @@
       
     }
   
-    @include media('min', 'descktop') {
+    @include media('min', 'desktop') {
       max-width: 1024px;
      }   
 }
@@ -28,7 +28,7 @@
     padding-top: 60px;
     padding-bottom: 60px;
     }
-    @include media('min', 'descktop') {
+    @include media('min', 'desktop') {
     padding-top: 32px;
     padding-bottom: 60px;   
     }
@@ -62,7 +62,7 @@
     margin-left: 0px;
  }
         
- @include media('min', 'descktop') {
+ @include media('min', 'desktop') {
       width: calc((100% - 32px) / 3);
       margin-right: 16px;     
       margin-bottom: 32px;
@@ -70,19 +70,19 @@
 }
  
 .film-card:nth-child(2n + 2) { 
-    @include media('within', 'descktop') {       
+    @include media('within', 'desktop') {       
           margin-right: 0px;
       }
     }
 
 .film-card:nth-child(3n + 3) {  
-  @include media('min', 'descktop') {
+  @include media('min', 'desktop') {
     margin-right: 0px;
     }     
   }   
         
 .film-card:nth-last-child(-n + 2) {
-    @include media('min', 'descktop') {
+    @include media('min', 'desktop') {
         
         margin-bottom: 0px;
         margin-left: 0px;            
@@ -104,7 +104,7 @@
     max-width: 336px;
     }
     
-@include media('min', 'descktop') {
+@include media('min', 'desktop') {
     height: 449px;
     max-width: 309px;
     
