@@ -49,7 +49,7 @@ export async function onTrend() {
       }          
 }
 
-onTrend();
+// onTrend();
 
 // окремо отримуємо запит  масив жанри {name,id}  genres: [{id: 28, name: "Action"}, ...]
 export async function getGenresById() {
