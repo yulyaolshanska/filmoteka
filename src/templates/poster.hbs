@@ -2,7 +2,12 @@
  
  
     <li class="film-card" id="{{ id }}">
-        <img class="film-img" src="http://image.tmdb.org/t/p/w500/{{poster_path}}" alt=" "  title="{{ original_title }}" loading="lazy"  />
+        
+        <img class="film-img" 
+        srcset="http://image.tmdb.org/t/p/w342/{{poster_path}} 320w,
+                 http://image.tmdb.org/t/p/w500/{{poster_path}} 768w,
+                 http://image.tmdb.org/t/p/w780/{{poster_path}} 1024w"  
+        src="http://image.tmdb.org/t/p/w500/{{poster_path}}" alt=" "  title="{{ original_title }}" loading="lazy"  />
     
         <div class="film-description">
             <p class="film-name"> {{ title }}  </p>
