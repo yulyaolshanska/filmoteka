@@ -1,10 +1,8 @@
-
 // import './js/card-modal';
 // import './js/card-template';
 // import './js/homepage';
 // import './js/my-library';
 // import './js/poster';
-// import './js/loader';
 import GoToHome from './js/go-to-home';
 import Search from './js/search';
 import Start from './js/start';
@@ -21,5 +19,4 @@ const start = async () => {
 }
 
 start();
-
 
