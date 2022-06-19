@@ -1,0 +1,29 @@
+footer{
+   background-color: #F7F7F7;
+}
+.footer{
+   display: flex;
+   justify-content: center;
+   color:#545454;
+   font-family: 'Roboto';
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 16px;
+   padding: 30px 0;
+}
+.footer__img{
+   padding: 0 10px;
+   @media(max-width: 758px){
+      padding-top: 10px;
+    }
+}
+.footer__text{
+   @media(max-width: 758px){
+      max-width: 320px;
+      text-align: center;
+      padding: 0 15px;
+    }
+}
+.footer__text a{
+   color: #545454;
+}

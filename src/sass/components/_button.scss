@@ -28,7 +28,7 @@
    @include media('min', 'tablet') {
       width: 152px;
     } 
-   @include media('min', 'descktop') {
+   @include media('min', 'desktop') {
       width: 149px;
     }
 
@@ -47,7 +47,7 @@
       margin-right: 32px;
     }
   
-    @include media('min', 'descktop') {
+    @include media('min', 'desktop') {
     margin-right: 16px;
     }
   }
@@ -61,7 +61,7 @@
   @include media('min', 'tablet') {
     width: 125px;
   } 
-  @include media('min', 'descktop') {
+  @include media('min', 'desktop') {
     width: 136px;
   }
   &--active{
