@@ -1,7 +1,8 @@
 import NewsApiService from './api-service';
 import getRefs from './getRefs';
 import listOfCards from '../templates/search.hbs';
-
+const trendScroll = document.querySelector('#sentinel'); // it's for scroll
+const search = document.querySelector('#sentinel-search')
 
 export default class SearchAPI extends NewsApiService {
   constructor() {
@@ -13,6 +14,8 @@ export default class SearchAPI extends NewsApiService {
   
   async onSubmit(e) {
     e.preventDefault();
+    trendScroll.classList.add('disable'); //it's for scroll
+    search.classList.remove('disable');
     
     const { elements: { searchQuery: { value } } } = e.target;
     

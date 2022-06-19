@@ -7,6 +7,9 @@ let watchedFilms = [];
 let queue = [];
 let filmToAdd = {}
 const refs = getRefs()
+const trend = document.querySelector('#sentinel'); 
+const search = document.querySelector('#sentinel-search');
+const library = document.querySelector('#sentinel-library');
 
 
 refs.myLibraryLink.addEventListener("click", onMyLibrary)
@@ -17,6 +20,10 @@ function onMyLibrary() {
     refs.form.classList.add('form--is-hidden');
     refs.buttonsBlock.classList.remove('header__block-btn--is-hidden');
     refs.header.classList.add("header--library");
+    trend.classList.add('disable');
+    search.classList.add('disable');
+    library.classList.remove('disable');
+
 
      refs.watchedBtn.addEventListener("click", handleWatched);
      refs.queueBtn.addEventListener("click", handleQueue);
