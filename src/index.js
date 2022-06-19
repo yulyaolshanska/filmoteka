@@ -5,5 +5,6 @@ import './js/my-library';
 import './js/poster';
 import SearchAPI from './js/search';
 import './js/loader';
+import './js/team-modal';
 
 new SearchAPI();
