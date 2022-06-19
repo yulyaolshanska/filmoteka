@@ -127,7 +127,7 @@
 //   refs.backdrop.classList.add('is-hidden');
 //   document.body.style.overflow = '';
 // }
-
+import NewsApiService from './api-service';
 import getRefs from './getRefs';
 const refs = getRefs();
 const KEY = `476dab1d501621899284a1a134c160d7`;
@@ -137,25 +137,9 @@ import { addToQueue } from './my-library';
 import { addToWatched } from './my-library';
 import { onModalLoader, offModalLoader } from './loader';
 
-let posterUrl = ``;
-let posterUrl_desc1 = ``;
-let posterUrl_desc2 = ``;
-let posterUrl_tabl1 = ``;
-let posterUrl_mobile1= ``;
-let posterUrl_mobile2 = ``
+let posterUrl = {};
+const newsApiService = new NewsApiService();
 
-
-function fetchApi(movieId) {
-  return fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}`
-  ).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-
-    return response.json();
-  });
-}
 
 refs.ulEl.addEventListener('click', onModalOpen);
 
@@ -189,8 +173,10 @@ function onModalOpen(event) {
 async function fetchRenderCard(movieId) {
   try {
     onModalLoader();
-    fetcData = await fetchApi(movieId);
+    data = await newsApiService.fetchMovieById(movieId);
+    fetcData = data.data;
     renderCard(fetcData);
+    
 
     document.querySelector('.watched').addEventListener('click', addToWatched);
     document.querySelector('.queue').addEventListener('click', addToQueue);
