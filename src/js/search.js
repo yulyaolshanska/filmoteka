@@ -29,8 +29,10 @@ export default class SearchAPI extends NewsApiService {
       data: { genres },
     } = await super.fetchGenres();
 
+    offLoader();
+
     if (!data.data.results.length) {
-      filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
+      this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
       return;
     }
 
@@ -62,7 +64,7 @@ export default class SearchAPI extends NewsApiService {
 
     this.filmsContainer.innerHTML = listOfCards(resultData);
     this.form.reset();
-    offLoader();
+    
   }
 
   parcingGenres(genre_ids, genres) {
