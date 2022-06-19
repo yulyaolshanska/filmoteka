@@ -8,6 +8,7 @@
 import GoToHome from './js/go-to-home';
 import Search from './js/search';
 import Start from './js/start';
+import Modal from './js/modal';
 
 const start = async () => {
 
@@ -18,6 +19,7 @@ const start = async () => {
 
   new GoToHome(genres);
   new Search(genres);
+  new Modal();
 }
 
 start();
