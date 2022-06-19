@@ -1,4 +1,5 @@
 import NewsApiService from './api-service';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { onModalLoader, offModalLoader } from './loader';
 
 export default class Modal extends NewsApiService {
@@ -6,8 +7,18 @@ export default class Modal extends NewsApiService {
     super();
     super.getRefs().filmsContainer.addEventListener('click', this.onOpenModal.bind(this));
 
+    this.watchedFilms = JSON.parse(localStorage.getItem('watched-films')) || [];
+    this.queue = JSON.parse(localStorage.getItem('queue-films')) || [];
     this.fetchedData = null;
     this.backdrop = super.getRefs().backdrop;
+  }
+
+  getWatchedFilms() {
+    return this.watchedFilms;
+  }
+
+  getQueue() {
+    return this.queue;
   }
 
   async onOpenModal(event) {
@@ -32,16 +43,30 @@ export default class Modal extends NewsApiService {
     try {
       onModalLoader();
       const data = await super.fetchMovieById(movieId);
+      offModalLoader();
       console.log(data);
-      this.fetchedData = data.data;
+
+      const { id, popularity, genres, poster_path, vote_average, vote_count, title, overview } = data.data;
+
+      this.fetchedData = {
+          'id': id,
+          'popularity': popularity,
+          'genres': genres,
+          'poster_path': poster_path,
+          'vote_average': vote_average,
+          'vote_count': vote_count,
+          'title': title,
+          'overview': overview,
+      };
+      
       this.renderCard(this.fetchedData);
 
-      // document.querySelector('.watched').addEventListener('click', addToWatched);
-      // document.querySelector('.queue').addEventListener('click', addToQueue);
+      document.querySelector('.watched').addEventListener('click', this.addToWatched.bind(this));
+      document.querySelector('.queue').addEventListener('click', this.addToQueue.bind(this));
     } catch (error) {
       console.log(error.message);
     }
-    offModalLoader();
+    
   }
 
   renderCard({popularity, genres, poster_path, vote_average, vote_count, title, overview}) {
@@ -131,8 +156,54 @@ export default class Modal extends NewsApiService {
   onModalClose() {
     super.getRefs().backdrop.classList.add('is-hidden');
     document.removeEventListener('keydown', this.onClickESC.bind(this));
+    
+
+    document.querySelector('.watched').removeEventListener('click', this.addToWatched.bind(this));
+    document.querySelector('.queue').removeEventListener('click', this.addToQueue.bind(this));
+
     super.getRefs().cardEl.innerHTML = '';
-    // document.querySelector('.watched').removeEventListener('click', addToWatched);
-    // document.querySelector('.queue').removeEventListener('click', addToQueue);
+  }
+
+  addToWatched() {
+    document.querySelector('.queue').classList.remove('modal__btn--active');
+    document.querySelector('.watched').classList.add('modal__btn--active');
+
+    if (this.isFilmInStorage()) {
+      return;
+    };
+
+    this.watchedFilms.push(this.fetchedData);
+    localStorage.setItem('watched-films', JSON.stringify(this.watchedFilms));
+  }
+
+  addToQueue() {
+    document.querySelector('.watched').classList.remove('modal__btn--active');
+    document.querySelector('.queue').classList.add('modal__btn--active');
+
+    if (this.isFilmInStorage()) {
+      return;
+    };
+    
+    this.queue.push(this.fetchedData);
+    localStorage.setItem('queue-films', JSON.stringify(this.queue));
+  }
+
+  isFilmInStorage() {
+    this.watchedFilms = JSON.parse(localStorage.getItem('watched-films')) || [];
+    this.queue = JSON.parse(localStorage.getItem('queue-films')) || [];
+
+    if (this.watchedFilms.find(films => this.fetchedData.id === films.id)) {
+      Notify.warning('You have already added this movie to Watched', {
+        timeout: 3000,
+      });
+      return true;
+    } else if (this.queue.find(films => this.fetchedData.id === films.id)) {
+      Notify.warning('You have already added this movie to Queue', {
+        timeout: 3000,
+      });
+      return true;
+    } else {
+      return false;
+    } 
   }
 }
