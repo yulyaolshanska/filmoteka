@@ -220,12 +220,21 @@ function getPosterUrl(poster_path) {
 }
 
 async function renderCard({popularity, genres, poster_path, vote_average, vote_count, title, overview}) {
-    //getPosterUrl(poster_path);
+    getPosterUrl(poster_path);
    
     const card = ` <picture >
-    <source srcset="https://image.tmdb.org/t/p/w342${poster_path} 1x, https://image.tmdb.org/t/p/w500${poster_path} 2x" media="(min-width: 1080px)" />
-    <source srcset="https://image.tmdb.org/t/p/w342${poster_path} 1x, https://image.tmdb.org/t/p/w780${poster_path} 2x" media="(min-width: 320px)"  />
-    <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}" class="card_img"/>
+    <source
+      srcset="${posterUrl.w342} 1x,
+             ${posterUrl.w500} 2x"
+      media="(min-width: 1080px)"
+    />
+   
+    <source
+      srcset="${posterUrl.w342} 1x,
+            ${posterUrl.w780} 2x"
+      media="(min-width: 320px)"
+    />
+    <img src="${posterUrl.w500}" alt="${title}" class="card_img"/>
   </picture>
 
   <div class="card-thumb">
