@@ -80,8 +80,10 @@ cursor: pointer;
 }
 
 .card{
-  
+  text-align: center;
+
   @include media (min, tablet){
+  min-height: 275px;
   display: flex;}
  
 }
@@ -104,7 +106,7 @@ cursor: pointer;
 
 .card-thumb{
 margin-top: 20px;
-
+text-align: left;
 @include media (min, tablet){
   display: flex;
   flex-direction: column;
