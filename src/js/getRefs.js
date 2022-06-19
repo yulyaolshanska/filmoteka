@@ -11,6 +11,9 @@ export default function getRefs() {
     ul: document.querySelector('.films-collection'),
     header: document.querySelector('.header'),
     logo: document.querySelector('#logo'),
+    loaderBlock: document.querySelector('.load'),
+    Modalloader: document.querySelector('.load-modal'),
+    loader: document.querySelector('.loader'),
 
     btnClose: document.querySelector('[data-button_close]'),
     backdrop: document.querySelector('.backdrop'),
