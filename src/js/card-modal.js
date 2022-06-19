@@ -83,7 +83,7 @@ function getPosterUrl(poster_path) {
 async function renderCard({popularity, genres, poster_path, vote_average, vote_count, title, overview}) {
     getPosterUrl(poster_path);
    
-    const card = ` <picture class="card_img">
+    const card = ` <picture >
     <source
       srcset="${posterUrl.w342} 1x,
              ${posterUrl.w500} 2x"
@@ -95,7 +95,7 @@ async function renderCard({popularity, genres, poster_path, vote_average, vote_c
             ${posterUrl.w780} 2x"
       media="(min-width: 320px)"
     />
-    <img src="${posterUrl.w500}" alt="${title}"/>
+    <img src="${posterUrl.w500}" alt="${title}" class="card_img"/>
   </picture>
   
   
