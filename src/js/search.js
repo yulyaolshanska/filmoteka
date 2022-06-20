@@ -1,19 +1,19 @@
-import NewsApiService from './api-service';
-import getRefs from './getRefs';
+import Start from './start';
+import searchResultList from '../templates/search.hbs';
 
-import listOfCards from '../templates/poster.hbs';
 import { onLoader, offLoader } from './loader';
 
-export default class SearchAPI extends NewsApiService {
-  constructor() {
+export default class Search extends Start {
+  constructor(genres) {
     super();
-    this.filmsContainer = getRefs().ulEl;
-    this.form = getRefs().form;
-    this.form.addEventListener('submit', this.onSubmit.bind(this));
+    super.getRefs().form.addEventListener('submit', this.onSubmit.bind(this));
+
+    this.genres = genres;
   }
 
   async onSubmit(e) {
     e.preventDefault();
+
     onLoader();
 
     const {
@@ -24,69 +24,21 @@ export default class SearchAPI extends NewsApiService {
 
     super.resetPage();
 
+    onLoader();
+
     const data = await super.fetchSerchQuery(value);
-    const {
-      data: { genres },
-    } = await super.fetchGenres();
+    
+    offLoader();
 
     if (!data.data.results.length) {
-      filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
+      super.getRefs().filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
       return;
     }
-
-    const resultData = data.data.results.map(
-      ({
-        id,
-        poster_path,
-        original_title,
-        title,
-        genre_ids,
-        release_date,
-        vote_average,
-      }) => {
-        const genresList = this.parcingGenres(genre_ids, genres);
-
-        return {
-          id: id,
-          poster_path: poster_path,
-          original_title: original_title,
-          title: title,
-          genre_ids: genresList ? genresList : false,
-          release_date: release_date
-            ? new Date(release_date).getFullYear()
-            : false,
-          reiting: String(vote_average).padEnd(3, '.0'),
-        };
-      }
-    );
-
-    this.filmsContainer.innerHTML = listOfCards(resultData);
-    this.form.reset();
-    offLoader();
-  }
-
-  parcingGenres(genre_ids, genres) {
-    return genre_ids
-      .map((id, i) => {
-        if (i <= 1) {
-          return genres.filter(item => item.id === id).map(item => item.name);
-        }
-
-        return 'Others';
-      })
-      .slice(0, 3)
-      .join(', ');
+    
+    const finalData = super.getFinalData(data, this.genres);
+    
+    super.getRefs().filmsContainer.innerHTML = searchResultList(finalData);
+    super.getRefs().form.reset();
   }
 }
 
-// new SearchAPI();
-
-// class Pagination extends SearchAPI {
-//   constructor() {
-//     super();
-//     super.output();
-//     super.outputAPI();
-//   }
-// }
-
-// new Pagination();

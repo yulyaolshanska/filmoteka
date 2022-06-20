@@ -47,28 +47,6 @@ export async function onTrend() {
   offLoader();
 }
 
-export async function onScroll() {
-  try {
-   
-    // onLoader();
-
-    const data = await newsApiService.fetchTrend();
-    const movies = data.data.results;
-
-    await getDataCard(movies);
-    // offLoader();
-    return  movies;
-  } catch (error) {
-    // onFetchError()
-    console.dir(error);
-  }
-  // offLoader();
-}
-
-export function incrementPage() {
-  newsApiService.incrementPage();
-}
-
 // onTrend();
 
 // окремо отримуємо запит  масив жанри {name,id}  genres: [{id: 28, name: "Action"}, ...]
