@@ -16,7 +16,7 @@
   .modal-team{
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 20%;
     transform: translate(-50%, -55%);
     padding: 20px;
     margin-left: auto;
@@ -26,7 +26,7 @@
 
     @include media('min', 'tablet') {
       left: 50%;
-      top: 50%;
+      top: 30%;
       width: 650px;
       height: 450px;
   
@@ -35,6 +35,8 @@
     @include media('min', 'desktop') {
     width: 900px;
     height: 550px;
+    left: 50%;
+    top: 50%;
 
     }
 
