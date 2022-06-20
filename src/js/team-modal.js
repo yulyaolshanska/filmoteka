@@ -1,13 +1,6 @@
 import getRefs from './getRefs';
 const refs = getRefs();
 
-//const refs = {
-//    team: document.querySelector(`.team-modal`),
-//}
-
-//console.log(refs.team);
-//console.log(refs.backdropTeam);
-
 
 refs.team.addEventListener(`click`, onTeamModalOpen);
 
