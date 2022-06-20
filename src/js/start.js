@@ -20,14 +20,6 @@ export default class Start extends NewsApiService {
     
       super.resetPage();
   
-      // window.addEventListener('scroll', ()=> {
-      //   this.height > scrollY ? this.upButton.className ='up-button--is-hidden': this.upButton.className ='up-button' ; 
-      // console.log(this.height) 
-      // } );
-
-      // this.upButton.addEventListener('click', ()=>{
-      //   window.scrollBy({top: -this.height-scrollY, behavior: "smooth",})
-      // });
       const data = await super.fetchTrend();
       
       return super.getFinalData(data, genres);
@@ -52,7 +44,5 @@ export default class Start extends NewsApiService {
   }
 
 }
-// =================================================
-// Please, don't hurt my little button. It can returns us to the up of page
-// there are: html in modal-card, styles in button.scss
+
 
