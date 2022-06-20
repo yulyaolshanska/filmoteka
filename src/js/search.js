@@ -29,7 +29,7 @@ export default class Search extends Start {
     offLoader();
 
     if (!data.data.results.length) {
-      filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
+      super.getRefs().filmsContainer.innerHTML = `<li class='nothing'>Sorry, we find nothing</li>`;
       return;
     }
     

@@ -18,10 +18,10 @@ const start = async () => {
   
   start.renderMainCollection(genres);
 
-  new GoToHome(genres);
   new Search(genres);
   // new Modal();
-  new Library();
+  const library = new Library();
+  new GoToHome(genres, library.handleWatched, library.handleQueue);
 }
 
 start();

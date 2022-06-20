@@ -11,6 +11,14 @@ export default class Modal extends NewsApiService {
     this.queue = JSON.parse(localStorage.getItem('queue-films')) || [];
     this.fetchedData = null;
     this.backdrop = super.getRefs().backdrop;
+    this.btnClose = super.getRefs().btnClose;
+    this.cardEl = super.getRefs().cardEl;
+
+    this.onClickESC = this.onClickESC.bind(this);
+    this.addToWatched = this.addToWatched.bind(this);
+    this.addToQueue = this.addToQueue.bind(this);
+    this.onModalClose = this.onModalClose.bind(this);
+
   }
 
   getWatchedFilms() {
@@ -32,11 +40,11 @@ export default class Modal extends NewsApiService {
 
     await this.fetchRenderCard(movieId);
 
-    super.getRefs().backdrop.classList.remove('is-hidden');
+    this.backdrop.classList.remove('is-hidden');
 
-    super.getRefs().btnClose.addEventListener('click', this.onModalClose.bind(this));
+    this.btnClose.addEventListener('click', this.onModalClose);
 
-    document.addEventListener('keydown', this.onClickESC.bind(this));
+    document.addEventListener('keydown', this.onClickESC);
   }
 
   async fetchRenderCard(movieId) {
@@ -46,7 +54,7 @@ export default class Modal extends NewsApiService {
       offModalLoader();
       console.log(data);
 
-      const { id, popularity, genres, poster_path, vote_average, vote_count, title, overview } = data.data;
+      const { id, popularity, genres, poster_path, vote_average, vote_count, title, overview, release_date } = data.data;
 
       this.fetchedData = {
           'id': id,
@@ -57,12 +65,13 @@ export default class Modal extends NewsApiService {
           'vote_count': vote_count,
           'title': title,
           'overview': overview,
+          'release_date': release_date,
       };
       
       this.renderCard(this.fetchedData);
 
-      document.querySelector('.watched').addEventListener('click', this.addToWatched.bind(this));
-      document.querySelector('.queue').addEventListener('click', this.addToQueue.bind(this));
+      document.querySelector('.watched').addEventListener('click', this.addToWatched);
+      document.querySelector('.queue').addEventListener('click', this.addToQueue);
     } catch (error) {
       console.log(error.message);
     }
@@ -121,7 +130,7 @@ export default class Modal extends NewsApiService {
       `;
 
     // ДОбавить проверку на колличество жанров
-    super.getRefs().cardEl.innerHTML = card;
+    this.cardEl.innerHTML = card;
 
     // console.log(obj)
   }
@@ -154,14 +163,14 @@ export default class Modal extends NewsApiService {
   }
 
   onModalClose() {
-    super.getRefs().backdrop.classList.add('is-hidden');
-    document.removeEventListener('keydown', this.onClickESC.bind(this));
-    
+    this.backdrop.classList.add('is-hidden');
+    document.removeEventListener('keydown', this.onClickESC);
+    this.btnClose.removeEventListener('click', this.onModalClose);
 
-    document.querySelector('.watched').removeEventListener('click', this.addToWatched.bind(this));
-    document.querySelector('.queue').removeEventListener('click', this.addToQueue.bind(this));
+    document.querySelector('.watched').removeEventListener('click', this.addToWatched);
+    document.querySelector('.queue').removeEventListener('click', this.addToQueue);
 
-    super.getRefs().cardEl.innerHTML = '';
+    this.cardEl.innerHTML = '';
   }
 
   addToWatched() {
