@@ -15,6 +15,7 @@ export default class Modal extends NewsApiService {
     this.cardEl = super.getRefs().cardEl;
 
     this.onClickESC = this.onClickESC.bind(this);
+    this.onClickBdrop = this.onClickBdrop.bind(this);
     this.addToWatched = this.addToWatched.bind(this);
     this.addToQueue = this.addToQueue.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
@@ -40,11 +41,19 @@ export default class Modal extends NewsApiService {
 
     await this.fetchRenderCard(movieId);
 
+    document.body.style.overflow = 'hidden';
+
     this.backdrop.classList.remove('is-hidden');
+
+    document.querySelector('main').classList.add('blur');
+    document.querySelector('header').classList.add('blur');
+    document.querySelector('footer').classList.add('blur');
 
     this.btnClose.addEventListener('click', this.onModalClose);
 
     document.addEventListener('keydown', this.onClickESC);
+
+    this.backdrop.addEventListener('click', this.onClickBdrop);
   }
 
   async fetchRenderCard(movieId) {
@@ -156,20 +165,29 @@ export default class Modal extends NewsApiService {
 }
 
   onClickESC(e) {
-    if (e.keyCode === 27 && !this.backdrop.classList.contains('is-hidden')) {
+    if (e.keyCode === 27 ) {
         this.onModalClose();
       // console.log('close');
     }
   }
 
+  onClickBdrop(e) {
+    if (!e.target.closest('.modal')) {
+      this.onModalClose();
+    }
+  }
+
   onModalClose() {
     this.backdrop.classList.add('is-hidden');
+    document.body.style.overflow = '';
     document.removeEventListener('keydown', this.onClickESC);
     this.btnClose.removeEventListener('click', this.onModalClose);
-
+    document.querySelector('main').classList.remove('blur');
+    document.querySelector('header').classList.remove('blur');
+    document.querySelector('footer').classList.remove('blur');
     document.querySelector('.watched').removeEventListener('click', this.addToWatched);
     document.querySelector('.queue').removeEventListener('click', this.addToQueue);
-
+    this.backdrop.removeEventListener('click', this.onClickBdrop);
     this.cardEl.innerHTML = '';
   }
 
