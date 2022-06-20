@@ -1,6 +1,6 @@
 import NewsApiService from './api-service';
 import Modal from './modal';
-
+import trendResultList from '../templates/poster.hbs'
 export default class Library extends Modal {
   constructor() {
     super();
@@ -17,6 +17,7 @@ export default class Library extends Modal {
     this.handleWatched = this.handleWatched.bind(this);
     this.handleQueue = this.handleQueue.bind(this);
     // this.removeCard = this.removeCard.bind(this);
+    this.filmArray = [];
   }
 
   onMyLibrary() {
@@ -43,31 +44,64 @@ export default class Library extends Modal {
   }
 
   renderFilmCard(films) {
-    const markup = films
-      .map(
-        ({
+    // const markup = films
+    //   .map(
+    //     ({
+    //       poster_path,
+    //       original_title,
+    //       vote_average,
+    //       id,
+    //       genres,
+    //       release_date,
+    //     }) =>
+    //       `
+    //       <li class="film-card" id=${id}>
+    //       <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
+    //       <div class="film-description">
+    //       <p class="film-name">${original_title}</p>
+    //       <span class="film-genre">${this.renderGenres(genres)} |</span>
+    //       <span class="film-year_of_issue">${release_date.slice(0, 4)}</span>
+    //       <span class="film-vote_average">${vote_average}</span>
+    //       </div>
+    //       <button type="button" class="film-btn_card_remove"></button>
+    //       </li>
+    //       `
+    //   )
+    //   .join('');
+    // =====================================================
+
+    this.filmArray = films.map(
+      ({
           poster_path,
           original_title,
           vote_average,
           id,
           genres,
           release_date,
-        }) =>
-          `
-          <li class="film-card" id=${id}>
-          <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
-          <div class="film-description">
-          <p class="film-name">${original_title}</p>
-          <span class="film-genre">${this.renderGenres(genres)} |</span>
-          <span class="film-year_of_issue">${release_date.slice(0, 4)}</span>
-          <span class="film-vote_average">${vote_average}</span>
-          </div>
-          <button type="button" class="film-btn_card_remove"></button>
-          </li>
-          `
-      )
-      .join('');
-
+          title,
+          budget,
+      }) =>{
+  
+  let releaseYear = release_date.slice(0, 4);
+  let genresRend = this.renderGenres(genres).join(', ')
+  console.log(films);
+  return  this.filmArray = {
+  poster_path,
+  original_title,
+  vote_average,
+  id,
+  genres: genresRend,
+  release_date: releaseYear,
+  title,
+  budget,      
+  }
+  
+  }   
+  );
+  
+  const markup = trendResultList(this.filmArray);
+  // ====================================================
+console.log(markup)
     this.filmsContainer.innerHTML = markup;
   }
 

@@ -10,7 +10,7 @@ export default class Start extends NewsApiService {
 
   async renderMainCollection(genres) {
     const finalData = await this.getData(genres);
-   
+  
     super.getRefs().filmsContainer.innerHTML = trendResultList(finalData);
   }
 
