@@ -18,12 +18,26 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -55%);
-    width: 900px;
-    height: 550px;
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
-     
+    width: 450px;
+    height: 300px;
+
+    @include media('min', 'tablet') {
+      left: 50%;
+      top: 50%;
+      width: 650px;
+      height: 450px;
+  
+      } 
+    
+    @include media('min', 'desktop') {
+    width: 900px;
+    height: 550px;
+
+    }
+
   }
 .modal-team-name {
   display: block;
@@ -35,32 +49,40 @@
 }
 
   .team-collection {
-     @include media('min', 'tablet') { 
+    
       display: flex;   
       flex-direction: row; 
       flex-wrap: wrap;             
-      }  
+       
   }
 
   .team-box {
-    cursor: pointer;   
+    max-width: 200px;
     text-decoration: none;
     margin-bottom: 20px;
     display: block;
-    margin-right: 30px;
-    margin-bottom: 10px;  
     border: solid 5px #ffffff;
     border-radius: 30px;
     overflow: hidden;
     background-color: #ffffff;
-       
-@include media('min', 'tablet') {
-    width: calc((100% - 90px) / 3);
+    cursor: pointer; 
+   
+    margin-right: 10px;
+    margin-bottom: 10px; 
+    width: calc((100% - 20px) / 2);
+
+
+  @include media('min', 'tablet') {
+  margin-right: 20px;
+  margin-bottom: 10px; 
+    width: calc((100% - 40px) / 3);
     
  }
         
  @include media('min', 'desktop') {
-      width: calc((100% - 120px) / 4);
+  margin-right: 30px;
+  margin-bottom: 10px;  
+      width: calc((100% - 90px) / 4);
       
     }
 }
@@ -79,8 +101,7 @@
         
 .team-box:nth-last-child(-n + 4) {
     @include media('min', 'desktop') {        
-        margin-bottom: 0px;
-                
+        margin-bottom: 0px;          
         
     }    
 }
