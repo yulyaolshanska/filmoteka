@@ -36,7 +36,7 @@ export default class Modal extends NewsApiService {
       return;
     }
     const movieId = link.getAttribute('id');
-    console.log(movieId);
+    // console.log(movieId);
 
     await this.fetchRenderCard(movieId);
 
@@ -52,7 +52,7 @@ export default class Modal extends NewsApiService {
       onModalLoader();
       const data = await super.fetchMovieById(movieId);
       offModalLoader();
-      console.log(data);
+      // console.log(data);
 
       const { id, popularity, genres, poster_path, vote_average, vote_count, title, overview, release_date } = data.data;
 
@@ -158,7 +158,7 @@ export default class Modal extends NewsApiService {
   onClickESC(e) {
     if (e.keyCode === 27 && !this.backdrop.classList.contains('is-hidden')) {
         this.onModalClose();
-      console.log('close');
+      // console.log('close');
     }
   }
 
