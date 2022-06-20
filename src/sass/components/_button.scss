@@ -85,4 +85,58 @@
     background-color: green;
   }
 }
+// ========================================
+// Please, dont hurt my little button. It can returns us to the up of page
 
+.up-button {
+  position: fixed;
+  right:  30px;
+  bottom: 30px;
+  z-index: 2;
+
+  border-radius: 50%;
+  border: 3px solid $header-btn-border;
+  display: inline-block;
+  width:  36px;
+  height: 36px;
+
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  animation: animate-up 2000ms infinite 200ms;
+  box-shadow: inset 0 0 10px 5px $accent-bg-color; 
+
+  @include media('min', 'tablet') {
+    width:  36px;
+    height: 36px;
+  }
+
+  &:hover,
+  &:focus {
+
+    transform: scale(1.1);
+    color: $accent-bg-color; 
+    font-weight: 700;      
+  }
+&--is-hidden {
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+  
+}
+
+@keyframes animate-up {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  50% {
+    transform: rotate(-45deg);
+  }
+
+  100% {
+    transform: rotate(45deg);
+  }
+}
