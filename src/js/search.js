@@ -24,6 +24,8 @@ export default class Search extends Start {
 
     super.resetPage();
 
+    onLoader();
+
     const data = await super.fetchSerchQuery(value);
     
     offLoader();
