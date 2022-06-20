@@ -58,7 +58,7 @@ export default class Library extends Modal {
           <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
           <div class="film-description">
           <p class="film-name">${original_title}</p>
-          <span class="film-genre">${this.renderGenres(genres)} |</span>
+          <span class="film-genre">${super.renderGenres(genres)} |</span>
           <span class="film-year_of_issue">${release_date.slice(0, 4)}</span>
           <span class="film-vote_average">${vote_average}</span>
           </div>
@@ -71,19 +71,7 @@ export default class Library extends Modal {
     this.filmsContainer.innerHTML = markup;
   }
 
-  renderGenres(genres) {
-    if (genres.length <= 2) {
-      const genre = genres.map(genre => genre.name);
-      return genre;
-    } else {
-      const genre = genres.map(genre => genre.name);
-      genre.length = 2;
-      genre[2] = 'Other';
-      return genre;
-    }
-  }
-
-  handleWatched() {
+   handleWatched() {
     this.watchedBtn.classList.add('header__btn--active');
     this.queueBtn.classList.remove('header__btn--active');
 

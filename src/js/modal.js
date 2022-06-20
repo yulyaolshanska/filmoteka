@@ -19,6 +19,7 @@ export default class Modal extends NewsApiService {
     this.addToWatched = this.addToWatched.bind(this);
     this.addToQueue = this.addToQueue.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
+    this.renderGenres = this.renderGenres.bind(this);
 
   }
 
@@ -122,11 +123,7 @@ export default class Modal extends NewsApiService {
           </li>
           <li class="card_item">
               <span class="category">Genre</span>
-              <span class="av">${genres
-                .map(genre => {
-                  return genre.name;
-                })
-                .join(', ')}</span>           
+              <span class="av">${this.renderGenres(genres)}</span>           
           </li>    
       </ul>
       <h3 class="card_subtitle">About</h3>
@@ -162,6 +159,19 @@ export default class Modal extends NewsApiService {
     }
 
   return posterUrl;
+}
+
+
+renderGenres(genres) {
+  if (genres.length <= 2) {
+    const genre = genres.map(genre => genre.name);
+    return genre.join(', ');
+  } else {
+    const genre = genres.map(genre => genre.name);
+    genre.length = 2;
+    genre[2] = 'Other';
+    return genre.join(', ');
+  }
 }
 
   onClickESC(e) {
