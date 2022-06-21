@@ -83,6 +83,13 @@
   }
   &--added-btn {
     background-color: green;
+    cursor: default;
+
+    
+   &:hover,
+   &:focus {
+    background-color: green;
+   }
   }
 }
 
