@@ -1,5 +1,5 @@
-import NewsApiService from './api-service';
 import Modal from './modal';
+import trendResultList from '../templates/poster.hbs';
 
 export default class Library extends Modal {
   constructor() {
@@ -16,7 +16,11 @@ export default class Library extends Modal {
 
     this.handleWatched = this.handleWatched.bind(this);
     this.handleQueue = this.handleQueue.bind(this);
+
+    this.filmArray = [];
+
     this.removeCard = this.removeCard.bind(this);
+
   }
 
   onMyLibrary() {
@@ -43,32 +47,12 @@ export default class Library extends Modal {
     this.filmsContainer.addEventListener('click', this.removeCard);
   }
 
-  renderFilmCard(films) {
-    const markup = films
-      .map(
-        ({
-          poster_path,
-          original_title,
-          vote_average,
-          id,
-          genres,
-          release_date,
-        }) =>
-          `
-          <li class="film-card" id=${id}>
-            <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
-            <div class="film-description">
-            <p class="film-name">${original_title}</p>
-            <span class="film-genre">${super.renderGenres(genres)} |</span>
-            <span class="film-year_of_issue">${release_date.slice(0, 4)}</span>
-            <span class="film-vote_average">${vote_average}</span>
-            </div>
-            <button type="button" class="film-btn_card_remove"></button>
-          </li>
-          `
-      )
-      .join('');
-
+  renderFilmCard(data) {
+    
+    const libraryData = super.getLibraryData(data);
+    
+    const markup = trendResultList(libraryData);
+ 
     this.filmsContainer.innerHTML = markup;
   }
 
