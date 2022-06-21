@@ -27,19 +27,21 @@ export default class Modal extends NewsApiService {
   }
 
   getWatchedFilms() {
-    return this.watchedFilms;
+    return JSON.parse(localStorage.getItem('watched-films')) || [];
   }
 
   getQueue() {
-    return this.queue;
+    return JSON.parse(localStorage.getItem('queue-films')) || [];
   }
 
   async onOpenModal(event) {
     // let movieId = null;
     const link = event.target.closest('.film-card');
-    if (!link) {
+
+    if (!link || event.target.classList.contains('film-btn_card_remove')) {
       return;
     }
+
     const movieId = link.getAttribute('id');
     // console.log(movieId);
 
