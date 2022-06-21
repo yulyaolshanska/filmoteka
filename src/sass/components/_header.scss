@@ -8,7 +8,7 @@ body{
    background-repeat: no-repeat;
    background-size: cover;
    background-attachment: fixed;
-   background-position-y: center;
+   background-position: center;
 }
 
 .container--bg-color{
@@ -240,12 +240,14 @@ position: relative;
 //   }
 
 .container--bg-color-dark{
-   background-color: #ffffff1a;
+   @include media('min', 'desktop') {
+      background-color: #ffffff1a;
+   }
 }
   
-  .film-name--dark{
-   color: white;
-  }
+//   .film-name--dark{
+//    color: white;
+//   }
 
   .dark a {
    color: #fff;
@@ -253,4 +255,15 @@ position: relative;
 
 .film-description{
 background-color: #fff;
+}
+
+.footer--dark{
+   background-color: transparent;
+   @include media('min', 'desktop') {
+      background-color: #ffffff1a;
+   }
+}
+
+.footer__text--dark{
+   color: #d6d6d6;
 }

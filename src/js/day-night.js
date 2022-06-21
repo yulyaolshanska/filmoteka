@@ -19,6 +19,14 @@ export function addDarkClassToHTML() {
         .querySelector('.film-description')
         .classList.add('film-description--dark');
       document.querySelector('.film-name').classList.add('film-name--dark');
+      document
+      .querySelector('footer')
+      .classList.add('footer--dark');
+      document
+      .querySelector('.footer__text')
+      .classList.add('footer__text--dark');
+    document.querySelector('.film-name').classList.add('film-name--dark');
+    
 
       // document.querySelector('footer').classList.add('dark');
       document.querySelector('.themetoggle span').textContent = 'dark_mode';
@@ -31,6 +39,12 @@ export function addDarkClassToHTML() {
         .querySelector('.film-description')
         .classList.remove('film-description--dark');
       document.querySelector('.film-name').classList.remove('film-name--dark');
+      document
+      .querySelector('footer')
+      .classList.remove('footer--dark');
+      document
+      .querySelector('.footer__text')
+      .classList.remove('footer__text--dark');
       document.querySelector('.themetoggle span').textContent = 'wb_sunny';
     }
   } catch (err) {}
