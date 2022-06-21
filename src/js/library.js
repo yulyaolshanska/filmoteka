@@ -32,7 +32,7 @@ export default class Library extends Modal {
     this.queueBtn.addEventListener('click', this.handleQueue);
     this.filmsContainer.addEventListener('click', this.removeCard);
     this.status = 'watched';
-    
+
     if (this.watchedFilms.length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your library yet</li>`;
       

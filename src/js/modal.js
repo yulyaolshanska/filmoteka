@@ -82,15 +82,15 @@ export default class Modal extends NewsApiService {
       } = data.data;
 
       this.fetchedData = {
-        id: id,
-        popularity: popularity,
-        genres: genres,
-        poster_path: poster_path,
-        vote_average: vote_average,
-        vote_count: vote_count,
-        title: title,
-        overview: overview,
-        release_date: release_date,
+        id,
+        popularity,
+        genres,
+        poster_path,
+        vote_average,
+        vote_count,
+        title,
+        overview,
+        release_date,
       };
 
       this.renderCard(this.fetchedData);
@@ -231,7 +231,7 @@ export default class Modal extends NewsApiService {
   }
 
   offButnWatched() {
-    this.watchedFilms = JSON.parse(localStorage.getItem('watched-films'));
+    this.watchedFilms = JSON.parse(localStorage.getItem('watched-films')) || [];
     console.log(this.watchedFilms);
     if (this.watchedFilms.find(films => this.fetchedData.id === films.id)) {
       document.querySelector('.watched').innerHTML = 'Film added to Watched';
@@ -242,7 +242,7 @@ export default class Modal extends NewsApiService {
   }
 
   offButnQueue() {
-    this.queue = JSON.parse(localStorage.getItem('queue-films'));
+    this.queue = JSON.parse(localStorage.getItem('queue-films')) || [];
     if (this.queue.find(films => this.fetchedData.id === films.id)) {
       document.querySelector('.queue').innerHTML = 'Film added to Queue';
       document.querySelector('.queue').classList.add('modal__btn--added-btn');
