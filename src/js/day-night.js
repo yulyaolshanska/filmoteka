@@ -15,7 +15,6 @@ export function addDarkClassToHTML() {
       document
         .querySelector('.container--bg-color')
         .classList.add('container--bg-color-dark');
-      document.querySelector('.film-name').classList.add('film-name--dark');
       document
         .querySelector('.film-description')
         .classList.add('film-description--dark');

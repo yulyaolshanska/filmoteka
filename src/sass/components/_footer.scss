@@ -1,7 +1,14 @@
 footer{
    background-color: #F7F7F7;
+   min-width: 320px;
+    margin: auto;
+    @include media('min', 'tablet') {
+     min-width: 768px;
+   }
+ 
+   @include media('min', 'desktop') {
    width: 1024px;
-    margin: 0 auto;
+   }
 }
 .footer{
    display: flex;

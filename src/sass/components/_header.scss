@@ -3,21 +3,19 @@ $secondary: #38ef7d;
 $white: #fff;
 $gray: #9b9b9b;
 
-// body{
-//    background-image:   url(/src/images/theatre.jpg);
-//    background-repeat: no-repeat;
-//    background-size: cover;
-//    background-attachment: fixed;
-//    background-position-y: center;
-// }
+body{
+   background-image:   url(/src/images/theatre.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   background-position-y: center;
+}
 
-// .container--bg-color{
-//    background-color: white;
-// }
-
-// .container--bg-color-dark{
-//    background-color: #ffffff1a;
-// }
+.container--bg-color{
+   @include media('min', 'desktop') {
+      background-color: white;
+   }
+}
 
 
 .header {
@@ -26,7 +24,7 @@ $gray: #9b9b9b;
    background-position: center;
    height: 230px;
    min-width: 320px;
-   margin: 0 auto;
+   margin:  auto;
  
    @include media('min', 'tablet') {
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(/src/images/home/tabl.png);
@@ -222,31 +220,37 @@ position: relative;
       }
    }
 
-//    .dark-block{
-//       position: absolute;
-//       right: 30px;
-//       top: 14px;
-//    }
+   .dark-block{
+      position: absolute;
+      right: 30px;
+      top: 14px;
+   }
 
-//    .dark-block span {
-//       color: #fff;
-//       font-size: 18px;
-//    }
+   .dark-block span {
+      color: #fff;
+      font-size: 18px;
+   }
    
-//    .dark  {
-//       background-image: linear-gradient(to right, #0000008f, #0000008f), url(/src/images/theatre.jpg);
+   .dark  {
+      background-image: linear-gradient(to right, #0000008f, #0000008f), url(/src/images/theatre.jpg);
+  }
+
+//   .film-description--dark{
+//    background-color: #774032bd;
 //   }
 
-// //   .film-description--dark{
-// //    background-color: #774032bd;
-// //   }
-
-
+.container--bg-color-dark{
+   background-color: #ffffff1a;
+}
   
-//   .film-name--dark{
-//    color: white;
-//   }
+  .film-name--dark{
+   color: white;
+  }
 
-//   .dark a {
-//    color: #fff;
-// }
+  .dark a {
+   color: #fff;
+}
+
+.film-description{
+background-color: #fff;
+}
