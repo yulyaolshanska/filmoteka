@@ -206,7 +206,6 @@ renderGenres(genres) {
     document.querySelector('.watched').removeEventListener('click', this.addToWatched);
     document.querySelector('.queue').removeEventListener('click', this.addToQueue);
     this.backdrop.removeEventListener('click', this.onClickBdrop);
-    this.cardEl.innerHTML = '';
   }
 
   offButnWatched(){
