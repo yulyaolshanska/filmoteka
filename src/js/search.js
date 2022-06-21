@@ -1,5 +1,5 @@
 import Start from './start';
-import searchResultList from '../templates/search.hbs';
+import searchResultList from '../templates/poster.hbs';
 
 import { onLoader, offLoader } from './loader';
 

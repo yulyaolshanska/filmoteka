@@ -43,7 +43,7 @@ export default class Modal extends NewsApiService {
     }
 
     const movieId = link.getAttribute('id');
-    // console.log(movieId);
+    console.log(movieId);
 
     await this.fetchRenderCard(movieId);
 
@@ -67,7 +67,6 @@ export default class Modal extends NewsApiService {
       onModalLoader();
       const data = await super.fetchMovieById(movieId);
       offModalLoader();
-      // console.log(data);
 
       const {
         id,
@@ -79,6 +78,8 @@ export default class Modal extends NewsApiService {
         title,
         overview,
         release_date,
+        original_title,
+        budget,
       } = data.data;
 
       this.fetchedData = {
@@ -91,6 +92,8 @@ export default class Modal extends NewsApiService {
         title,
         overview,
         release_date,
+        original_title,
+        budget,  
       };
 
       this.renderCard(this.fetchedData);
@@ -152,7 +155,7 @@ export default class Modal extends NewsApiService {
           </li>
           <li class="card_item">
               <span class="category">Genre</span>
-              <span class="av">${this.renderGenres(genres)}</span>           
+              <span class="av">${super.renderGenres(genres)}</span>           
           </li>    
       </ul>
       <h3 class="card_subtitle">About</h3>
@@ -186,18 +189,6 @@ export default class Modal extends NewsApiService {
     }
 
     return posterUrl;
-  }
-
-  renderGenres(genres) {
-    if (genres.length <= 2) {
-      const genre = genres.map(genre => genre.name);
-      return genre.join(', ');
-    } else {
-      const genre = genres.map(genre => genre.name);
-      genre.length = 2;
-      genre[2] = 'Other';
-      return genre.join(', ');
-    }
   }
 
   onClickESC(e) {
