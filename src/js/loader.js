@@ -9,7 +9,7 @@ export const offLoader = () => {
   refs.loaderBlock.classList.remove('loader-block');
 };
 export const onModalLoader = () => {
-  refs.Modalloader.classList.add('loader-block');
+  refs.Modalloader.classList.add('loader-block', 'loader-block--modal');
 };
 export const offModalLoader = () => {
   refs.Modalloader.classList.remove('loader-block');

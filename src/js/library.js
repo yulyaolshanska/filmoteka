@@ -16,7 +16,7 @@ export default class Library extends Modal {
 
     this.handleWatched = this.handleWatched.bind(this);
     this.handleQueue = this.handleQueue.bind(this);
-    // this.removeCard = this.removeCard.bind(this);
+    this.removeCard = this.removeCard.bind(this);
   }
 
   onMyLibrary() {
@@ -30,14 +30,15 @@ export default class Library extends Modal {
 
     this.watchedBtn.addEventListener('click', this.handleWatched);
     this.queueBtn.addEventListener('click', this.handleQueue);
-
+    this.filmsContainer.addEventListener('click', this.removeCard);
+    this.status = 'watched';
+    
     if (this.watchedFilms.length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your library yet</li>`;
       
       return;
     }
 
-    this.status = 'watched'
     this.renderFilmCard(this.watchedFilms);
     this.filmsContainer.addEventListener('click', this.removeCard);
   }
@@ -55,14 +56,14 @@ export default class Library extends Modal {
         }) =>
           `
           <li class="film-card" id=${id}>
-          <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
-          <div class="film-description">
-          <p class="film-name">${original_title}</p>
-          <span class="film-genre">${this.renderGenres(genres)} |</span>
-          <span class="film-year_of_issue">${release_date.slice(0, 4)}</span>
-          <span class="film-vote_average">${vote_average}</span>
-          </div>
-          <button type="button" class="film-btn_card_remove"></button>
+            <img class="film-img" src="http://image.tmdb.org/t/p/w500/${poster_path}" alt="" id='${id}'/>
+            <div class="film-description">
+            <p class="film-name">${original_title}</p>
+            <span class="film-genre">${super.renderGenres(genres)} |</span>
+            <span class="film-year_of_issue">${release_date.slice(0, 4)}</span>
+            <span class="film-vote_average">${vote_average}</span>
+            </div>
+            <button type="button" class="film-btn_card_remove"></button>
           </li>
           `
       )
@@ -71,53 +72,81 @@ export default class Library extends Modal {
     this.filmsContainer.innerHTML = markup;
   }
 
-  renderGenres(genres) {
-    if (genres.length <= 2) {
-      const genre = genres.map(genre => genre.name);
-      return genre;
-    } else {
-      const genre = genres.map(genre => genre.name);
-      genre.length = 2;
-      genre[2] = 'Other';
-      return genre;
-    }
-  }
-
-  handleWatched() {
+   handleWatched() {
     this.watchedBtn.classList.add('header__btn--active');
     this.queueBtn.classList.remove('header__btn--active');
-
+    this.status = 'watched';
+     
     if (this.watchedFilms.length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your Watched category yet</li>`;
 
       return
     }
-
-    this.status = 'watched';
+        
     this.renderFilmCard(this.watchedFilms);
   }
   
   handleQueue() {
     this.queueBtn.classList.add('header__btn--active');
     this.watchedBtn.classList.remove('header__btn--active');
-    
+    this.status = 'queue';
+        
     if (this.queue.length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your Queue category yet</li>`;
 
       return;
     }
-
-    this.status = 'queue';
+        
     this.renderFilmCard(this.queue);
   }
 
-  // removeCard() {
-  //   if (this.status === 'watched') {
-  //     console.log('watched');
-  //   } else if (this.status === 'queue') {
-  //     console.log('queue');
-  //   } else {
-  //     console.log('something wrong');
-  //   }
-  // }
+  removeCard(e) {
+
+    const element = e.target
+
+    const isElement = element.classList.contains('film-btn_card_remove');
+
+    if (isElement) {
+      
+      const id = e.target.parentNode.getAttribute('id');
+      
+      if (this.status === 'watched') {
+               
+        const modifyWatchedFilms = super.getWatchedFilms().filter((item) => {
+          if (item.id != id) {
+            return item;
+          }
+        });
+
+        localStorage.setItem('watched-films', JSON.stringify(modifyWatchedFilms));
+
+        this.watchedFilms = modifyWatchedFilms;
+
+        if (modifyWatchedFilms.length === 0) {
+          this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't have any films in your Watched category yet</li>`
+        }
+
+      } else if (this.status === 'queue') {
+        
+        const modifyQueue = super.getQueue().filter((item) => {
+          if (item.id != id) {
+            return item;
+          }
+        });
+
+        localStorage.setItem('queue-films', JSON.stringify(modifyQueue));
+
+        this.queue = modifyQueue;
+        
+        if (modifyQueue.length === 0) {
+          this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't have any films in your Queue category yet</li>`
+        }
+
+      } else {
+        console.log('something wrong');
+      }
+
+      element.parentNode.remove();  
+    }
+  }
 }
