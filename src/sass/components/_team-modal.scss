@@ -75,7 +75,7 @@
     border: solid 5px #ffffff;
     border-radius: 30px;
     overflow: hidden;
-    background-color: #ffffff;
+    
     cursor: pointer; 
     width: 100%;  
 
@@ -184,4 +184,7 @@ transform: rotateY(180deg);
     font-size: 18px;
   }
 
+  .team-member {
+    background-color: #ffffff;
+  }
  
