@@ -27,6 +27,8 @@ export default class Modal extends NewsApiService {
     this.renderGenres = this.renderGenres.bind(this);
     this.offButnWatched = this.offButnWatched.bind(this);
     this.offButnQueue = this.offButnQueue.bind(this);
+    this.getWatchedFilms = this.getWatchedFilms.bind(this);
+    this.getQueue = this.getQueue.bind(this)
   }
 
   getWatchedFilms() {
@@ -57,6 +59,25 @@ export default class Modal extends NewsApiService {
     this.main.classList.add('blur');
     this.header.classList.add('blur');
     this.footer.classList.add('blur');
+
+    // if (this.getWatchedFilms().find(films => this.fetchedData.id === films.id))  {
+    //   console.log(1)
+      
+    // //   document.querySelector('.watched').disabled = 'true';
+    // // document.querySelector('.watched').style = 'cursor: default';
+    // // document.querySelector('.queue').disabled = 'false';
+    // // document.querySelector('.queue').style = 'cursor: pointer';
+    
+    // } else 
+
+    // if (this.getQueue().find(films => this.fetchedData.id === films.id)) {
+    //   console.log(2)
+    //   // document.querySelector('.queue').disabled = 'true';
+    //   // document.querySelector('.queue').style = 'cursor: default';
+    //   // document.querySelector('.watched').disabled = 'false';
+    //   //   document.querySelector('.watched').style = 'cursor: default';
+        
+    // };
 
     this.btnClose.addEventListener('click', this.onModalClose);
 
@@ -251,8 +272,13 @@ export default class Modal extends NewsApiService {
     document.querySelector('.watched').classList.add('modal__btn--active');
     document.querySelector('.watched').innerHTML = 'Film added to Watched';
     document.querySelector('.watched').disabled = 'true';
+    document.querySelector('.watched').style = 'cursor: default';
+    document.querySelector('.queue').disabled = 'true';
+    document.querySelector('.queue').style = 'cursor: default';
+    // document.querySelector('.queue:hover').style = 'background-color: transparent';
 
     if (this.isFilmInStorage()) {
+     
       return;
     }
     
@@ -265,8 +291,12 @@ export default class Modal extends NewsApiService {
     document.querySelector('.queue').classList.add('modal__btn--active');
     document.querySelector('.queue').innerHTML = 'Film added to Queue';
     document.querySelector('.queue').disabled = 'true';
+    document.querySelector('.queue').style = 'cursor: default';
+    document.querySelector('.watched').disabled = 'true';
+      document.querySelector('.watched').style = 'cursor: default';
 
     if (this.isFilmInStorage()) {
+      
       return;
     }
 
