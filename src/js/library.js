@@ -1,6 +1,6 @@
-import NewsApiService from './api-service';
 import Modal from './modal';
-import trendResultList from '../templates/poster.hbs'
+import trendResultList from '../templates/poster.hbs';
+
 export default class Library extends Modal {
   constructor() {
     super();
@@ -47,43 +47,12 @@ export default class Library extends Modal {
     this.filmsContainer.addEventListener('click', this.removeCard);
   }
 
-  renderFilmCard(films) {
+  renderFilmCard(data) {
     
-    this.filmArray = films.map(
-      ({
-        poster_path,
-        original_title,
-        vote_average,
-        id,
-        genres,
-        release_date,
-        title,
-        budget,
-      }) =>{
-  
-        let releaseYear = release_date.slice(0, 4);
-        let genresRend = super.renderGenres(genres);
-        console.log(films);
-
-        const isButton = true;
-
-        return  this.filmArray = {
-          poster_path,
-          original_title,
-          vote_average,
-          id,
-          genres: genresRend,
-          release_date: releaseYear,
-          title,
-          budget,
-          isButton,
-        }
-    });
+    const libraryData = super.getLibraryData(data);
     
-    const markup = trendResultList(this.filmArray);
-  // ====================================================
-    console.log(markup)
-
+    const markup = trendResultList(libraryData);
+ 
     this.filmsContainer.innerHTML = markup;
   }
 
