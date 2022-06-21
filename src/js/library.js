@@ -120,6 +120,8 @@ export default class Library extends Modal {
 
         localStorage.setItem('watched-films', JSON.stringify(modifyWatchedFilms));
 
+        this.watchedFilms = modifyWatchedFilms;
+
         if (modifyWatchedFilms.length === 0) {
           this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't have any films in your Watched category yet</li>`
         }
@@ -133,6 +135,8 @@ export default class Library extends Modal {
         });
 
         localStorage.setItem('queue-films', JSON.stringify(modifyQueue));
+
+        this.queue = modifyQueue;
         
         if (modifyQueue.length === 0) {
           this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't have any films in your Queue category yet</li>`
