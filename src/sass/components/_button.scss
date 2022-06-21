@@ -83,10 +83,15 @@
   }
   &--added-btn {
     background-color: green;
+    cursor: default;
+
+    
+   &:hover,
+   &:focus {
+    background-color: green;
+   }
   }
 }
-// ========================================
-// Please, dont hurt my little button. It can returns us to the up of page
 
 .up-button {
   position: fixed;
