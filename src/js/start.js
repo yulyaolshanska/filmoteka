@@ -10,7 +10,7 @@ export default class Start extends NewsApiService {
     const finalData = await this.getData(genres);
     
     super.getRefs().filmsContainer.innerHTML = trendResultList(finalData);
-    super.firstUpdated();
+    super.firstUpdated(); // scroll викликати метод при відображенні сторінки
   }
 
   async getData(genres) {
