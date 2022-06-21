@@ -6,6 +6,11 @@
    display: flex;
    justify-content: center;
    padding-top: 20px;
+   &--modal{
+    position: absolute;
+    top: -12px;
+    width: 100%;
+   }
 }
 
 // --------------  1  ----------------
