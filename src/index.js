@@ -23,7 +23,7 @@ const start = async () => {
   new Search(genres);
   // new Modal();
   const library = new Library();
-  new GoToHome(genres, library.handleWatched, library.handleQueue);
+  new GoToHome(genres, library.handleWatched, library.handleQueue, library.removeCard);
 }
 
 start(); 

@@ -51,6 +51,41 @@ export default class NewsApiService {
     return finalData;
   }
 
+  getLibraryData(data) {
+    const libraryData = data.map(
+      ({
+        poster_path,
+        original_title,
+        vote_average,
+        id,
+        genres,
+        release_date,
+        title,
+        budget,
+      }) =>{
+  
+        let releaseYear = release_date.slice(0, 4);
+        let genresRend = this.renderGenres(genres);
+        // console.log(films);
+
+        const isButton = true;
+
+        return {
+          poster_path,
+          original_title,
+          vote_average,
+          id,
+          genres: genresRend,
+          release_date: releaseYear,
+          title,
+          budget,
+          isButton,
+        }
+      });
+    
+    return libraryData;
+  }
+
   parcingGenres(genre_ids, genres) {
     
     return genre_ids.map((id, i) => {
@@ -63,6 +98,18 @@ export default class NewsApiService {
       return 'Others';
                     
     }).slice(0, 3).join(', ');
+  }
+
+  renderGenres(genres) {
+    if (genres.length <= 2) {
+      const genre = genres.map(genre => genre.name);
+      return genre.join(', ');
+    } else {
+      const genre = genres.map(genre => genre.name);
+      genre.length = 2;
+      genre[2] = 'Other';
+      return genre.join(', ');
+    }
   }
 
   async fetchGenres() {
