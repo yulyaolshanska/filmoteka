@@ -41,7 +41,8 @@ export default class NewsApiService {
     this.observer.disconnect();
   } // sroll цей метод треба викликати при переході між сторінками або коли закінчаться фільми з колекції
 
-  async loadNextPage() {// має включатись коли доскролиш вниз
+  async loadNextPage() {
+    // має включатись коли доскролиш вниз
     await this.fetchTrend();// ось тут має бути якась логіка підстановки різних шляхів запитів, починаючи з другої сторінки
     this.page += 1;
   } //scroll 
