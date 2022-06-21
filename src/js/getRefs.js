@@ -8,7 +8,7 @@ export default function getRefs() {
     homeLink: document.querySelector('#home'),
     myLibraryLink: document.querySelector('#my-library'),
     buttonsBlock: document.querySelector('.header__block-btn'),
-    ul: document.querySelector('.films-collection'),
+    filmsContainer: document.querySelector('.films-collection'),
     header: document.querySelector('.header'),
     logo: document.querySelector('#logo'),
     loaderBlock: document.querySelector('.load'),
@@ -27,5 +27,6 @@ export default function getRefs() {
     btnModalTeamClose: document.querySelector(`.modal-team_close`),
     ulTeamEl: document.querySelector('.team-collection'),
 
+    upButton:document.querySelector('[data-upButton]'),
   };
 }
