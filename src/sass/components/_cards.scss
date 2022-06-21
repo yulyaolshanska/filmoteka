@@ -47,6 +47,7 @@
 }
 
 .film-card { 
+    position: relative;
     cursor: pointer;   
     text-decoration: none;
     margin-bottom: 20px;
@@ -142,4 +143,28 @@ border-radius: 5px;
 
 .film-year_of_issue {
     margin-right: 8px;
+}
+
+.film-btn_card_remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+
+  border-radius: 50%;
+
+  background-color: $bgc-card-btn-remove;
+  background-image: url('../images/cross.svg');
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.film-btn_card_remove:hover {
+  transform: rotate(90deg);
 }

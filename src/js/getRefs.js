@@ -8,7 +8,7 @@ export default function getRefs() {
     homeLink: document.querySelector('#home'),
     myLibraryLink: document.querySelector('#my-library'),
     buttonsBlock: document.querySelector('.header__block-btn'),
-    ul: document.querySelector('.films-collection'),
+    filmsContainer: document.querySelector('.films-collection'),
     header: document.querySelector('.header'),
     logo: document.querySelector('#logo'),
     loaderBlock: document.querySelector('.load'),
@@ -22,5 +22,6 @@ export default function getRefs() {
     addToWatchedBtn: document.querySelector('[data-watched]'),
     addToQueueBtn: document.querySelector('[data-queue]'),
     ulEl: document.querySelector('.films-collection'),
+    upButton:document.querySelector('[data-upButton]'),
   };
 }
