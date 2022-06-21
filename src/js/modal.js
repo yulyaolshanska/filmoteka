@@ -15,6 +15,9 @@ export default class Modal extends NewsApiService {
     this.backdrop = super.getRefs().backdrop;
     this.btnClose = super.getRefs().btnClose;
     this.cardEl = super.getRefs().cardEl;
+    this.main = super.getRefs().main;
+    this.header = super.getRefs().header;
+    this.footer = super.getRefs().footer;
 
     this.onClickESC = this.onClickESC.bind(this);
     this.onClickBdrop = this.onClickBdrop.bind(this);
@@ -51,9 +54,9 @@ export default class Modal extends NewsApiService {
 
     this.backdrop.classList.remove('is-hidden');
 
-    document.querySelector('main').classList.add('blur');
-    document.querySelector('header').classList.add('blur');
-    document.querySelector('footer').classList.add('blur');
+    this.main.classList.add('blur');
+    this.header.classList.add('blur');
+    this.footer.classList.add('blur');
 
     this.btnClose.addEventListener('click', this.onModalClose);
 
@@ -66,6 +69,7 @@ export default class Modal extends NewsApiService {
     try {
       onModalLoader();
       const data = await super.fetchMovieById(movieId);
+      
       offModalLoader();
 
       const {
@@ -209,9 +213,9 @@ export default class Modal extends NewsApiService {
     document.body.style.overflow = '';
     document.removeEventListener('keydown', this.onClickESC);
     this.btnClose.removeEventListener('click', this.onModalClose);
-    document.querySelector('main').classList.remove('blur');
-    document.querySelector('header').classList.remove('blur');
-    document.querySelector('footer').classList.remove('blur');
+    this.main.classList.remove('blur');
+    this.header.classList.remove('blur');
+    this.footer.classList.remove('blur');
     document
       .querySelector('.watched')
       .removeEventListener('click', this.addToWatched);
@@ -245,11 +249,13 @@ export default class Modal extends NewsApiService {
   addToWatched() {
     document.querySelector('.queue').classList.remove('modal__btn--active');
     document.querySelector('.watched').classList.add('modal__btn--active');
+    document.querySelector('.watched').innerHTML = 'Film added to Watched';
+    document.querySelector('.watched').disabled = 'true';
 
     if (this.isFilmInStorage()) {
       return;
     }
-
+    
     this.watchedFilms.push(this.fetchedData);
     localStorage.setItem('watched-films', JSON.stringify(this.watchedFilms));
   }
@@ -257,6 +263,8 @@ export default class Modal extends NewsApiService {
   addToQueue() {
     document.querySelector('.watched').classList.remove('modal__btn--active');
     document.querySelector('.queue').classList.add('modal__btn--active');
+    document.querySelector('.queue').innerHTML = 'Film added to Queue';
+    document.querySelector('.queue').disabled = 'true';
 
     if (this.isFilmInStorage()) {
       return;
