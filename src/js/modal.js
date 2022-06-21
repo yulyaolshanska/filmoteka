@@ -20,7 +20,9 @@ export default class Modal extends NewsApiService {
     this.addToQueue = this.addToQueue.bind(this);
     this.onModalClose = this.onModalClose.bind(this);
     this.renderGenres = this.renderGenres.bind(this);
-
+    this.offButnWatched = this.offButnWatched.bind(this);
+    this.offButnQueue = this.offButnQueue.bind(this);
+    
   }
 
   getWatchedFilms() {
@@ -80,8 +82,14 @@ export default class Modal extends NewsApiService {
       
       this.renderCard(this.fetchedData);
 
+
+      this.offButnWatched();
+      this.offButnQueue();
+
       document.querySelector('.watched').addEventListener('click', this.addToWatched);
       document.querySelector('.queue').addEventListener('click', this.addToQueue);
+
+
     } catch (error) {
       console.log(error.message);
     }
@@ -201,9 +209,34 @@ renderGenres(genres) {
     this.cardEl.innerHTML = '';
   }
 
+  offButnWatched(){
+    
+    this.watchedFilms = JSON.parse(localStorage.getItem('watched-films'));
+    console.log(this.watchedFilms)
+    if (this.watchedFilms.find(films => this.fetchedData.id === films.id)) {
+     
+      document.querySelector('.watched').innerHTML= 'Film added to Watched';
+      document.querySelector('.watched').classList.add('modal__btn--added-btn');
+      document.querySelector('.watched').disabled = 'true';
+    };
+    return;
+  }
+  
+  offButnQueue(){
+    this.queue = JSON.parse(localStorage.getItem('queue-films'));
+    if (this.queue.find(films => this.fetchedData.id === films.id)) {
+      document.querySelector('.queue').innerHTML= 'Film added to Queue';
+      document.querySelector('.queue').classList.add('modal__btn--added-btn');
+      document.querySelector('.queue').disabled = 'true';
+    };
+    return;
+  }
+
   addToWatched() {
     document.querySelector('.queue').classList.remove('modal__btn--active');
     document.querySelector('.watched').classList.add('modal__btn--active');
+   
+    
 
     if (this.isFilmInStorage()) {
       return;
@@ -216,7 +249,7 @@ renderGenres(genres) {
   addToQueue() {
     document.querySelector('.watched').classList.remove('modal__btn--active');
     document.querySelector('.queue').classList.add('modal__btn--active');
-
+    
     if (this.isFilmInStorage()) {
       return;
     };
