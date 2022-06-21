@@ -15,12 +15,20 @@ const start = async () => {
   const start = new Start();
   const genres = await start.fetchGenres();
 
+  start.addButtonUp();
+
   start.renderMainCollection(genres);
 
   new Search(genres);
   // new Modal();
   const library = new Library();
-  new GoToHome(genres, library.handleWatched, library.handleQueue);
+
+  new GoToHome(
+    genres,
+    library.handleWatched,
+    library.handleQueue,
+    library.removeCard
+  );
 };
 
 start();
