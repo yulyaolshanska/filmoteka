@@ -141,8 +141,8 @@ export default class Library extends Modal {
       } else {
         console.log('something wrong');
       }
-    }
 
-    element.parentNode.remove();    
+      element.parentNode.remove();  
+    }
   }
 }
