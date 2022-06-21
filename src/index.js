@@ -10,6 +10,7 @@ import Search from './js/search';
 import Start from './js/start';
 import Modal from './js/modal';
 import Library from './js/library';
+// import './js/scroll'; //
 
 const start = async () => {
 

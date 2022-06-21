@@ -1,54 +1,23 @@
-import poster from '../templates/poster.hbs';
-import NewsApiService from './api-service'; //
-import getRefs from './getRefs';
-import { getRenderQuery } from './poster';
-import SearchAPI from './search';
-import { incrementPage, onScroll } from './poster';
+// import NewsApiService from './api-service';
+// const filmService = new NewsApiService();
+// const sentinel = document.querySelector('#sentinel');
 
-// const filmService = new NewsApiService(); //
-const searchQuery = new SearchAPI();
-const trend = document.querySelector('#sentinel'); 
-const search = document.querySelector('#sentinel-search');
-const library = document.querySelector('#sentinel-library');
-const refs = getRefs();
-
-const onEntry = entries => { 
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      onScroll().then(data => {
-        console.log(data)
-        getRenderQuery(data);
-        //   if (data.length === 0) {
-        //     observer.unobserve(entry.target);
-        // }
-        // filmService.incrementPage();
-        incrementPage();
-      })
-    }
-  })
-}
-
-const observer = new IntersectionObserver(onEntry, {
-  rootMargin: '150px',
-});
-observer.observe(trend);
-
-// const onEntrySearch = entries => { //
-//   entries.forEach(entry => {
-//     if (entry.isIntersecting) {
-//       filmService.fetchSerchQuery().then(data => {
-//         console.log(data.data.results)
-//         getRenderQuery(data.data.results);
-//         //   if (data.length === 0) {
-//         //     observer.unobserve(entry.target);
-//         // }
-//         filmService.incrementPage();
-//       })
+// function onScroll(path, page) {
+//   const onEntry = entries => {
+//     entries.forEach(entry => {
+//       console.log(path);
+//     if (entry.isIntersecting && newsApiService.query !== '') {
+//       filmService.fetchArticles().then(articles => {
+//         appendArticlesMarkup(articles);
+//         newsApiService.incrementPage();
+//       });
 //     }
-//   })
-// }
-
-// const searchObserver = new IntersectionObserver(onEntrySearch, {
+//   });
+//   };
+//   const observer = new IntersectionObserver(onEntry, {
 //   rootMargin: '150px',
 // });
-// searchObserver.observe(search);
+// observer.observe(sentinel);
+// }
+
+
