@@ -1,7 +1,7 @@
 import Start from './start';
 
 export default class GoToHome extends Start {
-  constructor(genres, handleWatched, handleQueue) {
+  constructor(genres, handleWatched, handleQueue, removeCard) {
     super();
     super.getRefs().homeLink.addEventListener('click', this.onHome.bind(this));
     super.getRefs().logo.addEventListener('click', this.onHome.bind(this));
@@ -9,6 +9,7 @@ export default class GoToHome extends Start {
     this.genres = genres;
     this.handleWatched = handleWatched;
     this.handleQueue = handleQueue;
+    this.removeCard = removeCard;
   }
 
   onHome() {
@@ -22,5 +23,6 @@ export default class GoToHome extends Start {
 
     super.getRefs().watchedBtn.removeEventListener('click', this.handleWatched);
     super.getRefs().queueBtn.removeEventListener('click', this.handleQueue);
+    super.getRefs().filmsContainer.addEventListener('click', this.removeCard);
   }
 }
