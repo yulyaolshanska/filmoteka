@@ -10,6 +10,7 @@ import Search from './js/search';
 import Start from './js/start';
 import Modal from './js/modal';
 import Library from './js/library';
+import Scroll from './js/scroll'; // my
 // import './js/scroll'; //
 
 const start = async () => {
@@ -25,6 +26,7 @@ const start = async () => {
   new GoToHome(genres, library.handleWatched, library.handleQueue);
 }
 
-start();
+start(); 
+
 
 

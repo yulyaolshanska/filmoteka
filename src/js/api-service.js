@@ -22,31 +22,8 @@ export default class NewsApiService {
     // this.templates = templates;
     // this.templates = getTemplates();
     // console.log(this.genres);
-    this.observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.loadNextPage();
-        }
-      })
-    }, {rootMargin: '150px',}) // scroll створює сам observer
   }
 
-  firstUpdated() {
-    console.log('hi, its correct')
-    const sentinel = document.querySelector('#sentinel');
-    if (sentinel) this.observer.observe(sentinel);
-  } //scroll починає слідкувати за змінами
-
-  disconnectedCallback() {
-    this.observer.disconnect();
-  } // sroll цей метод треба викликати при переході між сторінками або коли закінчаться фільми з колекції
-
-  async loadNextPage() {
-    // має включатись коли доскролиш вниз
-    await this.fetchTrend();// ось тут має бути якась логіка підстановки різних шляхів запитів, починаючи з другої сторінки
-    this.page += 1;
-  } //scroll 
-  
   getRefs() {
     return this.refs;
   }
