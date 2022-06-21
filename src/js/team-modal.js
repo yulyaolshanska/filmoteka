@@ -13,3 +13,11 @@ refs.btnModalTeamClose.addEventListener('click', onTeamModalClose);
 function onTeamModalClose() {
     refs.backdropTeam.classList.add('is-hidden');
 }
+
+window.addEventListener(`keydown`, onEscClose);
+
+function onEscClose(event) {
+    if(event.code === "Escape") {
+        onTeamModalClose();
+  }
+}

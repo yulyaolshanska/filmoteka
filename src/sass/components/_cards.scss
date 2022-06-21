@@ -71,7 +71,7 @@
     }
 }
 .film-card:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 .film-card:nth-child(2n + 2) { 
     @include media('within', 'desktop') {       
