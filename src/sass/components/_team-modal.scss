@@ -16,7 +16,7 @@
   .modal-team{
     position: absolute;
     left: 50%;
-    top:135%;
+    top:200%;
     transform: translate(-50%, -55%);
     padding: 20px;
     margin-left: auto;
@@ -29,7 +29,7 @@
 
     @media screen and (min-width: 500px) and (max-width: 767px) {
     left: 50%;
-    top: 70%; 
+    top: 95%; 
     width: 450px;
     height: 1160px;
     }
