@@ -10,6 +10,8 @@ import Start from './js/start';
 import Modal from './js/modal';
 import Library from './js/library';
 import './js/team-modal';
+import Scroll from './js/scroll'; // my
+
 
 const start = async () => {
 
@@ -22,8 +24,11 @@ const start = async () => {
   // new Modal();
   const library = new Library();
   new GoToHome(genres, library.handleWatched, library.handleQueue, library.removeCard);
+
+  new Scroll(genres);
 }
 
-start();
+start(); 
+
 
 

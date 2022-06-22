@@ -13,6 +13,7 @@ export default class Library extends Modal {
     this.filmsContainer = super.getRefs().filmsContainer;
     this.watchedBtn = super.getRefs().watchedBtn;
     this.queueBtn = super.getRefs().queueBtn;
+    this.observerItem = super.getRefs().sentinel;
 
     this.handleWatched = this.handleWatched.bind(this);
     this.handleQueue = this.handleQueue.bind(this);
@@ -24,6 +25,8 @@ export default class Library extends Modal {
   }
 
   onMyLibrary() {
+    this.observerItem.dataset.observe = 'library';
+
     super.getRefs().myLibraryLink.classList.add('site-nav__link--current');
     super.getRefs().homeLink.classList.remove('site-nav__link--current');
     super.getRefs().form.classList.add('form--is-hidden');
