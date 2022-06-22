@@ -161,8 +161,8 @@ export default class Modal extends NewsApiService {
       <h3 class="card_subtitle">About</h3>
       <p class="card_text">${overview}</p>
       <ul class="modal_button_list">
-          <li><button type="button" class="button button modal__btn modal__btn--margin watched" data-watched>add to Watched</button></li>
-          <li> <button type="button" class='button button modal__btn queue' data-queue>add to queue</button></li>
+          <li><button type="button" class="button button modal__btn modal__btn--margin watched" data-watched aria-label="Add to watched">add to Watched</button></li>
+          <li> <button type="button" class='button button modal__btn queue' data-queue aria-label="Add to queue">add to queue</button></li>
       </ul>
       </div>    
       `;
@@ -182,7 +182,7 @@ export default class Modal extends NewsApiService {
       posterUrl.w500 = `https://image.tmdb.org/t/p/w500${poster_path}`;
       posterUrl.w780 = `https://image.tmdb.org/t/p/w780${poster_path}`;
     } else {
-      let url = `https://www.freeiconspng.com/uploads/no-image-icon-13.png`;
+      let url = `https://www.freeiconspng.com/uploads/no-image-icon-6.png`;
       posterUrl.w342 = url;
       posterUrl.w500 = url;
       posterUrl.w780 = url;
