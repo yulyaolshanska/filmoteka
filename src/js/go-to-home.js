@@ -7,12 +7,16 @@ export default class GoToHome extends Start {
     super.getRefs().logo.addEventListener('click', this.onHome.bind(this));
 
     this.genres = genres;
+    this.observerItem = super.getRefs().sentinel;
+    
     this.handleWatched = handleWatched;
     this.handleQueue = handleQueue;
     this.removeCard = removeCard;
   }
 
   onHome() {
+    this.observerItem.dataset.observe = 'home';
+
     super.getRefs().homeLink.classList.add('site-nav__link--current');
     super.getRefs().myLibraryLink.classList.remove('site-nav__link--current');
     super.getRefs().buttonsBlock.classList.add('header__block-btn--is-hidden');
