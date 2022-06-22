@@ -55,6 +55,7 @@
     width: 280px;
     margin-right: auto;
     margin-left: auto;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
       
        
 @include media('min', 'tablet') {
@@ -69,7 +70,9 @@
       margin-bottom: 32px;
     }
 }
- 
+.film-card:hover {
+    transform: scale(1.05);
+}
 .film-card:nth-child(2n + 2) { 
     @include media('within', 'desktop') {       
           margin-right: 0px;
