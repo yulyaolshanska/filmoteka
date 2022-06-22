@@ -91,6 +91,17 @@
     background-color: green;
    }
   }
+
+  &--block-btn {
+    background-color: transparent;
+    cursor: default;
+
+    
+   &:hover,
+   &:focus {
+    background-color: transparent;
+   }
+  }
 }
 
 .up-button {
