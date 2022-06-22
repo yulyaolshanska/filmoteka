@@ -26,7 +26,6 @@ export default class Scroll extends NewsApiService {
   }
 
   async loadNextPage(entry) {
-    console.log(entry.target);
     super.incrementPage();
 
     if (entry.target.dataset.observe === 'home') {
