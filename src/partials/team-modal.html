@@ -88,8 +88,14 @@
         </div>
       </li>
       <li class="team-box">
-        <img class="team-img" src="./images/team/8.jpg" alt="8" />
-        <div class="team-member">
+        <picture>
+          <source srcset="./images/team/8_170.jpg 1x, ./images/team/8_340.jpg 2x" type="image/jpeg" media="(min-width: 1024px)" />
+          <source srcset="./images/team/8_163.jpg 1x, ./images/team/8_326.jpg 2x" type="image/jpeg" media="(min-width: 768px)" />               
+          <source srcset="./images/team/8_175.jpg 1x, ./images/team/8_350.jpg 2x" type="image/jpeg" media="(min-width: 500px)" /> 
+          <source srcset="./images/team/8_190.jpg 1x, ./images/team/8_380.jpg 2x" type="image/jpeg" media="(min-width: 320px)" /> 
+          <img class='team-img' src="./images/team/8_origin.jpg" alt="Viacheslav" />
+          </picture>  
+          <div class="team-member">
           <p class="team-member-name">Viacheslav</p>
           <p class="team-member-position">Developer</p>
         </div>
