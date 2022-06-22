@@ -24,6 +24,7 @@ export default function getRefs() {
     addToWatchedBtn: document.querySelector('[data-watched]'),
     addToQueueBtn: document.querySelector('[data-queue]'),
     ulEl: document.querySelector('.films-collection'),
-    upButton:document.querySelector('[data-upButton]'),
+    upButton: document.querySelector('[data-upButton]'),
+    sentinel: document.querySelector('#sentinel'), // scroll
   };
 }
