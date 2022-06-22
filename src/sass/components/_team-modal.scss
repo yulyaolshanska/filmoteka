@@ -1,0 +1,198 @@
+.backdrop-team{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(245, 172, 120, 0.5); 
+   
+    overflow-y: scroll;
+  }
+
+  .backdrop-team.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .modal-team{
+    position: absolute;
+    left: 50%;
+    top:135%;
+    transform: translate(-50%, -55%);
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 2300px;
+    background-color:rgba(245, 172, 120, 1);
+    border: solid 10px #ffffff; 
+    border-radius: 15px;
+
+    @media screen and (min-width: 500px) and (max-width: 767px) {
+    left: 50%;
+    top: 70%; 
+    width: 450px;
+    height: 1160px;
+    }
+
+    @include media('min', 'tablet') {
+      left: 50%;
+      top: 53%;
+      padding: 20px 35px;
+      width: 650px;
+      height: 870px;  
+      } 
+    
+    @include media('min', 'desktop') {
+    width: 900px;
+    height: 600px;
+    left: 50%;
+    top: 55%;
+    }
+  }
+
+.modal-team-name {
+  display: block;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+  .team-collection {
+    @media screen and (min-width: 500px) {
+      display: flex;   
+      flex-direction: row; 
+      flex-wrap: wrap;       
+    }      
+  }
+
+  .team-box {
+    max-width: 200px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: block;
+    border: solid 5px #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    
+    cursor: pointer; 
+    width: 100%;  
+
+    @media screen and (max-width: 499px) {
+      margin-right: auto;
+      margin-left: auto;
+    }    
+
+   @media screen and (min-width: 500px) and (max-width: 767px) {
+    margin-right: 10px;
+    margin-bottom: 10px; 
+    width: calc((100% - 20px) / 2);
+   }
+     
+    @include media('min', 'tablet') {
+  margin-right: 20px;
+  margin-bottom: 10px; 
+    width: calc((100% - 40px) / 3);    
+ }
+        
+ @include media('min', 'desktop') {
+  margin-right: 30px;
+  margin-bottom: 10px;  
+      width: calc((100% - 90px) / 4);      
+    }
+}
+ 
+.team-box:nth-child(3n + 3) { 
+    @include media('within', 'desktop') {       
+          margin-right: 0px;
+      }
+    }
+
+.team-box:nth-child(4n + 4) {  
+  @include media('min', 'desktop') {
+    margin-right: 0px;
+    }     
+  }   
+        
+.team-box:nth-last-child(-n + 4) {
+    @include media('min', 'desktop') {        
+        margin-bottom: 0px;          
+    }    
+}
+
+.modal-team_close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding-top: 2px;
+  width: 30px;
+  height: 30px;
+  color: rgba(173, 132, 102, 1);;
+  border: solid 4px #ffffff;
+  border-radius: 50%;
+  background-color: rgba(245, 172, 120, 1);;
+  font-size: 15px; 
+  font-weight: 900;
+  cursor: pointer; 
+  
+  align-items: center;
+  
+  } 
+
+
+  .modal-team_close:hover {
+    color: #ffffff; 
+  }
+
+  .team-img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0px;
+    object-fit: cover;
+    @include media('min', 'tablet') {
+      height: 180px;
+    }
+    @include media('min', 'desktop') {
+      height: 180px;
+    }
+    
+  }
+
+  .team-img:hover {
+transform: rotateY(180deg);
+  }
+
+  .team-member-name,
+  .team-member-position {
+    margin-bottom: 0px;   
+    text-align: center;
+  }
+  .team-member-position {
+    color: rgba(173, 132, 102, 1);
+    font-weight: bold;
+    font-size: 15px;
+    
+    margin-top: 0px;
+  }
+  
+  
+  
+  .team-member-name {
+    color: $primary-text-color;
+    margin-top: 0px;
+    font-weight: bold;
+    font-size: 18px;
+    
+    @include media('min', 'tablet') {
+      white-space: nowrap;
+    }
+
+  }
+
+  .team-member {
+    background-color: #ffffff;
+  }
+ 
