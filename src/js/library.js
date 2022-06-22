@@ -66,7 +66,15 @@ export default class Library extends Modal {
     this.queueBtn.classList.remove('header__btn--active');
     this.status = 'watched';
     this.observerItem.dataset.observe = 'watched';
-     
+     if (localStorage.getItem('theme') === 'dark') {
+      
+              console.log(document
+        .querySelector('.nothing'));
+
+           document
+        .querySelector('.nothing')
+        .classList.add('nothing--dark');
+     }
     if (this.watchedFilms.length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your Watched category yet</li>`;
 
@@ -82,7 +90,11 @@ export default class Library extends Modal {
     this.watchedBtn.classList.remove('header__btn--active');
     this.status = 'queue';
     this.observerItem.dataset.observe = 'queue';
-        
+      if (localStorage.getItem('theme') === 'dark') {
+           document
+        .querySelector('.nothing')
+        .classList.add('nothing--dark');
+     }   
     if (this.queue.length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your Queue category yet</li>`;
 
