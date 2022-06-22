@@ -1,5 +1,6 @@
 import NewsApiService from './api-service';
 import trendResultList from '../templates/poster.hbs';
+import {addDarkClassToHTML} from './day-night'
 
 export default class Scroll extends NewsApiService {
   constructor(genres) {
@@ -33,7 +34,6 @@ export default class Scroll extends NewsApiService {
       const data = await super.fetchTrend();
 
       this.finalData = super.getFinalData(data, this.genres);
-
     }
 
     if (entry.target.dataset.observe === 'search') {
@@ -49,7 +49,7 @@ export default class Scroll extends NewsApiService {
     }
 
     this.filmsContainer.insertAdjacentHTML('beforeend', trendResultList(this.finalData));
+    addDarkClassToHTML()
   }
 }
-
 
