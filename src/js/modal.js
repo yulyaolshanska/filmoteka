@@ -182,7 +182,7 @@ export default class Modal extends NewsApiService {
       posterUrl.w500 = `https://image.tmdb.org/t/p/w500${poster_path}`;
       posterUrl.w780 = `https://image.tmdb.org/t/p/w780${poster_path}`;
     } else {
-      let url = `https://www.freeiconspng.com/uploads/no-image-icon-13.png`;
+      let url = `https://www.freeiconspng.com/uploads/no-image-icon-6.png`;
       posterUrl.w342 = url;
       posterUrl.w500 = url;
       posterUrl.w780 = url;
