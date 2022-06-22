@@ -26,6 +26,9 @@ export function addDarkClassToHTML() {
       .querySelector('.footer__text')
       .classList.add('footer__text--dark');
     document.querySelector('.film-name').classList.add('film-name--dark');
+    document
+        .querySelector('.team-modal')
+        .classList.add('team-modal--dark');
     
 
       // document.querySelector('footer').classList.add('dark');
