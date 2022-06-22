@@ -15,9 +15,17 @@ function onTeamModalClose() {
 }
 
 window.addEventListener(`keydown`, onEscClose);
+window.addEventListener(`click`, onBackdropClose);
 
 function onEscClose(event) {
     if(event.code === "Escape") {
         onTeamModalClose();
   }
 }
+
+function onBackdropClose(event) {
+    if (event.target === refs.backdropTeam) {   
+      onTeamModalClose();  
+  }
+}
+
