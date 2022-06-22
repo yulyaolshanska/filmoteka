@@ -107,6 +107,7 @@
 
   margin: 0;
   padding: 0;
+  
   background-color: transparent;
   animation: animate-up 2000ms infinite 200ms;
   box-shadow: inset 0 0 10px 5px $accent-bg-color; 
@@ -114,6 +115,9 @@ cursor: pointer;
   @include media('min', 'tablet') {
     width:  36px;
     height: 36px;
+  }
+  @include media('min', 'desktop') {
+    color: white;
   }
 
   &:hover,

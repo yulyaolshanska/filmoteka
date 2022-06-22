@@ -16,6 +16,11 @@ body{
       background-color: white;
    }
 }
+.container--bg-color-dark{
+   @include media('min', 'desktop') {
+      background-color: #00000038;
+   }
+}
 
 
 .header {
@@ -242,6 +247,9 @@ position: relative;
       }
    }
 
+   .dark  {
+      background-image: linear-gradient(to right, #0000008f, #0000008f), url(/src/images/theatre.jpg);
+  }
    .dark-block{
       position: absolute;
       right: 30px;
@@ -253,39 +261,9 @@ position: relative;
       font-size: 18px;
    }
    
-   .dark  {
-      background-image: linear-gradient(to right, #0000008f, #0000008f), url(/src/images/theatre.jpg);
-  }
-
-//   .film-description--dark{
-//    background-color: #774032bd;
-//   }
-
-.container--bg-color-dark{
-   @include media('min', 'desktop') {
-      background-color: #ffffff1a;
-   }
-}
-  
-//   .film-name--dark{
-//    color: white;
-//   }
-
   .dark a {
    color: #fff;
 }
 
-.film-description{
-background-color: #fff;
-}
 
-.footer--dark{
-   background-color: transparent;
-   @include media('min', 'desktop') {
-      background-color: #ffffff1a;
-   }
-}
 
-.footer__text--dark{
-   color: #d6d6d6;
-}

@@ -12,39 +12,59 @@ export function addDarkClassToHTML() {
   try {
     if (localStorage.getItem('theme') === 'dark') {
       document.querySelector('body').classList.add('dark');
+      
       document
         .querySelector('.container--bg-color')
         .classList.add('container--bg-color-dark');
-      document
-        .querySelector('.film-description')
-        .classList.add('film-description--dark');
-      document.querySelector('.film-name').classList.add('film-name--dark');
+        
+      let descripFilm = document.querySelectorAll('.film-description');
+        descripFilm.forEach((el) => {
+          el.classList.add("film-description--dark");
+        });
+      
+      let nameFilm = document.querySelectorAll('.film-name');
+        nameFilm.forEach((el) => {
+          el.classList.add("film-name--dark");
+        });
+  
       document
       .querySelector('footer')
       .classList.add('footer--dark');
+      
       document
       .querySelector('.footer__text')
       .classList.add('footer__text--dark');
-    document.querySelector('.film-name').classList.add('film-name--dark');
+   
+      document
+        .querySelector('.team-modal')
+        .classList.add('team-modal--dark');
     
-
-      // document.querySelector('footer').classList.add('dark');
       document.querySelector('.themetoggle span').textContent = 'dark_mode';
-    } else {
+    } 
+    else {
       document.querySelector('body').classList.remove('dark');
+      
       document
         .querySelector('.container--bg-color')
         .classList.remove('container--bg-color-dark');
-      document
-        .querySelector('.film-description')
-        .classList.remove('film-description--dark');
-      document.querySelector('.film-name').classList.remove('film-name--dark');
+        
+      let descripFilm = document.querySelectorAll('.film-description');
+        descripFilm.forEach((el) => {
+          el.classList.remove("film-description--dark");});
+          
+      let nameFilm = document.querySelectorAll('.film-name');
+          nameFilm.forEach((el) => {
+            el.classList.remove("film-name--dark");
+          });
+      
       document
       .querySelector('footer')
       .classList.remove('footer--dark');
+      
       document
       .querySelector('.footer__text')
       .classList.remove('footer__text--dark');
+      
       document.querySelector('.themetoggle span').textContent = 'wb_sunny';
     }
   } catch (err) {}

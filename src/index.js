@@ -7,8 +7,6 @@ import './js/team-modal';
 import Scroll from './js/scroll';
 
 
-
-
 const start = async () => {
   const start = new Start();
   const genres = await start.fetchGenres();
@@ -28,8 +26,4 @@ const start = async () => {
 };
 
 start();
-
-
-
-
 

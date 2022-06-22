@@ -119,6 +119,9 @@
     text-transform: uppercase;
     margin-bottom: 0px;
     margin-top: 0px;
+    &--dark{
+        color: #fff;
+       }
 }
 
 .film-genre,
@@ -128,13 +131,15 @@ color: $primary-text-color;
 
 .film-description {
     padding-top: 10px;
-// margin-top: 10px;
+    background-color: #fff;
 // background-color: #774032;
 
-@include media('min', 'tablet') {       
-    // margin-top: 8px;
+@include media('min', 'tablet') {
     padding-top: 8px;
     }
+    &--dark{
+        background-color:  #0707077a;
+       }
 }
 
 .film-vote_average{

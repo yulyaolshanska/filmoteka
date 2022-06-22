@@ -27,7 +27,6 @@ export default class Start extends NewsApiService {
 
       const data = await super.fetchTrend();
 
-
       offLoader();
 
       return super.getFinalData(data, genres);
