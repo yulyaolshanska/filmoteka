@@ -3,6 +3,9 @@ import { onTrend } from './poster';
 import { onLoader, offLoader } from './loader';
 
 const refs = getRefs();
+const trend = document.querySelector('#sentinel'); //
+const search = document.querySelector('#sentinel-search') //
+const library = document.querySelector('#sentinel-library') //
 
 refs.homeLink.addEventListener('click', onHome);
 refs.logo.addEventListener('click', onHome);

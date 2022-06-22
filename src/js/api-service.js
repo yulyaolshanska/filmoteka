@@ -23,7 +23,7 @@ export default class NewsApiService {
     // this.templates = getTemplates();
     // console.log(this.genres);
   }
-  
+
   getRefs() {
     return this.refs;
   }
@@ -128,9 +128,9 @@ export default class NewsApiService {
     return data;
   };
 
-    // incrementPage() {
-    //     this.page += 1;
-    // };
+    incrementPage() {
+        this.page += 1;
+    }; //
   
    // choosePage() {
     //     this.page += 5;
