@@ -1,7 +1,6 @@
 import getRefs from './getRefs';
 const refs = getRefs();
 
-
 refs.team.addEventListener(`click`, onTeamModalOpen);
 
 function onTeamModalOpen() {
