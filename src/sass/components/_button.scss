@@ -95,46 +95,59 @@
 
 .up-button {
   position: fixed;
-  right:  30px;
-  bottom: 30px;
+  right:  13px;
+  bottom: 63px;
   z-index: 2;
 
   border-radius: 50%;
   border: 3px solid $header-btn-border;
   display: inline-block;
-  width:  36px;
-  height: 36px;
-
+  width:  42px;
+  height: 42px;
+  color: $modal-regular-btn-text;
   margin: 0;
   padding: 0;
   
   background-color: transparent;
   animation: animate-up 2000ms infinite 200ms;
   box-shadow: inset 0 0 10px 5px $accent-bg-color; 
-cursor: pointer;     
-  @include media('min', 'tablet') {
-    width:  36px;
-    height: 36px;
-  }
-  @include media('min', 'desktop') {
-    color: white;
-  }
+  cursor: pointer; 
 
   &:hover,
   &:focus {
-
+    border-color: $hover-active-btn;
     transform: scale(1.1);
     color: $accent-bg-color; 
-    font-weight: 700;      
+    font-weight: 700;
+    box-shadow: inset 0 0 10px 5px $modal-regular-btn-text;      
   }
-&--is-hidden {
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  display: none;
-}
+  &--is-hidden {
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    display: none;
+  }
   
+}
+
+body.dark .up-button {
+  
+  border-color: $header-btn-border;
+  color: $header-btn-text;
+  &:hover,
+  &:focus {
+    border-color: $accent-bg-color;
+    transform: scale(1.1);
+    color: $accent-bg-color; 
+    font-weight: 700; 
+    box-shadow: inset 0 0 10px 5px $header-btn-border;     
+  }
+  
+}
+
+body.fixed .up-button {
+  opacity: 0;
+  cursor: none;
 }
 
 @keyframes animate-up {
@@ -150,3 +163,4 @@ cursor: pointer;
     transform: rotate(45deg);
   }
 }
+
