@@ -3,13 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+    <title>Filmoteka</title>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/test.html"></include>
-    <include src="./partials/test2.html"></include>
+    <include src="./partials/header.html"></include>
+
+    <main>
+      <include src="./partials/collection.html"></include>
+      <include src="./partials/pagination.html"></include>
+    </main>
+
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/modal-card.html"></include>
+
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
