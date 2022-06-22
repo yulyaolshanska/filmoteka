@@ -10,7 +10,8 @@ import Start from './js/start';
 import Modal from './js/modal';
 import Library from './js/library';
 import './js/team-modal';
-import Scroll from './js/scroll'; // my
+import Scroll from './js/scroll';
+// import './js/scroll'; //
 
 
 const start = async () => {
