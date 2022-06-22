@@ -7,6 +7,7 @@ export default class Library extends Modal {
     super.getRefs().myLibraryLink.addEventListener('click', this.onMyLibrary.bind(this));
 
     this.status = '';
+    this.observerItem = super.getRefs().sentinel;
     this.watchedFilms = super.getWatchedFilms();
     this.queue = super.getQueue();
 
@@ -25,8 +26,8 @@ export default class Library extends Modal {
   }
 
   onMyLibrary() {
-    this.observerItem.dataset.observe = 'library';
-
+    this.observerItem.dataset.observe = 'watched';
+    
     super.getRefs().myLibraryLink.classList.add('site-nav__link--current');
     super.getRefs().homeLink.classList.remove('site-nav__link--current');
     super.getRefs().form.classList.add('form--is-hidden');
@@ -46,7 +47,8 @@ export default class Library extends Modal {
       return;
     }
 
-    this.renderFilmCard(this.watchedFilms);
+    const firstWatchedPage = super.getWatchedFilms().slice(0,20);
+    this.renderFilmCard(firstWatchedPage);
     this.filmsContainer.addEventListener('click', this.removeCard);
   }
 
@@ -63,28 +65,31 @@ export default class Library extends Modal {
     this.watchedBtn.classList.add('header__btn--active');
     this.queueBtn.classList.remove('header__btn--active');
     this.status = 'watched';
+    this.observerItem.dataset.observe = 'watched';
      
     if (this.watchedFilms.length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your Watched category yet</li>`;
 
       return
     }
-        
-    this.renderFilmCard(this.watchedFilms);
+     
+    const firstWatchedPage = super.getWatchedFilms().slice(0,20);
+    this.renderFilmCard(firstWatchedPage);
   }
   
   handleQueue() {
     this.queueBtn.classList.add('header__btn--active');
     this.watchedBtn.classList.remove('header__btn--active');
     this.status = 'queue';
+    this.observerItem.dataset.observe = 'queue';
         
     if (this.queue.length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your Queue category yet</li>`;
 
       return;
     }
-        
-    this.renderFilmCard(this.queue);
+    const firstQueuePage = super.getQueue().slice(0,20);    
+    this.renderFilmCard(firstQueuePage);
   }
 
   removeCard(e) {

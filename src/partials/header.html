@@ -1,7 +1,12 @@
 <header class="header">
+  
   <div class="container container__header">
+    <div class="dark-block">
+      <a href="#" class="themetoggle">
+          <span class="material-icons">wb_sunny</span></a>
+</div>
     <div class="header__block">
-      <button type="button" id="logo" class="logo">
+      <button type="button" id="logo" class="logo" aria-label="logo">
         <svg class="logo__svg">
           <use href="images/symbol-defs.svg#icon-film"></use>
         </svg>
@@ -20,12 +25,13 @@
               type="button"
               id="home"
               class="site-nav__link site-nav__link--current"
+              aria-label="home"
             >
               home
             </button>
           </li>
           <li class="site-nav__item">
-            <button type="button" id="my-library" class="site-nav__link">
+            <button type="button" id="my-library" class="site-nav__link"  aria-label="my-library">
               my library
             </button>
           </li>
@@ -42,7 +48,7 @@
         id="name"
         required
       />
-      <button class="form__btn" type="submit">
+      <button class="form__btn" type="submit" aria-label="submit">
         <svg class="form__svg">
           <use href="images/symbol-defs.svg#icon-search"></use>
         </svg>
