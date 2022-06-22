@@ -10,6 +10,10 @@ import Start from './js/start';
 import Modal from './js/modal';
 import Library from './js/library';
 import './js/day-night.js';
+import './js/team-modal';
+import Scroll from './js/scroll';
+// import './js/scroll'; //
+
 
 const start = async () => {
   const start = new Start();
@@ -23,12 +27,9 @@ const start = async () => {
   // new Modal();
   const library = new Library();
 
-  new GoToHome(
-    genres,
-    library.handleWatched,
-    library.handleQueue,
-    library.removeCard
-  );
-};
+  new GoToHome(genres, library.handleWatched, library.handleQueue, library.removeCard);
 
-start();
+  new Scroll(genres);
+}
+
+start(); 

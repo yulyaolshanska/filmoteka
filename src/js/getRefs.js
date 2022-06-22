@@ -22,6 +22,11 @@ export default function getRefs() {
     addToWatchedBtn: document.querySelector('[data-watched]'),
     addToQueueBtn: document.querySelector('[data-queue]'),
     ulEl: document.querySelector('.films-collection'),
-    upButton:document.querySelector('[data-upButton]'),
+    team: document.querySelector(`.team-modal`),
+    backdropTeam: document.querySelector(`.backdrop-team`),
+    btnModalTeamClose: document.querySelector(`.modal-team_close`),
+    ulTeamEl: document.querySelector('.team-collection'),
+    upButton: document.querySelector('[data-upButton]'),
+    sentinel: document.querySelector('#sentinel'), // scroll
   };
 }

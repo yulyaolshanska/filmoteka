@@ -1,5 +1,5 @@
 import Start from './start';
-import searchResultList from '../templates/search.hbs';
+import searchResultList from '../templates/poster.hbs';
 
 import { onLoader, offLoader } from './loader';
 
@@ -8,19 +8,22 @@ export default class Search extends Start {
     super();
     super.getRefs().form.addEventListener('submit', this.onSubmit.bind(this));
 
+    this.observerItem = super.getRefs().sentinel;
     this.genres = genres;
   }
 
   async onSubmit(e) {
     e.preventDefault();
 
-    onLoader();
+    this.observerItem.dataset.observe = 'search';
 
     const {
       elements: {
         searchQuery: { value },
       },
     } = e.target;
+
+    localStorage.setItem('searchQuery', JSON.stringify(value));
 
     super.resetPage();
 

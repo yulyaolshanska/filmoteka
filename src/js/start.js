@@ -1,6 +1,7 @@
 import NewsApiService from './api-service';
 import trendResultList from '../templates/poster.hbs';
 import { addDarkClassToHTML } from './day-night';
+import { offLoader, onLoader } from './loader';
 
 export default class Start extends NewsApiService {
   constructor() {
@@ -17,14 +18,18 @@ export default class Start extends NewsApiService {
   }
 
   async getData(genres) {
+    onLoader();
     try {
       super.resetPage();
 
       const data = await super.fetchTrend();
+
+      offLoader();
       return super.getFinalData(data, genres);
     } catch (error) {
       console.dir(error);
     }
+    offLoader();
   }
 
   addButtonUp() {

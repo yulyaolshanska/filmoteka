@@ -140,7 +140,6 @@ import { onModalLoader, offModalLoader } from './loader';
 let posterUrl = {};
 const newsApiService = new NewsApiService();
 
-
 refs.ulEl.addEventListener('click', onModalOpen);
 
 function onModalOpen(event) {
@@ -176,7 +175,6 @@ async function fetchRenderCard(movieId) {
     data = await newsApiService.fetchMovieById(movieId);
     fetcData = data.data;
     renderCard(fetcData);
-    
 
     document.querySelector('.watched').addEventListener('click', addToWatched);
     document.querySelector('.queue').addEventListener('click', addToQueue);
@@ -187,28 +185,33 @@ async function fetchRenderCard(movieId) {
 }
 
 function getPosterUrl(poster_path) {
-
-    if (poster_path){
-        // posterUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
-        posterUrl.w342 = `https://image.tmdb.org/t/p/w342${poster_path}`;
-        posterUrl.w500 = `https://image.tmdb.org/t/p/w500${poster_path}`;
-        posterUrl.w780 = `https://image.tmdb.org/t/p/w780${poster_path}`;
-      
-       
-    } else {
-        let url = `https://www.freeiconspng.com/uploads/no-image-icon-13.png`;
-        posterUrl.w342 = url;
-        posterUrl.w500 = url;
-        posterUrl.w780 = url;      
-    }
+  if (poster_path) {
+    // posterUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
+    posterUrl.w342 = `https://image.tmdb.org/t/p/w342${poster_path}`;
+    posterUrl.w500 = `https://image.tmdb.org/t/p/w500${poster_path}`;
+    posterUrl.w780 = `https://image.tmdb.org/t/p/w780${poster_path}`;
+  } else {
+    let url = `https://www.freeiconspng.com/uploads/no-image-icon-13.png`;
+    posterUrl.w342 = url;
+    posterUrl.w500 = url;
+    posterUrl.w780 = url;
+  }
 
   return posterUrl;
 }
 
-async function renderCard({popularity, genres, poster_path, vote_average, vote_count, title, overview}) {
-    getPosterUrl(poster_path);
-   
-    const card = ` <picture >
+async function renderCard({
+  popularity,
+  genres,
+  poster_path,
+  vote_average,
+  vote_count,
+  title,
+  overview,
+}) {
+  getPosterUrl(poster_path);
+
+  const card = ` <picture >
     <source
       srcset="${posterUrl.w342} 1x,
              ${posterUrl.w500} 2x"
