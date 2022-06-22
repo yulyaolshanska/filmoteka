@@ -24,6 +24,8 @@ const start = async () => {
   // new Modal();
   const library = new Library();
   new GoToHome(genres, library.handleWatched, library.handleQueue, library.removeCard);
+
+  new Scroll(genres);
 }
 
 start(); 
