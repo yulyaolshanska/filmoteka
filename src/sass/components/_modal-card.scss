@@ -1,5 +1,5 @@
 .backdrop{
-  background-color: $modal-primary-text;
+  // background-color: tomato;
   z-index: 900;
   position: fixed;
   top: 50%;
@@ -8,7 +8,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 1;
-  transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1), transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate(-50%, -50%);
   padding: 93px 15px;
   overflow-y: scroll;
@@ -20,21 +20,21 @@
 }
 
 .is-hidden{
-  position: absolute;
+  position: fixed;
   // clip: rect(0 0 0 0);
   // width: 1px;
   // height: 1px;
   margin: -1px;  
   opacity: 0;
   pointer-events: none;
-
+  transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal{
     background-color: #fff;
     overflow: hidden;
     position: relative;
-    transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1), transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
 
     z-index: 950;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -62,8 +62,8 @@
 
   .backdrop.is-hidden & {
     @include media (min, tablet){
-    transform: translate(-50%, -50%) ;
-  
+    // transform: translate(-50%, -50%) ;
+    transform: translate(0%, 0%);
   }}}
 
 
