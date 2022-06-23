@@ -1,5 +1,5 @@
 .backdrop{
-  background-color: $modal-primary-text;
+  // background-color: tomato;
   z-index: 900;
   position: fixed;
   top: 50%;
@@ -59,8 +59,8 @@
 
   .backdrop.is-hidden & {
     @include media (min, tablet){
-    transform: translate(-50%, -50%) ;
-  
+    // transform: translate(-50%, -50%) ;
+    transform: translate(0%, 0%);
   }}}
 
 
