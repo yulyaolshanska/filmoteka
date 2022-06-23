@@ -164,7 +164,6 @@ export default class Modal extends NewsApiService {
       />
       <img src="${w500}" alt="${title}" class="card_img"/>
     </picture>
-
     <div class="card-thumb">
       <h2 class="card-title">${title}</h2>
       <ul class="card-list">
