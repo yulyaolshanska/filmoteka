@@ -10,6 +10,8 @@ export default function getRefs() {
     buttonsBlock: document.querySelector('.header__block-btn'),
     filmsContainer: document.querySelector('.films-collection'),
     header: document.querySelector('.header'),
+    main: document.querySelector('main'),
+    footer:  document.querySelector('footer'),
     logo: document.querySelector('#logo'),
     loaderBlock: document.querySelector('.load'),
     Modalloader: document.querySelector('.load-modal'),

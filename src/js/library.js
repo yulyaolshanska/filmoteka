@@ -1,5 +1,4 @@
 import Modal from './modal';
-import trendResultList from '../templates/poster.hbs';
 
 export default class Library extends Modal {
   constructor() {
@@ -39,57 +38,56 @@ export default class Library extends Modal {
     this.watchedBtn.addEventListener('click', this.handleWatched);
     this.queueBtn.addEventListener('click', this.handleQueue);
     this.filmsContainer.addEventListener('click', this.removeCard);
-    this.status = 'watched';
+    super.setStatus('watched');
 
-    if (this.watchedFilms.length === 0) {
+    if (super.getWatchedFilms().length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your library yet</li>`;
       
       return;
     }
 
     const firstWatchedPage = super.getWatchedFilms().slice(0,20);
-    this.renderFilmCard(firstWatchedPage);
+    super.renderFilmCard(firstWatchedPage);
     this.filmsContainer.addEventListener('click', this.removeCard);
   }
 
-  renderFilmCard(data) {
-    
-    const libraryData = super.getLibraryData(data);
-    
-    const markup = trendResultList(libraryData);
- 
-    this.filmsContainer.innerHTML = markup;
-  }
-
-   handleWatched() {
+  handleWatched() {
     this.watchedBtn.classList.add('header__btn--active');
     this.queueBtn.classList.remove('header__btn--active');
-    this.status = 'watched';
+    super.setStatus('watched'); 
     this.observerItem.dataset.observe = 'watched';
-     
-    if (this.watchedFilms.length === 0) {
+    
+    if (super.getWatchedFilms().length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your Watched category yet</li>`;
-
+      if (localStorage.getItem('theme') === 'dark') {
+           document
+        .querySelector('.nothing')
+        .classList.add('nothing--dark');
+     }
       return
     }
      
     const firstWatchedPage = super.getWatchedFilms().slice(0,20);
-    this.renderFilmCard(firstWatchedPage);
+    super.renderFilmCard(firstWatchedPage);
   }
   
   handleQueue() {
     this.queueBtn.classList.add('header__btn--active');
     this.watchedBtn.classList.remove('header__btn--active');
-    this.status = 'queue';
+    super.setStatus('queue');
     this.observerItem.dataset.observe = 'queue';
-        
-    if (this.queue.length === 0) {
+     
+    if (super.getQueue().length === 0) {
       this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't add any films in your Queue category yet</li>`;
-
+      if (localStorage.getItem('theme') === 'dark') {
+     document
+        .querySelector('.nothing')
+        .classList.add('nothing--dark');
+     }
       return;
     }
     const firstQueuePage = super.getQueue().slice(0,20);    
-    this.renderFilmCard(firstQueuePage);
+    super.renderFilmCard(firstQueuePage);
   }
 
   removeCard(e) {
@@ -102,7 +100,7 @@ export default class Library extends Modal {
       
       const id = e.target.parentNode.getAttribute('id');
       
-      if (this.status === 'watched') {
+      if (super.getStatus() === 'watched') {
                
         const modifyWatchedFilms = super.getWatchedFilms().filter((item) => {
           if (item.id != id) {
@@ -118,7 +116,7 @@ export default class Library extends Modal {
           this.filmsContainer.innerHTML = `<li class='nothing'>Sorry, but you didn't have any films in your Watched category yet</li>`
         }
 
-      } else if (this.status === 'queue') {
+      } else if (super.getStatus() === 'queue') {
         
         const modifyQueue = super.getQueue().filter((item) => {
           if (item.id != id) {
