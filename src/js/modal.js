@@ -382,8 +382,8 @@ export default class Modal extends NewsApiService {
         return
       }
      
-      const firstWatchedPage = super.getWatchedFilms().slice(0, 20);
-      super.renderFilmCard(firstWatchedPage);
+      const firstWatchedPage = this.getWatchedFilms().slice(0, 20);
+      this.renderFilmCard(firstWatchedPage);
     }
 
     if (this.getState() === 'queue') {
@@ -397,8 +397,8 @@ export default class Modal extends NewsApiService {
         return;
       }
       
-      const firstQueuePage = super.getQueue().slice(0,20);    
-      super.renderFilmCard(firstQueuePage);
+      const firstQueuePage = this.getQueue().slice(0,20);    
+      this.renderFilmCard(firstQueuePage);
     }
   }
 }
