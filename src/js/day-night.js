@@ -46,6 +46,7 @@ export function addDarkClassToHTML() {
       
     } 
     else {
+      document.querySelector('.themetoggle span').textContent = 'wb_sunny';
       document.querySelector('body').classList.remove('dark');
       
       document
@@ -71,7 +72,7 @@ export function addDarkClassToHTML() {
            document
         .querySelector('.nothing')
         .classList.remove('nothing--dark');
-      document.querySelector('.themetoggle span').textContent = 'wb_sunny';
+     
     }
   } catch (err) {}
 }

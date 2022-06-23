@@ -12,14 +12,14 @@ body{
 }
 
 .container--bg-color{
-   @include media('min', 'desktop') {
-      background-color: white;
-   }
+   background-color: white;
+   // @include media('min', 'desktop') {
+   // }
 }
 .container--bg-color-dark{
-   @include media('min', 'desktop') {
-      background-color: #00000038;
-   }
+   background-color: #00000038;
+   // @include media('min', 'desktop') {
+   // }
 }
 
 
