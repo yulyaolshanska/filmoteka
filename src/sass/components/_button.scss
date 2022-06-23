@@ -14,7 +14,8 @@
  
    &:hover,
    &:focus {
-    background-color: $hover-regular-btn;
+    
+    background-color: $hover-active-btn;
    }
  }
 
@@ -65,22 +66,32 @@
     width: 136px;
   }
   &--active{
-    background-color: transparent;
-    border: 2px solid;
-    border:none;
-    background-color: $accent-bg-color;
-    color: $modal-active-btn-text;
+    // border:none;
+    // background-color: $accent-bg-color;
+    // color: $modal-active-btn-text;
+    
     &:hover,
     &:focus {
+      border:none;
+      color: $modal-active-btn-text;
       background-color: $hover-active-btn;
     }
   }
+  
   &--margin{
     margin-right: 20px;
         @include media('min', 'tablet') {
           margin-right: 15px;
     }
+
+    // &:hover,
+    // &:focus {
+    //   border:none;
+    //   color: $modal-active-btn-text;
+    //   background-color: $hover-active-btn;
+    // }
   }
+
   &--added-btn {
     background-color: green;
     cursor: default;
@@ -91,6 +102,19 @@
     background-color: green;
    }
   }
+
+  &--block-btn {
+    background-color: transparent;
+    cursor: default;
+
+    
+   &:hover,
+   &:focus {
+    background-color: transparent;
+   }
+  }
+
+  
 }
 
 .up-button {
@@ -111,7 +135,15 @@
   background-color: transparent;
   animation: animate-up 2000ms infinite 200ms;
   box-shadow: inset 0 0 10px 5px $accent-bg-color; 
-  cursor: pointer; 
+  cursor: pointer;
+
+  @include media('min', 'tablet') {
+    width:  36px;
+    height: 36px;
+  }
+  @include media('min', 'desktop') {
+    color: white;
+  }
 
   &:hover,
   &:focus {
