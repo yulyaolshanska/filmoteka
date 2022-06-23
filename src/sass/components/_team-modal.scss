@@ -221,10 +221,8 @@ transform: rotateY(180deg);
     align-items: center;
     justify-content: center;
     padding: 10px;
-    font-size: 16px;
+    font-size: 24px;
     opacity: 0;
-    transition: opacity 1000ms liner;   
-
   }
 
   .team-member-card:hover,
@@ -233,5 +231,6 @@ transform: rotateY(180deg);
     top: 0;
     left: 0;
     opacity: 1; 
+    
     
   }
