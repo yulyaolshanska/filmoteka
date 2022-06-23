@@ -1,17 +1,9 @@
 import getRefs from './getRefs';
-// import getTemplates from './getTemplates';
-// import templates from './getTemplates';
-// import listOfCards from '../templates/poster.hbs';
 
 const axios = require('axios');
 
 const BASE_URL = `https://api.themoviedb.org/3`;
 const KEY = `476dab1d501621899284a1a134c160d7`;
-
-
-// https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
-// login: project-group-6, password: project-group-6
-// API key:  3c9b3437ebab156a512248e157c99300
 
 export default class NewsApiService {
   constructor() {
@@ -19,9 +11,6 @@ export default class NewsApiService {
     this.page = 1;
     this.genres = null;
     this.refs = getRefs();
-    // this.templates = templates;
-    // this.templates = getTemplates();
-    // console.log(this.genres);
   }
 
   getRefs() {
@@ -66,8 +55,7 @@ export default class NewsApiService {
   
         let releaseYear = release_date.slice(0, 4);
         let genresRend = this.renderGenres(genres);
-        // console.log(films);
-
+        
         const isButton = true;
 
         return {
@@ -130,13 +118,7 @@ export default class NewsApiService {
 
     incrementPage() {
         this.page += 1;
-    }; //
-  
-   // choosePage() {
-    //     this.page += 5;
-    // };
-
-  
+    };   
 
   async fetchSerchQuery(searchQuery) {
         const url = `${BASE_URL}/search/movie?api_key=${KEY}&query=${searchQuery}&page=${this.page}`

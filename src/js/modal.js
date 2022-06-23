@@ -69,8 +69,7 @@ export default class Modal extends NewsApiService {
     }
 
     const movieId = link.getAttribute('id');
-    console.log(movieId);
-
+    
     await this.fetchRenderCard(movieId);
 
     document.body.classList.add('fixed');
@@ -329,26 +328,6 @@ export default class Modal extends NewsApiService {
       
   }
 
-  // isFilmInStorage() {
-  //   this.watchedFilms = JSON.parse(localStorage.getItem('watched-films')) || [];
-  //   this.queue = JSON.parse(localStorage.getItem('queue-films')) || [];
-
-  //   if (this.watchedFilms.find(films => this.fetchedData.id === films.id)) {
-  //     Notify.warning('You have already added this movie to Watched', {
-  //       timeout: 3000,
-  //     });
-  //     return true;
-  //   } else if (this.queue.find(films => this.fetchedData.id === films.id)) {
-  //     Notify.warning('You have already added this movie to Queue', {
-  //       timeout: 3000,
-  //     });
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  
   filmWatchDel() {
         this.watched = this.getWatchedFilms().filter(films => films.id !== this.fetchedData.id)
         localStorage.setItem('watched-films', JSON.stringify(this.watched));

@@ -1,5 +1,4 @@
 .backdrop{
-  // background-color: tomato;
   z-index: 900;
   position: fixed;
   top: 50%;
@@ -19,7 +18,7 @@
 }
 
 .is-hidden{
-  position: absolute;
+  position: fixed;
   opacity: 0;
   pointer-events: none;
   transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1),  transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -59,7 +58,6 @@
 
   .backdrop.is-hidden & {
     @include media (min, tablet){
-    // transform: translate(-50%, -50%) ;
     transform: translate(0%, 0%);
   }}}
 

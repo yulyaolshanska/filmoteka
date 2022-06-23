@@ -1,5 +1,4 @@
 import Modal from './modal';
-import trendResultList from '../templates/poster.hbs';
 
 export default class Library extends Modal {
   constructor() {
@@ -39,7 +38,6 @@ export default class Library extends Modal {
     this.watchedBtn.addEventListener('click', this.handleWatched);
     this.queueBtn.addEventListener('click', this.handleQueue);
     this.filmsContainer.addEventListener('click', this.removeCard);
-    // this.status = 'watched';
     super.setStatus('watched');
 
     if (super.getWatchedFilms().length === 0) {
@@ -53,19 +51,9 @@ export default class Library extends Modal {
     this.filmsContainer.addEventListener('click', this.removeCard);
   }
 
-  // renderFilmCard(data) {
-    
-  //   const libraryData = super.getLibraryData(data);
-    
-  //   const markup = trendResultList(libraryData);
- 
-  //   this.filmsContainer.innerHTML = markup;
-  // }
-
-   handleWatched() {
+  handleWatched() {
     this.watchedBtn.classList.add('header__btn--active');
     this.queueBtn.classList.remove('header__btn--active');
-    // this.status = 'watched';
     super.setStatus('watched'); 
     this.observerItem.dataset.observe = 'watched';
     
@@ -86,7 +74,6 @@ export default class Library extends Modal {
   handleQueue() {
     this.queueBtn.classList.add('header__btn--active');
     this.watchedBtn.classList.remove('header__btn--active');
-    // this.status = 'queue';
     super.setStatus('queue');
     this.observerItem.dataset.observe = 'queue';
      
