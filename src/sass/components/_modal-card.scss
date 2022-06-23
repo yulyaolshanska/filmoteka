@@ -11,8 +11,7 @@
   transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1), transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate(-50%, -50%);
   padding: 93px 15px;
-  overflow-y: scroll;
-
+  
 } 
 
 .blur {
@@ -20,22 +19,20 @@
 }
 
 .is-hidden{
-  position: fixed;
-  // clip: rect(0 0 0 0);
-  // width: 1px;
-  // height: 1px;
-  margin: -1px;  
+  position: absolute;
   opacity: 0;
   pointer-events: none;
-  transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1),  transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .modal{
     background-color: #fff;
     overflow: hidden;
     position: relative;
-    transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1), transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
-
+    transition:  opacity 900ms cubic-bezier(0.4, 0, 0.2, 1),  transform 900ms cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-x: hidden;
+    
     z-index: 950;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
   0px 2px 1px rgba(0, 0, 0, 0.2);
