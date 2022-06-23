@@ -40,6 +40,10 @@ export function addDarkClassToHTML() {
         .classList.add('team-modal--dark');
     
       document.querySelector('.themetoggle span').textContent = 'dark_mode';
+      document
+        .querySelector('.nothing')
+        .classList.add('nothing--dark');
+      
     } 
     else {
       document.querySelector('body').classList.remove('dark');
@@ -64,7 +68,9 @@ export function addDarkClassToHTML() {
       document
       .querySelector('.footer__text')
       .classList.remove('footer__text--dark');
-      
+           document
+        .querySelector('.nothing')
+        .classList.remove('nothing--dark');
       document.querySelector('.themetoggle span').textContent = 'wb_sunny';
     }
   } catch (err) {}
