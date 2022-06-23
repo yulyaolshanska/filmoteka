@@ -42,7 +42,7 @@ export default class Start extends NewsApiService {
         ? (this.upButton.className = 'up-button--is-hidden')
         : (this.upButton.className = 'up-button');
     });
-
+console.log(document.querySelector('blur'))
     this.upButton.addEventListener('click', () => {
       window.scrollBy({ top: -this.height - scrollY, behavior: 'smooth' });
     });
