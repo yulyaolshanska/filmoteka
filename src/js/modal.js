@@ -92,8 +92,6 @@ export default class Modal extends NewsApiService {
       onModalLoader();
       const data = await super.fetchMovieById(movieId);
       
-      offModalLoader();
-
       const {
         id,
         popularity,
@@ -136,6 +134,7 @@ export default class Modal extends NewsApiService {
     } catch (error) {
       console.log(error.message);
     }
+    offModalLoader();
   }
 
   renderCard({
