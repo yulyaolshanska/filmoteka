@@ -14,7 +14,6 @@ export default function getRefs() {
     footer:  document.querySelector('footer'),
     logo: document.querySelector('#logo'),
     loaderBlock: document.querySelector('.load'),
-    Modalloader: document.querySelector('.load-modal'),
     loader: document.querySelector('.loader'),
 
     btnClose: document.querySelector('[data-button_close]'),

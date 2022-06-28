@@ -9,8 +9,12 @@ export const offLoader = () => {
   refs.loaderBlock.classList.remove('loader-block');
 };
 export const onModalLoader = () => {
-  refs.Modalloader.classList.add('loader-block', 'loader-block--modal');
+  refs.loaderBlock.classList.add('loader-block-modal');
+  refs.main.classList.add('blur')
+  refs.loader.classList.add('loader-modal')
 };
 export const offModalLoader = () => {
-  refs.Modalloader.classList.remove('loader-block');
+  refs.loaderBlock.classList.remove('loader-block-modal');
+  refs.loader.classList.remove('loader-modal')
+  refs.main.classList.remove('blur')
 };
