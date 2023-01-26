@@ -2,7 +2,7 @@
 
 <h1 style="text-align: center;  background-color: #ede9e5 ">Filmoteka</h1>
 
-![](src/img/screen.png)
+<img width="906" alt="screen" src="src/img/screen.png">
 
 </div>
 
